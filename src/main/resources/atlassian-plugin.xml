@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+	<plugin-info>
+		<description>${project.description}</description>
+		<version>${project.version}</version>
+		<vendor name="${project.organization.name}" url="${project.organization.url}" />
+	    <param name="plugin-icon">images/icon_16x16.jpg</param>
+	    <param name="plugin-logo">images/logo_72x72.jpg</param>
+	</plugin-info>
+
+	<macro key='code' name='Syntax Highlighter {code} formatting macro'
+		class='jira.plugin.syntaxhighlighter.macro.SyntaxHighlighterMacro'>
+		<description>Advanced layout and syntax highlighting for code blocks in your descriptions, comments etc. with support for additional languages</description>
+	</macro>
+	<macro key='noformat' name='Syntax Highlighter {noformat} formatting macro'
+		class='jira.plugin.syntaxhighlighter.macro.SyntaxHighlighterNoformatMacro'>
+		<description>Advanced layout for plain text blocks in your descriptions, comments etc.</description>
+	</macro>
+	
+    <web-resource key="plain_brush" name="Plain text brush for {code} and {noformat}" >
+        <resource type="download" name="shBrushPlain.js" location="scripts/shBrushPlain.js" />
+    </web-resource>	
+    <web-resource key="java_brush" name="Java brush for {code:java}" >
+        <resource type="download" name="shBrushJava.js" location="scripts/shBrushJava.js" />
+    </web-resource>	
+    <web-resource key="sql_brush" name="SQL brush for {code:sql}" >
+        <resource type="download" name="shBrushSql.js" location="scripts/shBrushSql.js" />
+    </web-resource>	
+    <web-resource key="css_brush" name="CSS brush for {code:css}" >
+        <resource type="download" name="shBrushCss.js" location="scripts/shBrushCss.js" />
+    </web-resource>	
+    <web-resource key="xml_brush" name="XML brush for {code:xml}, {code:xslt}, {code:xhtml} and {code:html}" >
+        <resource type="download" name="shBrushXml.js" location="scripts/shBrushXml.js" />
+    </web-resource>	
+    <web-resource key="perl_brush" name="Perl brush for {code:perl}" >
+        <resource type="download" name="shBrushPerl.js" location="scripts/shBrushPerl.js" />
+    </web-resource>	    
+    <web-resource key="php_brush" name="PHP brush for {code:php}" >
+        <resource type="download" name="shBrushPhp.js" location="scripts/shBrushPhp.js" />
+    </web-resource>	    
+    <web-resource key="javafx_brush" name="JavaFX brush for {code:javafx}" >
+        <resource type="download" name="shBrushJavaFX.js" location="scripts/shBrushJavaFX.js" />
+    </web-resource>	
+    <web-resource key="js_brush" name="JavaScript brush for {code:js}" >
+        <resource type="download" name="shBrushJScript.js" location="scripts/shBrushJScript.js" />
+    </web-resource>	
+    <web-resource key="vb_brush" name="Visual Basic brush for {code:vb} and {code:vbnet}" >
+        <resource type="download" name="shBrushVb.js" location="scripts/shBrushVb.js" />
+    </web-resource>	
+    <web-resource key="csharp_brush" name="C# brush for {code:csharp} resp. {code:c#}" >
+        <resource type="download" name="shBrushCSharp.js" location="scripts/shBrushCSharp.js" />
+    </web-resource>	
+    <web-resource key="cpp_brush" name="C++/C brush for {code:c} and {code:cpp} resp. {code:c++}" >
+        <resource type="download" name="shBrushCpp.js" location="scripts/shBrushCpp.js" />
+    </web-resource>	
+    <web-resource key="ruby_brush" name="Ruby brush for {code:ruby}" >
+        <resource type="download" name="shBrushRuby.js" location="scripts/shBrushRuby.js" />
+    </web-resource>	
+    <web-resource key="python_brush" name="Python brush for {code:python}" >
+        <resource type="download" name="shBrushPython.js" location="scripts/shBrushPython.js" />
+    </web-resource>	
+    <web-resource key="tcl_brush" name="Tcl brush for {code:tcl}" >
+        <resource type="download" name="shBrushTcl.js" location="scripts/custom/shBrushTcl.js" />
+    </web-resource>	
+    
+    <web-resource key="core" name="Syntax Highlighter core JavaScript and CSS files" >
+        <resource type="download" name="shCore.js" location="scripts/shCore.js" />
+        <resource type="download" name="shCore.css" location="styles/shCore.css" />
+        <resource type="download" name="shThemeDefault.css" location="styles/shThemeDefault.css" />
+    </web-resource>
+    	
+</atlassian-plugin>
