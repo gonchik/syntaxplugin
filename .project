@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>SyntaxHighlighter</name>
+	<name>SyntaxPlugin</name>
 	<comment>This is the com.bayer.jira.syntax.plugin:syntaxplugin plugin for Atlassian JIRA. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
 	<projects>
 	</projects>
