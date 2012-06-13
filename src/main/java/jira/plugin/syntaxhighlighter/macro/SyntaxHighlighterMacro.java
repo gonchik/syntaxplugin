@@ -32,7 +32,6 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 		WebResourceManager tmpWebResourceManager = ComponentManager.getInstance().getWebResourceManager();
 
 		tmpWebResourceManager.requireResource("jira.plugin.syntaxhighlighter.macro.syntaxplugin:core");
-		tmpWebResourceManager.requireResource("jira.plugin.syntaxhighlighter.macro.syntaxplugin:" + getBrush(parameters) + "_brush");
 		
 		StringBuffer tmpBuffer = new StringBuffer();
 		tmpBuffer.append("<div style='margin-left: 20px;'>");
