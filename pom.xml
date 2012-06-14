@@ -52,6 +52,7 @@
                 <configuration>
                     <productVersion>${jira.version}</productVersion>
                     <productDataVersion>${jira.data.version}</productDataVersion>
+                    <productDataPath>${basedir}/generated-test-resources.zip</productDataPath>
                 </configuration>
             </plugin>
             <plugin>
