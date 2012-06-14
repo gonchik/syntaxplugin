@@ -88,6 +88,12 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 				tmpMode = "cpp";
 			}
 			else if (
+					"objc".equals(tmpParam) || 
+					"obj-c".equals(tmpParam)  
+					) {
+				tmpMode = "objc";
+			}
+			else if (
 					"js".equals(tmpParam) || 
 					"javascript".equals(tmpParam) || 
 					"jscript".equals(tmpParam)  

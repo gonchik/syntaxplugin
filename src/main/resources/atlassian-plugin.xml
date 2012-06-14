@@ -63,7 +63,10 @@
     <web-resource key="tcl_brush" name="Tcl brush for {code:tcl}" >
         <resource type="download" name="shBrushTcl.js" location="scripts/custom/shBrushTcl.js" />
     </web-resource>	
-    
+    <web-resource key="objc_brush" name="Objective-C brush for {code:objc} resp. {code:obj-c}" >
+        <resource type="download" name="shBrushObjC.js" location="scripts/custom/shBrushObjC.js" />
+    </web-resource>	
+        
     <web-resource key="core" name="Syntax Highlighter core JavaScript and CSS files" >
         <resource type="download" name="shCore.js" location="scripts/shCore.js" />
         <resource type="download" name="shCore.css" location="styles/shCore.css" />
