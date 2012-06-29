@@ -38,8 +38,8 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 		tmpBuffer.append("<pre class='brush: " + getBrush(parameters) + "; " + getHighlight(parameters) + "toolbar: false;'>");
 		tmpBuffer.append(body);
 		tmpBuffer.append("</pre>");
+		tmpBuffer.append("<script type='text/javascript'>SyntaxHighlighter.highlight();</script>");
 		tmpBuffer.append("</div>");
-		tmpBuffer.append("<script type='text/javascript'>SyntaxHighlighter.all();</script>");
 		
 		return tmpBuffer.toString();
 		
