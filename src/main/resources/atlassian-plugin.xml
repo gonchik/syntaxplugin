@@ -18,59 +18,26 @@
 		<description>Advanced layout for plain text blocks in your descriptions, comments etc.</description>
 	</macro>
 	
-    <web-resource key="plain_brush" name="Plain text brush for {code} and {noformat}" >
-        <resource type="download" name="shBrushPlain.js" location="scripts/shBrushPlain.js" />
-    </web-resource>	
-    <web-resource key="java_brush" name="Java brush for {code:java}" >
-        <resource type="download" name="shBrushJava.js" location="scripts/shBrushJava.js" />
-    </web-resource>	
-    <web-resource key="sql_brush" name="SQL brush for {code:sql}" >
-        <resource type="download" name="shBrushSql.js" location="scripts/shBrushSql.js" />
-    </web-resource>	
-    <web-resource key="css_brush" name="CSS brush for {code:css}" >
-        <resource type="download" name="shBrushCss.js" location="scripts/shBrushCss.js" />
-    </web-resource>	
-    <web-resource key="xml_brush" name="XML brush for {code:xml}, {code:xslt}, {code:xhtml} and {code:html}" >
-        <resource type="download" name="shBrushXml.js" location="scripts/shBrushXml.js" />
-    </web-resource>	
-    <web-resource key="perl_brush" name="Perl brush for {code:perl}" >
-        <resource type="download" name="shBrushPerl.js" location="scripts/shBrushPerl.js" />
-    </web-resource>	    
-    <web-resource key="php_brush" name="PHP brush for {code:php}" >
-        <resource type="download" name="shBrushPhp.js" location="scripts/shBrushPhp.js" />
-    </web-resource>	    
-    <web-resource key="javafx_brush" name="JavaFX brush for {code:javafx}" >
-        <resource type="download" name="shBrushJavaFX.js" location="scripts/shBrushJavaFX.js" />
-    </web-resource>	
-    <web-resource key="js_brush" name="JavaScript brush for {code:js}" >
-        <resource type="download" name="shBrushJScript.js" location="scripts/shBrushJScript.js" />
-    </web-resource>	
-    <web-resource key="vb_brush" name="Visual Basic brush for {code:vb} and {code:vbnet}" >
-        <resource type="download" name="shBrushVb.js" location="scripts/shBrushVb.js" />
-    </web-resource>	
-    <web-resource key="csharp_brush" name="C# brush for {code:csharp} resp. {code:c#}" >
-        <resource type="download" name="shBrushCSharp.js" location="scripts/shBrushCSharp.js" />
-    </web-resource>	
-    <web-resource key="cpp_brush" name="C++/C brush for {code:c} and {code:cpp} resp. {code:c++}" >
-        <resource type="download" name="shBrushCpp.js" location="scripts/shBrushCpp.js" />
-    </web-resource>	
-    <web-resource key="ruby_brush" name="Ruby brush for {code:ruby}" >
-        <resource type="download" name="shBrushRuby.js" location="scripts/shBrushRuby.js" />
-    </web-resource>	
-    <web-resource key="python_brush" name="Python brush for {code:python}" >
-        <resource type="download" name="shBrushPython.js" location="scripts/shBrushPython.js" />
-    </web-resource>	
-    <web-resource key="tcl_brush" name="Tcl brush for {code:tcl}" >
-        <resource type="download" name="shBrushTcl.js" location="scripts/custom/shBrushTcl.js" />
-    </web-resource>	
-    <web-resource key="objc_brush" name="Objective-C brush for {code:objc} resp. {code:obj-c}" >
-        <resource type="download" name="shBrushObjC.js" location="scripts/custom/shBrushObjC.js" />
-    </web-resource>	
-        
     <web-resource key="core" name="Syntax Highlighter core JavaScript and CSS files" >
         <resource type="download" name="shCore.js" location="scripts/shCore.js" />
         <resource type="download" name="shCore.css" location="styles/shCore.css" />
         <resource type="download" name="shThemeDefault.css" location="styles/shThemeDefault.css" />
+        <resource type="download" name="shBrushPlain.js" location="scripts/shBrushPlain.js" />
+        <resource type="download" name="shBrushJava.js" location="scripts/shBrushJava.js" />
+        <resource type="download" name="shBrushSql.js" location="scripts/shBrushSql.js" />
+        <resource type="download" name="shBrushCss.js" location="scripts/shBrushCss.js" />
+        <resource type="download" name="shBrushXml.js" location="scripts/shBrushXml.js" />
+        <resource type="download" name="shBrushPerl.js" location="scripts/shBrushPerl.js" />
+        <resource type="download" name="shBrushPhp.js" location="scripts/shBrushPhp.js" />
+        <resource type="download" name="shBrushJavaFX.js" location="scripts/shBrushJavaFX.js" />
+        <resource type="download" name="shBrushJScript.js" location="scripts/shBrushJScript.js" />
+        <resource type="download" name="shBrushVb.js" location="scripts/shBrushVb.js" />
+        <resource type="download" name="shBrushCpp.js" location="scripts/shBrushCpp.js" />
+        <resource type="download" name="shBrushCSharp.js" location="scripts/shBrushCSharp.js" />
+        <resource type="download" name="shBrushRuby.js" location="scripts/shBrushRuby.js" />
+        <resource type="download" name="shBrushPython.js" location="scripts/shBrushPython.js" />
+        <resource type="download" name="shBrushTcl.js" location="scripts/custom/shBrushTcl.js" />
+        <resource type="download" name="shBrushObjC.js" location="scripts/custom/shBrushObjC.js" />
+        <context>atl.general</context>
     </web-resource>
-    	
 </atlassian-plugin>
