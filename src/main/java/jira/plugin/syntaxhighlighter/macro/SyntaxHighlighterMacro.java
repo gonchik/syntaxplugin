@@ -1,6 +1,7 @@
 package jira.plugin.syntaxhighlighter.macro;
 
 import java.util.Map;
+import java.util.UUID;
 
 import com.atlassian.jira.ComponentManager;
 import com.atlassian.plugin.webresource.WebResourceManager;
@@ -33,12 +34,15 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 
 		tmpWebResourceManager.requireResource("jira.plugin.syntaxhighlighter.macro.syntaxplugin:core");
 		
+		UUID id = UUID.randomUUID();
 		StringBuffer tmpBuffer = new StringBuffer();
 		tmpBuffer.append("<div style='margin-left: 20px;'>");
-		tmpBuffer.append("<pre class='brush: " + getBrush(parameters) + "; " + getHighlight(parameters) + "toolbar: false;'>");
+		tmpBuffer.append("<pre class='brush: " + getBrush(parameters) + "; " + getHighlight(parameters) + "toolbar: false;'" +
+				" id='" + id + "'>");
 		tmpBuffer.append(body);
 		tmpBuffer.append("</pre>");
-		tmpBuffer.append("<script type='text/javascript'>SyntaxHighlighter.highlight();</script>");
+		tmpBuffer.append("<script type='text/javascript'>" +
+				"SyntaxHighlighter.highlight('', document.getElementById('" + id + "'));</script>");
 		tmpBuffer.append("</div>");
 		
 		return tmpBuffer.toString();
