@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import com.atlassian.jira.ComponentManager;
+import com.atlassian.plugin.webresource.UrlMode;
 import com.atlassian.plugin.webresource.WebResourceManager;
 import com.atlassian.renderer.RenderContext;
 import com.atlassian.renderer.v2.RenderMode;
@@ -30,23 +31,24 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	public String execute(Map parameters, String body,
 			RenderContext renderContext) throws MacroException {
 
-		WebResourceManager tmpWebResourceManager = ComponentManager.getInstance().getWebResourceManager();
-
-		tmpWebResourceManager.requireResource("jira.plugin.syntaxhighlighter.macro.syntaxplugin:core");
-		
-		UUID id = UUID.randomUUID();
 		StringBuffer tmpBuffer = new StringBuffer();
 		tmpBuffer.append("<div style='margin-left: 20px;'>");
-		tmpBuffer.append("<pre class='brush: " + getBrush(parameters) + "; " + getHighlight(parameters) + "toolbar: false;'" +
-				" id='" + id + "'>");
+		tmpBuffer.append("<pre class='brush: " + getBrush(parameters) + "; " + getHighlight(parameters) + "toolbar: false;'>");
 		tmpBuffer.append(body);
 		tmpBuffer.append("</pre>");
-		tmpBuffer.append("<script type='text/javascript'>" +
-				"SyntaxHighlighter.highlight('', document.getElementById('" + id + "'));</script>");
+		tmpBuffer.append("<img onload='SyntaxHighlighter.highlight();' style='display:none;' " +
+				" src='" + getBlankImageUrl() + "'/>");
 		tmpBuffer.append("</div>");
 		
 		return tmpBuffer.toString();
 		
+	}
+	
+	public String getBlankImageUrl(){
+		WebResourceManager tmpWebResourceManager = ComponentManager.getInstance().getWebResourceManager();
+		String url = tmpWebResourceManager.getStaticPluginResource("jira.plugin.syntaxhighlighter.macro.syntaxplugin:images", "blank.png", UrlMode.AUTO);
+		
+		return url;
 	}
 
 	@SuppressWarnings("rawtypes")

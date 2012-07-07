@@ -17,6 +17,10 @@
 		class='jira.plugin.syntaxhighlighter.macro.SyntaxHighlighterNoformatMacro'>
 		<description>Advanced layout for plain text blocks in your descriptions, comments etc.</description>
 	</macro>
+
+    <web-resource key="images" name="Syntax Highlighter images" >
+		<resource type="download" name="blank.png" location="images/blank.png"/>
+	</web-resource>
 	
     <web-resource key="core" name="Syntax Highlighter core JavaScript and CSS files" >
         <resource type="download" name="shCore.js" location="scripts/shCore.js" />
