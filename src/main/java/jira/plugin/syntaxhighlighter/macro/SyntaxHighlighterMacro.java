@@ -1,7 +1,6 @@
 package jira.plugin.syntaxhighlighter.macro;
 
 import java.util.Map;
-import java.util.UUID;
 
 import com.atlassian.jira.ComponentManager;
 import com.atlassian.plugin.webresource.UrlMode;
@@ -75,7 +74,8 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 					"perl".equals(tmpParam) || 
 					"javafx".equals(tmpParam) || 
 					"java".equals(tmpParam) ||
-					"tcl".equals(tmpParam)
+					"tcl".equals(tmpParam) ||
+					"scala".equals(tmpParam)
 					) {
 				tmpMode = (String) parameters.get("0");
 			}

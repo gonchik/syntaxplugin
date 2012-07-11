@@ -42,6 +42,7 @@
         <resource type="download" name="shBrushPython.js" location="scripts/shBrushPython.js" />
         <resource type="download" name="shBrushTcl.js" location="scripts/custom/shBrushTcl.js" />
         <resource type="download" name="shBrushObjC.js" location="scripts/custom/shBrushObjC.js" />
+        <resource type="download" name="shBrushScala.js" location="scripts/shBrushScala.js" />
         <context>atl.general</context>
     </web-resource>
 </atlassian-plugin>
