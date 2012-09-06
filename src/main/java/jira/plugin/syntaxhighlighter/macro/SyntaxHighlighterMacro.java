@@ -13,6 +13,7 @@ import com.atlassian.renderer.v2.macro.MacroException;
 public class SyntaxHighlighterMacro extends BaseMacro {
 
 	private static final String HIGHLIGHT = "highlight";
+	private static final String LINENUMBERS = "linenum";
 
 	public boolean hasBody() {
 		return true;
@@ -32,7 +33,8 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 
 		StringBuffer tmpBuffer = new StringBuffer();
 		tmpBuffer.append("<div style='margin-left: 20px;'>");
-		tmpBuffer.append("<pre class='brush: " + getBrush(parameters) + "; " + getHighlight(parameters) + "toolbar: false;'>");
+		tmpBuffer.append("<pre class='brush: " + getBrush(parameters) + "; " +
+				getHighlight(parameters) + getLineNums(parameters) + "toolbar: false;'>");
 		tmpBuffer.append(body);
 		tmpBuffer.append("</pre>");
 		tmpBuffer.append("<img onload='SyntaxHighlighter.highlight();' style='display:none;' " +
@@ -54,6 +56,15 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	public String getHighlight(Map parameters) {
 		if ( parameters.containsKey(HIGHLIGHT)){
 			return HIGHLIGHT + " : " + parameters.get(HIGHLIGHT) + "; ";
+		} else {
+			return "";
+		}
+	}	
+
+	@SuppressWarnings("rawtypes")
+	public String getLineNums(Map parameters) {
+		if ( parameters.containsKey(LINENUMBERS) && parameters.get(LINENUMBERS).equals("false")){
+			return  "gutter : false; ";
 		} else {
 			return "";
 		}
