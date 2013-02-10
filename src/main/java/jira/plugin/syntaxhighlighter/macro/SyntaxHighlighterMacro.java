@@ -82,6 +82,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 			}
 			else if (
 					"csharp".equals(tmpParam) || 
+					"cs".equals(tmpParam) || 
 					"c#".equals(tmpParam)  
 					) {
 				tmpMode = "csharp";
