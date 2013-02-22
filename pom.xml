@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>jira.plugin.syntaxhighlighter.macro</groupId>
     <artifactId>syntaxplugin</artifactId>
-    <version>1.6.0</version>
+    <version>1.7.0</version>
     <description>This plugin replaces the standard formatting macros {noformat} and {code}. 
     It gives you a more advanced layout and support for additional languages like PHP, Perl, C++ etc.
     The plugin uses the JavaScript and CSS files provided by SyntaxHighlighter from Alex Gorbatchev et al.</description>
@@ -16,17 +13,15 @@
         <name>Holger Schimanski</name>
         <url>http://www.schimanski-web.de</url>
     </organization>
-
     <name>JIRA Syntax Highlighter Plugin</name>
     <packaging>atlassian-plugin</packaging>
-
     <dependencies>
         <dependency>
             <groupId>com.atlassian.jira</groupId>
             <artifactId>atlassian-jira</artifactId>
             <version>${jira.version}</version>
             <scope>provided</scope>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -40,13 +35,12 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
                 <groupId>com.atlassian.maven.plugins</groupId>
                 <artifactId>maven-jira-plugin</artifactId>
-                <version>3.2.3</version>
+                <version>${amps.version}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <productVersion>${jira.version}</productVersion>
@@ -63,10 +57,9 @@
             </plugin>
         </plugins>
     </build>
-
     <properties>
-        <jira.version>4.2</jira.version>
-        <jira.data.version>4.2</jira.data.version>
+        <jira.version>5.2</jira.version>
+        <jira.data.version>5.2</jira.data.version>
+        <amps.version>4.1.4</amps.version>
     </properties>
-
 </project>
