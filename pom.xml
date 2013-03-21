@@ -5,10 +5,8 @@
     <groupId>jira.plugin.syntaxhighlighter.macro</groupId>
     <artifactId>syntaxplugin</artifactId>
     <version>1.7.0</version>
-    <description>This plugin replaces the standard formatting macros {noformat} and {code}. 
-    It gives you a more advanced layout and support for additional languages like PHP, Perl, C++ etc.
-    The plugin uses the JavaScript and CSS files provided by SyntaxHighlighter from Alex Gorbatchev et al.</description>
-    <url>https://plugins.atlassian.com/manage/plugins/jira.plugin.syntaxhighlighter.macro.syntaxplugin</url>
+    <description>This plugin replaces the standard formatting macros {noformat} and {code}. It gives you a more advanced layout and support for additional languages like PHP, Perl, C++ etc. The plugin uses the JavaScript and CSS files provided by SyntaxHighlighter from Alex Gorbatchev et al.</description>
+    <url>https://marketplace.atlassian.com/plugins/jira.plugin.syntaxhighlighter.macro.syntaxplugin</url>
     <organization>
         <name>Holger Schimanski</name>
         <url>http://www.schimanski-web.de</url>
@@ -60,6 +58,6 @@
     <properties>
         <jira.version>5.2</jira.version>
         <jira.data.version>5.2</jira.data.version>
-        <amps.version>4.1.4</amps.version>
+        <amps.version>4.1.6</amps.version>
     </properties>
 </project>
