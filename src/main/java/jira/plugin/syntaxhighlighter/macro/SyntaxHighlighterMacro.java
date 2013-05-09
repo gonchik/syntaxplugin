@@ -95,6 +95,13 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 				tmpMode = "cpp";
 			}
 			else if (
+					"delphi".equals(tmpParam) || 
+					"pas".equals(tmpParam) || 
+					"pascal".equals(tmpParam)  
+					) {
+				tmpMode = "pascal";
+			}
+			else if (
 					"objc".equals(tmpParam) || 
 					"obj-c".equals(tmpParam)  
 					) {
