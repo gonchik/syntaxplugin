@@ -13,6 +13,7 @@ import com.atlassian.renderer.v2.macro.MacroException;
 public class SyntaxHighlighterMacro extends BaseMacro {
 
 	private static final String HIGHLIGHT = "highlight";
+	private static final String TITLE = "title";
 
 	public boolean hasBody() {
 		return true;
@@ -31,7 +32,16 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 			RenderContext renderContext) throws MacroException {
 
 		StringBuffer tmpBuffer = new StringBuffer();
-		tmpBuffer.append("<div style='margin-left: 20px;'>");
+		
+		//Title
+		if (parameters.containsKey(TITLE)){
+			tmpBuffer.append("<div style='margin-left: 1em; margin-top:1em;'><div class='syntaxhighlighter'><code>");
+			tmpBuffer.append(parameters.get(TITLE).toString());
+			tmpBuffer.append("</code></div></div>");
+		}
+		
+		//Code		
+		tmpBuffer.append("<div style='margin-left: 1em;'>");
 		tmpBuffer.append("<pre class='brush: " + getBrush(parameters) + "; " + getHighlight(parameters) + "toolbar: false;'>");
 		tmpBuffer.append(body);
 		tmpBuffer.append("</pre>");
