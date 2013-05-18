@@ -7,7 +7,7 @@ public class SyntaxHighlighterNoformatMacro extends SyntaxHighlighterMacro {
 	@SuppressWarnings("rawtypes")
 	@Override
 	public String getBrush(Map parameters) {
-		return "plain";
+		return "brush: plain; ";
 	}
 
 	

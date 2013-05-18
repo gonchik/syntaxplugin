@@ -14,6 +14,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 
 	private static final String HIGHLIGHT = "highlight";
 	private static final String TITLE = "title";
+	private static final String FIRST_LINE = "first-line";
 
 	public boolean hasBody() {
 		return true;
@@ -42,11 +43,15 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 		
 		//Code		
 		tmpBuffer.append("<div style='margin-left: 1em;'>");
-		tmpBuffer.append("<pre class='brush: " + getBrush(parameters) + "; " + getHighlight(parameters) + "toolbar: false;'>");
+		tmpBuffer.append("<pre class='" + 
+				getBrush(parameters) + 
+				getFirstLine(parameters) + 
+				getHighlight(parameters) + 
+				"toolbar: false;'>");
 		tmpBuffer.append(body);
 		tmpBuffer.append("</pre>");
 		tmpBuffer.append("<img onload='SyntaxHighlighter.highlight();' style='display:none;' " +
-				" src='" + getBlankImageUrl() + "'/>");
+				"src='" + getBlankImageUrl() + "'/>");
 		tmpBuffer.append("</div>");
 		
 		return tmpBuffer.toString();
@@ -64,6 +69,15 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	public String getHighlight(Map parameters) {
 		if ( parameters.containsKey(HIGHLIGHT)){
 			return HIGHLIGHT + " : " + parameters.get(HIGHLIGHT) + "; ";
+		} else {
+			return "";
+		}
+	}	
+
+	@SuppressWarnings("rawtypes")
+	public String getFirstLine(Map parameters) {
+		if ( parameters.containsKey(FIRST_LINE)){
+			return FIRST_LINE + " : " + parameters.get(FIRST_LINE) + "; ";
 		} else {
 			return "";
 		}
@@ -146,7 +160,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 			}
 		}
 		
-		return tmpMode;
+		return "brush: " + tmpMode + "; ";
 	}
 
 
