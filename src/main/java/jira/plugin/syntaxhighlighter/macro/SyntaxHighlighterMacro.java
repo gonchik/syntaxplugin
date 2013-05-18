@@ -15,7 +15,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	private static final String HIGHLIGHT = "highlight";
 	private static final String TITLE = "title";
 	private static final String FIRST_LINE = "first-line";
-	private static final String LINENUM = "linenum";
+	private static final String HIDE_LINENUM = "hide-linenum";
 	
 	public boolean hasBody() {
 		return true;
@@ -87,8 +87,10 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 
 	@SuppressWarnings("rawtypes")
 	public String getLineNum(Map parameters) {
-		if ( parameters.containsKey(LINENUM)){
-			return "gutter : " + parameters.get(LINENUM) + "; ";
+		if ( parameters.containsValue(HIDE_LINENUM) || 
+				( parameters.containsKey(HIDE_LINENUM) && parameters.get(HIDE_LINENUM).equals("true") ) ||
+				( parameters.containsKey(HIDE_LINENUM) && parameters.get(HIDE_LINENUM).equals("yes") ) ){
+			return "gutter : false; ";
 		} else {
 			return "";
 		}
