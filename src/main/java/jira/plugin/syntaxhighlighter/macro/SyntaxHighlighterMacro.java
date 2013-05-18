@@ -15,7 +15,8 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	private static final String HIGHLIGHT = "highlight";
 	private static final String TITLE = "title";
 	private static final String FIRST_LINE = "first-line";
-
+	private static final String LINENUM = "linenum";
+	
 	public boolean hasBody() {
 		return true;
 	}
@@ -47,6 +48,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 				getBrush(parameters) + 
 				getFirstLine(parameters) + 
 				getHighlight(parameters) + 
+				getLineNum(parameters) + 
 				"toolbar: false;'>");
 		tmpBuffer.append(body);
 		tmpBuffer.append("</pre>");
@@ -78,6 +80,15 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	public String getFirstLine(Map parameters) {
 		if ( parameters.containsKey(FIRST_LINE)){
 			return FIRST_LINE + " : " + parameters.get(FIRST_LINE) + "; ";
+		} else {
+			return "";
+		}
+	}	
+
+	@SuppressWarnings("rawtypes")
+	public String getLineNum(Map parameters) {
+		if ( parameters.containsKey(LINENUM)){
+			return "gutter : " + parameters.get(LINENUM) + "; ";
 		} else {
 			return "";
 		}
