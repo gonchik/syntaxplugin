@@ -16,7 +16,11 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	private static final String TITLE = "title";
 	private static final String FIRST_LINE = "first-line";
 	private static final String HIDE_LINENUM = "hide-linenum";
-	
+	/**
+	 * Character ({@value}) used to separate ranges of line numbers.
+	 */
+	private static final char RANGE_SEPARATOR = '-';
+
 	public boolean hasBody() {
 		return true;
 	}
@@ -70,7 +74,9 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	@SuppressWarnings("rawtypes")
 	public String getHighlight(Map parameters) {
 		if ( parameters.containsKey(HIGHLIGHT)){
-			return HIGHLIGHT + " : " + parameters.get(HIGHLIGHT) + "; ";
+			String paramValue = parameters.get(HIGHLIGHT).toString();
+			paramValue = expandRanges(paramValue);
+			return HIGHLIGHT + " : " + paramValue + "; ";
 		} else {
 			return "";
 		}
@@ -95,6 +101,78 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 			return "";
 		}
 	}	
+	
+	/**
+	 * Scans a given string of line numbers for occurrences of a range (eg- 1-3).
+	 * Any ranges found will be expanded to sequences.
+	 * 
+	 * @param ranges
+	 *            Comma-separated list of line numbers and ranges in any
+	 *            combination. String is expected to be surrounded by [ and ].
+	 * @return ranges with all ranges expanded to sequences. Any other token
+	 *         will remain unchanged.
+	 */
+	public String expandRanges(String ranges) {
+		String[] parts;
+		String ret = "";
+		
+		if (ranges.startsWith("[") && ranges.endsWith("]")) {
+			parts = ranges.substring(1, ranges.length()-1).split(",");
+			for (String part : parts) {
+				if (part.indexOf(RANGE_SEPARATOR) > -1) {
+					if (ret.length() > 0) {ret += ",";};
+					ret += rangeToSequence(part);
+				} else {
+					if (ret.length() > 0) {ret += ",";};
+					ret += part;
+				}
+			}
+			return "[" + ret + "]";
+		} else {
+			return ranges;
+		}
+	}
+	
+	/**
+	 * Makes a sequence of numbers out of a given range. For Example, "1-3" will
+	 * produce "1,2,3". A valid range consists of two numbers separated by the
+	 * {@link #RANGE_SEPARATOR}. The second number has to greater than the first.
+	 * 
+	 * @param range
+	 *            The range the sequence should be made of.
+	 * @return A comma-separated list of numbers or the value of range if any
+	 *         error occurs.
+	 */
+	public String rangeToSequence(String range) {
+		String[] parts;
+		String ret = "";
+		int sequenceStart, sequenceEnd;
+		
+		parts = range.split(String.valueOf(RANGE_SEPARATOR));
+		
+		if (parts.length == 2) {
+			try {  
+				sequenceStart = Integer.parseInt(parts[0]);
+				sequenceEnd = Integer.parseInt(parts[1]);
+			}  
+			catch(NumberFormatException nfe) {  
+				return range;
+			}
+			
+			if (sequenceStart < sequenceEnd) {
+				for (int i = sequenceStart; i < sequenceEnd; i++) {
+					ret += String.valueOf(i) + ",";
+				}
+				ret += String.valueOf(sequenceEnd);
+				
+				return ret;
+			} else {
+				return range;
+			}
+		} else {
+			return range;
+		}
+	}
 	
 	@SuppressWarnings("rawtypes")
 	public String getBrush(Map parameters) {
