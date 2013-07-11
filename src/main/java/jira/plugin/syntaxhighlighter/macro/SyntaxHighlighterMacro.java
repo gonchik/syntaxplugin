@@ -183,6 +183,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 			String tmpParam = (String) parameters.get("0");
 			if ( 
 					"erlang".equals(tmpParam) || 
+					"diff".equals(tmpParam) || 					
 					"sql".equals(tmpParam) || 
 					"css".equals(tmpParam) || 
 					"php".equals(tmpParam) || 

@@ -32,6 +32,7 @@
         <resource type="download" name="shBrushCss.js" location="scripts/shBrushCss.js" />
         <resource type="download" name="shBrushD.js" location="scripts/shBrushD.js" />
         <resource type="download" name="shBrushErlang.js" location="scripts/shBrushErlang.js" />
+        <resource type="download" name="shBrushDiff.js" location="scripts/shBrushDiff.js" />
         <resource type="download" name="shBrushXml.js" location="scripts/shBrushXml.js" />
         <resource type="download" name="shBrushPerl.js" location="scripts/shBrushPerl.js" />
         <resource type="download" name="shBrushPhp.js" location="scripts/shBrushPhp.js" />
