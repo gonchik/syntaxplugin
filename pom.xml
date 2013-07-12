@@ -14,18 +14,18 @@
     <name>JIRA Syntax Highlighter Plugin</name>
     <packaging>atlassian-plugin</packaging>
     <dependencies>
-		<dependency>
-			<groupId>com.atlassian.jira</groupId>
-			<artifactId>jira-api</artifactId>
-			<version>${jira.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.atlassian.jira</groupId>
-			<artifactId>jira-core</artifactId>
-			<version>${jira.version}</version>
-			<scope>provided</scope>
-		</dependency>
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-api</artifactId>
+            <version>${jira.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-core</artifactId>
+            <version>${jira.version}</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -64,6 +64,6 @@
     <properties>
         <jira.version>5.2</jira.version>
         <jira.data.version>5.2</jira.data.version>
-        <amps.version>4.1.6</amps.version>
+        <amps.version>4.2.0</amps.version>
     </properties>
 </project>
