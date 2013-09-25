@@ -1,26 +1,10 @@
-/**
- * SyntaxHighlighter
- * http://alexgorbatchev.com/SyntaxHighlighter
- *
- * SyntaxHighlighter is donationware. If you are using it, please donate.
- * http://alexgorbatchev.com/SyntaxHighlighter/donate.html
- *
- * @version
- * 3.0.83 (July 02 2010)
- * 
- * @copyright
- * Copyright (C) 2004-2010 Alex Gorbatchev.
- * Copyright (C) 2013 Stefan Rohe
- *
- * @license
- * Dual licensed under the MIT and GPL licenses.
- */
 ;(function()
 {
 	// CommonJS
-	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
+	SyntaxHighlighter = SyntaxHighlighter || (typeof require !== 'undefined'? require('shCore').SyntaxHighlighter : null);
 
-    // This is just for the very basic grammar
+    // Contributed by https://github.com/alexgorbatchev/SyntaxHighlighter/pull/180
+	// This is just for the very basic grammar
 	function Brush()
 	{
 		var datatypes =	'bool byte char creal dchar double float idouble ifloat int ireal ' +
