@@ -2,7 +2,12 @@ package jira.plugin.syntaxhighlighter.macro;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
 import com.atlassian.jira.ComponentManager;
+import com.atlassian.jira.component.ComponentAccessor;
+import com.atlassian.plugin.PluginController;
 import com.atlassian.plugin.webresource.UrlMode;
 import com.atlassian.plugin.webresource.WebResourceManager;
 import com.atlassian.renderer.RenderContext;
@@ -10,7 +15,7 @@ import com.atlassian.renderer.v2.RenderMode;
 import com.atlassian.renderer.v2.macro.BaseMacro;
 import com.atlassian.renderer.v2.macro.MacroException;
 
-public class SyntaxHighlighterMacro extends BaseMacro {
+public class SyntaxHighlighterMacro extends BaseMacro implements InitializingBean, DisposableBean {
 
 	private static final String HIGHLIGHT = "highlight";
 	private static final String TITLE = "title";
@@ -21,6 +26,8 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	 */
 	private static final char RANGE_SEPARATOR = '-';
 
+	private static final String STANDARD_JIRA_CODE_MACRO = "com.atlassian.jira.plugin.system.renderers.wiki.macros:code";
+	
 	public boolean hasBody() {
 		return true;
 	}
@@ -174,6 +181,14 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 		}
 	}
 	
+	
+	/**
+	 * Returns the brush to be used for the language specified as parameter in {code:...}. Returns plain as default if 
+	 * language is not specified or unknown.
+	 * 
+	 * @param parameters Map of parameters 
+	 * @return brush name
+	 */
 	@SuppressWarnings("rawtypes")
 	public String getBrush(Map parameters) {
 		
@@ -260,6 +275,29 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 		}
 		
 		return "brush: " + tmpMode + "; ";
+	}
+
+
+    /**
+     * Called when JIRA Syntax Highlighter {code} macro is being disabled or removed. Enables JIRA standard 
+     * Wiki Renderer Macro Plugin for {code}.
+     * 
+     * @throws Exception
+     */
+	public void destroy() throws Exception {
+		PluginController tmpPluginController = ComponentAccessor.getComponent(PluginController.class);
+		tmpPluginController.enablePluginModule(STANDARD_JIRA_CODE_MACRO);
+	}
+
+	/**
+	 * Called when JIRA Syntax Highlighter {code} macro has been enabled. Disabled JIRA standard Wiki Renderer 
+	 * Macro Plugin for {code}.
+	 * 
+	 * @throws Exception
+	 */
+	public void afterPropertiesSet() throws Exception {
+		PluginController tmpPluginController = ComponentAccessor.getComponent(PluginController.class);
+		tmpPluginController.disablePluginModule(STANDARD_JIRA_CODE_MACRO);
 	}
 
 
