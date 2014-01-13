@@ -2,12 +2,14 @@ package jira.plugin.syntaxhighlighter.macro;
 
 import java.util.Map;
 
-import com.atlassian.jira.component.ComponentAccessor;
-import com.atlassian.plugin.PluginController;
-
+/**
+ * Copyright (c) 2012, 2013, 2014 by Holger Schimanski
+ * 
+ * Macro plugin class for layout of noformat in description, comments etc. of JIRA issues. 
+ * See {@link https://marketplace.atlassian.com/plugins/jira.plugin.syntaxhighlighter.macro.syntaxplugin} for more details. 
+ * 
+**/
 public class SyntaxHighlighterNoformatMacro extends SyntaxHighlighterMacro {
-
-	private static final String STANDARD_JIRA_NOFORMAT_MACRO = "com.atlassian.jira.plugin.system.renderers.wiki.macros:noformat";
 
 	/**
 	 * Returns plain as brush to use for {noformat} macro. 
@@ -21,30 +23,5 @@ public class SyntaxHighlighterNoformatMacro extends SyntaxHighlighterMacro {
 		return "brush: plain; ";
 	}
 
-	
-    /**
-     * Called when JIRA Syntax Highlighter {noformat} macro is being disabled or removed. Enables JIRA standard 
-     * Wiki Renderer Macro Plugin for {noformat}.
-     * 
-     * @throws Exception
-     */
-	@Override
-	public void destroy() throws Exception {
-		PluginController tmpPluginController = ComponentAccessor.getComponent(PluginController.class);
-		tmpPluginController.enablePluginModule(STANDARD_JIRA_NOFORMAT_MACRO);
-	}
-
-	/**
-	 * Called when JIRA Syntax Highlighter {code} macro has been enabled. Disables JIRA standard Wiki 
-	 * Renderer Macro Plugin for {noformat}.
-	 * 
-	 * @throws Exception
-	 */
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		PluginController tmpPluginController = ComponentAccessor.getComponent(PluginController.class);
-		tmpPluginController.disablePluginModule(STANDARD_JIRA_NOFORMAT_MACRO);
-	}
-	
 	
 }

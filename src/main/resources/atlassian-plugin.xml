@@ -18,7 +18,12 @@
 		<description>Advanced layout for plain text blocks in your descriptions, comments etc.</description>
 	</macro>
 
-	<component-import key="eventPublisher" interface="com.atlassian.event.api.EventPublisher"/>
+	<component-import key="eventPublisher" interface="com.atlassian.event.api.EventPublisher" name="Event Publisher component"/>
+	<component key="init" class="jira.plugin.syntaxhighlighter.macro.SyntaxHighlighterInstallationSupport"
+		name="Syntax Highlighter installation support module">
+        <description>Helper module to automatic disabling / enabling of JIRA standard code and noformat macros on 
+        installation or enabling / deinstallation or disabling of JIRA Syntax Highlighter plugin</description>
+	</component>	
 
     <web-resource key="images" name="Syntax Highlighter images" >
 		<resource type="download" name="blank.png" location="images/blank.png"/>
