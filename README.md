@@ -6,12 +6,13 @@ JIRA Syntax Highlighter PlugIn
 The JIRA Syntax Highlighter PlugIn replaces the standard formatting macros {noformat} and {code}. It gives you a more advanced layout and support for additional languages like C#, PHP, Ruby, C++ etc. The plugin solves 50 votes for [JRA-21067](https://jira.atlassian.com/browse/JRA-21067), [JRA-23604](https://jira.atlassian.com/browse/JRA-23604) and [JRA-25703](https://jira.atlassian.com/browse/JRA-25703).
 
 [![Additional languages](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Additional_languages_thumb.png)](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Additional_languages.png)
-
-[[docs/Additional_languages.png|{{docs/Additional_languages_thumb.png}}]] [[docs/Highlight_multiple_lines.png|{{docs/Highlight_multiple_lines_thumb.png}}]] [[docs/Highlight_lines_and_horizontal_scrolling_in_noformat.png|{{docs/Highlight_lines_and_horizontal_scrolling_in_noformat_thumb.png}}]] 
+[![Highlight multiple lines](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Highlight_multiple_lines_thumb.png)](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Highlight_multiple_lines.png)
+[![Noformat layout](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Highlight_lines_and_horizontal_scrolling_in_noformat_thumb.png)](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Highlight_lines_and_horizontal_scrolling_in_noformat.png)
 
 Syntax highlighting is available in standard view issue screen and in preview mode during create, edit or comment of an issue (see screenshots).
 
-[[docs/Edit_issue_with_macro_syntax.png|{{docs/Edit_issue_with_macro_syntax_thumb.png}}]] [[docs/Edit_issue_with_preview.png|{{docs/Edit_issue_with_preview_thumb.png}}]]
+[![Edit issue with macro syntax](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Edit_issue_with_macro_syntax_thumb.png)](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Edit_issue_with_macro_syntax.png)
+[![Edit issue with preview](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Edit_issue_with_preview_thumb.png)](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Edit_issue_with_preview.png)
 
 It is also available in Greenhopper Rapidboard planning and work mode.
 
