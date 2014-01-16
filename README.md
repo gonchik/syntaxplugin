@@ -16,8 +16,8 @@ Syntax highlighting is available in standard view issue screen and in preview mo
 
 It is also available in Greenhopper Rapidboard planning and work mode.
 
-[[docs/Syntax_highlighting_in_Greenhopper_Rapidboard_planning_mode.png|{{docs/Syntax_highlighting_in_Greenhopper_Rapidboard_planning_mode_thumb.png}}]] [[docs/Syntax_highlighting_in_Greenhopper_Rapidboard_Work_mode.png|{{docs/Syntax_highlighting_in_Greenhopper_Rapidboard_Work_mode_thumb.png}}]]
-
+[![Greenhopper planning mode](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Syntax_highlighting_in_Greenhopper_Rapidboard_planning_mode_thumb.png)](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Syntax_highlighting_in_Greenhopper_Rapidboard_planning_mode.png)
+[![Greenhopper Rapidboard](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Syntax_highlighting_in_Greenhopper_Rapidboard_Work_mode_thumb.png)](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Syntax_highlighting_in_Greenhopper_Rapidboard_Work_mode.png)
 
 The following languages are supported.
 
@@ -76,12 +76,11 @@ For installation please add the plugin using the plugin manager or install it ma
 
 If you don't deactivate JIRAs standard macros for code and noformat as described above, you will see the error message "Unable to find source-code formatter for language..." when using one of the new programming languages supported by JIRA Syntax Highlighter like Phython, C# etc. resp. the new layout is not used.
 
-[[docs/JIRA_5.0_with_standard_noformat_and_code_macros_disabled.png|{{docs/JIRA_5.0_with_standard_noformat_and_code_macros_disabled_thumb.png}}]] 
+[![JIRA with standard noformat and code macros disabled](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/JIRA_5.0_with_standard_noformat_and_code_macros_disabled_thumb.png)](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/JIRA_5.0_with_standard_noformat_and_code_macros_disabled.png)
 
 If not done already you need to switch on the Wiki Style Renderer in Field Configurations for the corresponding text fields like Description and Comment.
 
 *    [Specifying Field Behaviour](http://confluence.atlassian.com/display/JIRA/Specifying+Field+Behaviour#SpecifyingFieldBehaviour-ChangingaFieldsRenderer)
 *    [Configuring Renderers](http://confluence.atlassian.com/display/JIRA/Configuring+Renderers)
 
-
-[[https://marketplace.atlassian.com/plugins/jira.plugin.syntaxhighlighter.macro.syntaxplugin|{{images/marketplace_available_dark_180x80.png}}]] 
+[![Link to Marketplace](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/marketplace_available_dark_180x80.png)](https://marketplace.atlassian.com/plugins/jira.plugin.syntaxhighlighter.macro.syntaxplugin)
