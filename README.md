@@ -1,4 +1,5 @@
-= JIRA Syntax Highlighter PlugIn
+JIRA Syntax Highlighter PlugIn
+================================
 
 {{images/syntaxplugin_banner_460x225.jpg}}
 
@@ -53,12 +54,14 @@ The JIRA Syntax Highlighter PlugIn is based on [[http://alexgorbatchev.com/Synta
 
 JIRA Syntax Highlighter PlugIns is released under both MIT license and GNU General Public License (GPL) Version 3.
 
-== Known Issues
+Known Issues
+------------
 
 Syntax highlighting is not shown in activity streams on the JIRA Dashboard.
 
 
-== Installation
+Installation
+------------
 
 For installation please add the plugin using the plugin manager or install it manually. Then you need to deactive JIRAs standard macros for code and noformat:   
 
