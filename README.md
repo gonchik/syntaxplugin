@@ -3,7 +3,7 @@ JIRA Syntax Highlighter PlugIn
 
 {{images/syntaxplugin_banner_460x225.jpg}}
 
-The JIRA Syntax Highlighter PlugIn replaces the standard formatting macros {noformat} and {code}. It gives you a more advanced layout and support for additional languages like C#, PHP, Ruby, C++ etc. The plugin solves 50 votes for [[https://jira.atlassian.com/browse/JRA-21067|JRA-21067]], [[https://jira.atlassian.com/browse/JRA-23604|JRA-23604]] and [[https://jira.atlassian.com/browse/JRA-25703|JRA-25703]].
+The JIRA Syntax Highlighter PlugIn replaces the standard formatting macros {noformat} and {code}. It gives you a more advanced layout and support for additional languages like C#, PHP, Ruby, C++ etc. The plugin solves 50 votes for [JRA-21067](https://jira.atlassian.com/browse/JRA-21067), [JRA-23604](https://jira.atlassian.com/browse/JRA-23604) and [JRA-25703](https://jira.atlassian.com/browse/JRA-25703).
 
 [[docs/Additional_languages.png|{{docs/Additional_languages_thumb.png}}]] [[docs/Highlight_multiple_lines.png|{{docs/Highlight_multiple_lines_thumb.png}}]] [[docs/Highlight_lines_and_horizontal_scrolling_in_noformat.png|{{docs/Highlight_lines_and_horizontal_scrolling_in_noformat_thumb.png}}]] 
 
@@ -50,7 +50,7 @@ Line numbers can be switched off, starting line number or title can be set e.g.
 *    {code:css|hide-linenum|title=general.css file from root folder}
 *    {code:sql|first-line=10}
 
-The JIRA Syntax Highlighter PlugIn is based on [[http://alexgorbatchev.com/SyntaxHighlighter|SyntaxHighligher by Alex Gorbatchev]]. The plugin contains this JavaScript and CSS code plus some java classes for the integration into JIRA as a JIRA formatting macro plugin.
+The JIRA Syntax Highlighter PlugIn is based on [SyntaxHighligher by Alex Gorbatchev](http://alexgorbatchev.com/SyntaxHighlighter). The plugin contains this JavaScript and CSS code plus some java classes for the integration into JIRA as a JIRA formatting macro plugin.
 
 JIRA Syntax Highlighter PlugIns is released under both MIT license and GNU General Public License (GPL) Version 3.
 
@@ -77,8 +77,8 @@ If you don't deactivate JIRAs standard macros for code and noformat as described
 
 If not done already you need to switch on the Wiki Style Renderer in Field Configurations for the corresponding text fields like Description and Comment.
 
-*    [[http://confluence.atlassian.com/display/JIRA/Specifying+Field+Behaviour#SpecifyingFieldBehaviour-ChangingaFieldsRenderer]]
-*    [[http://confluence.atlassian.com/display/JIRA/Configuring+Renderers]]
+*    [Specifying Field Behaviour](http://confluence.atlassian.com/display/JIRA/Specifying+Field+Behaviour#SpecifyingFieldBehaviour-ChangingaFieldsRenderer)
+*    [Configuring Renderers](http://confluence.atlassian.com/display/JIRA/Configuring+Renderers)
 
 
 [[https://marketplace.atlassian.com/plugins/jira.plugin.syntaxhighlighter.macro.syntaxplugin|{{images/marketplace_available_dark_180x80.png}}]] 
