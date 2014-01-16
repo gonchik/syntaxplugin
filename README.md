@@ -1,9 +1,11 @@
 JIRA Syntax Highlighter PlugIn
 ================================
 
-{{images/syntaxplugin_banner_460x225.jpg}}
+![JIRA Syntax Highlighter Banner](images/syntaxplugin_banner_460x225.jpg)
 
 The JIRA Syntax Highlighter PlugIn replaces the standard formatting macros {noformat} and {code}. It gives you a more advanced layout and support for additional languages like C#, PHP, Ruby, C++ etc. The plugin solves 50 votes for [JRA-21067](https://jira.atlassian.com/browse/JRA-21067), [JRA-23604](https://jira.atlassian.com/browse/JRA-23604) and [JRA-25703](https://jira.atlassian.com/browse/JRA-25703).
+
+![Additional languages](images/docs/Additional_languages_thumb.png)
 
 [[docs/Additional_languages.png|{{docs/Additional_languages_thumb.png}}]] [[docs/Highlight_multiple_lines.png|{{docs/Highlight_multiple_lines_thumb.png}}]] [[docs/Highlight_lines_and_horizontal_scrolling_in_noformat.png|{{docs/Highlight_lines_and_horizontal_scrolling_in_noformat_thumb.png}}]] 
 
