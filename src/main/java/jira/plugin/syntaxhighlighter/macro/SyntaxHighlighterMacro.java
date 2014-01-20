@@ -59,7 +59,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 				getBrush(parameters) + 
 				getFirstLine(parameters) + 
 				getHighlight(parameters) + 
-				getLineNum(parameters) + 
+				getHideLineNum(parameters) + 
 				"toolbar: false;'>");
 		tmpBuffer.append(body);
 		tmpBuffer.append("</pre>");
@@ -99,7 +99,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	}	
 
 	@SuppressWarnings("rawtypes")
-	public String getLineNum(Map parameters) {
+	public String getHideLineNum(Map parameters) {
 		if ( parameters.containsValue(HIDE_LINENUM) || 
 				( parameters.containsKey(HIDE_LINENUM) && parameters.get(HIDE_LINENUM).equals("true") ) ||
 				( parameters.containsKey(HIDE_LINENUM) && parameters.get(HIDE_LINENUM).equals("yes") ) ){
