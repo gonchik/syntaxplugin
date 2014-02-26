@@ -11,7 +11,7 @@
 						'Date Decimal Declare Default Delegate Dim DirectCast Do Double Each ' +
 						'Else ElseIf End Enum Erase Error Event Exit False Finally For Friend ' +
 						'Function Get GetType GoSub GoTo Handles If Implements Imports In ' +
-						'Inherits Integer Interface Is Let Lib Like Long Loop Me Mod Module ' +
+						'Inherits Integer Interface Is IsNot Let Lib Like Long Loop Me Mod Module ' +
 						'MustInherit MustOverride MyBase MyClass Namespace New Next Not Nothing ' +
 						'NotInheritable NotOverridable Object On Option Optional Or OrElse ' +
 						'Overloads Overridable Overrides ParamArray Preserve Private Property ' +
