@@ -197,6 +197,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 		if (parameters.containsKey("0")) {
 			String tmpParam = (String) parameters.get("0");
 			if ( 
+					"gherkin".equals(tmpParam) || 
 					"erlang".equals(tmpParam) || 
 					"diff".equals(tmpParam) || 					
 					"sql".equals(tmpParam) || 
