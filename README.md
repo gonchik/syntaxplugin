@@ -42,6 +42,7 @@ The following languages are supported.
 *    D {code:d} 
 *    Bash {code:bash} resp. Shell {code:sh}
 *    Diff {code:diff}
+*    Gherkin syntax {code:gherkin}
 
 Also highlighting of single or multiple lines is supported by using e.g.
 
