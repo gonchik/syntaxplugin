@@ -17,7 +17,7 @@
 						'Overloads Overridable Overrides ParamArray Preserve Private Property ' +
 						'Protected Public RaiseEvent ReadOnly ReDim REM RemoveHandler Resume ' +
 						'Return Select Set Shadows Shared Short Single Static Step Stop String ' +
-						'Structure Sub SyncLock Then Throw To True Try TypeOf Unicode Until ' +
+						'Structure Sub SyncLock Then Throw To True Try TypeOf Unicode Until Using ' +
 						'Variant When While With WithEvents WriteOnly Xor';
 
 		this.regexList = [
