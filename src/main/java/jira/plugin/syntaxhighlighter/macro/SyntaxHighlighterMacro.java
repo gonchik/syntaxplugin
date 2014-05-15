@@ -60,7 +60,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 				getFirstLine(parameters) + 
 				getHighlight(parameters) + 
 				getHideLineNum(parameters) + 
-				"toolbar: false;'>");
+				"toolbar: false; auto-links: false;'>");
 		tmpBuffer.append(body);
 		tmpBuffer.append("</pre>");
 		tmpBuffer.append("<img onload='SyntaxHighlighter.highlight();' style='display:none;' " +
