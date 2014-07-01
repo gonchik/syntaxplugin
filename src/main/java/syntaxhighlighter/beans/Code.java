@@ -1,5 +1,10 @@
 package syntaxhighlighter.beans;
 
+/** 
+ * Bean class representing a sniplet of code with a certain style e.g. plain, keyword, coments
+ * 
+ * @author Holger Schimanski <holger@schimanski-web.de>
+ */
 public class Code {
 	
 	private String style;

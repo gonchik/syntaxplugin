@@ -6,6 +6,9 @@ import syntaxhighlighter.beans.CodeContainer;
 import syntaxhighlighter.brush.Brush;
 
 /**
+ * Utility class to create list of code rows with list of code per row
+ * using SyntaxHighlighterParser and a given brush. 
+ * 
  * @author Holger Schimanski <holger@schimanski-web.de>
  */
 public class SyntaxHighlighterParserUtil {

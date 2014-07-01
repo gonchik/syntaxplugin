@@ -3,6 +3,11 @@ package syntaxhighlighter.beans;
 import java.util.List;
 import java.util.Vector;
 
+/** 
+ * Bean class representing a code row in a code block
+ * 
+ * @author Holger Schimanski <holger@schimanski-web.de>
+ */
 public class CodeRow {
 
 	private List<Code> codeParts;
