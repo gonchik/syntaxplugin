@@ -27,5 +27,9 @@ public class CodeContainer {
 		Code newCode = new Code(style, text);
 		lastCodeRow.addCode(newCode);
 	}
+	
+	public List<CodeRow> getCodeRows(){
+		return codeRows;
+	}
 
 }
