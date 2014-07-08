@@ -76,6 +76,6 @@
     <properties>
         <jira.version>5.2</jira.version>
         <jira.data.version>5.2</jira.data.version>
-        <amps.version>4.2.9</amps.version>
+        <amps.version>5.0.3</amps.version>
     </properties>
 </project>
