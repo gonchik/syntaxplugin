@@ -12,6 +12,8 @@ public class CodeContainer {
 
 	private List<CodeRow> codeRows;
 	private CodeRow lastCodeRow;
+	private boolean hideLineNum;
+	private int firstLine;
 	
 	public CodeContainer() {
 		codeRows = new Vector<CodeRow>();
@@ -30,6 +32,22 @@ public class CodeContainer {
 	
 	public List<CodeRow> getCodeRows(){
 		return codeRows;
+	}
+
+	public boolean isHideLineNum() {
+		return hideLineNum;
+	}
+
+	public void setHideLineNum(boolean hideLineNum) {
+		this.hideLineNum = hideLineNum;
+	}
+
+	public int getFirstLine() {
+		return firstLine;
+	}
+
+	public void setFirstLine(int firstLine) {
+		this.firstLine = firstLine;
 	}
 
 }

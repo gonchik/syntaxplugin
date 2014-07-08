@@ -27,7 +27,6 @@ import syntaxhighlighter.brush.BrushVb;
 import syntaxhighlighter.brush.BrushXml;
 
 import com.atlassian.jira.ComponentManager;
-import com.atlassian.jira.template.TemplateManager;
 import com.atlassian.plugin.webresource.UrlMode;
 import com.atlassian.plugin.webresource.WebResourceManager;
 import com.atlassian.renderer.RenderContext;
@@ -72,6 +71,8 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 
 		Brush tmpBrush = getBrush(parameters);
 	    CodeContainer tmpCodeContainer = SyntaxHighlighterParserUtil.brush(body, tmpBrush);
+	    tmpCodeContainer.setHideLineNum(getHideLineNum(parameters));
+	    tmpCodeContainer.setFirstLine(getFirstLine(parameters));
 
 	    Map<String,Object> contextParameters = new HashMap<String,Object>();
 	    contextParameters.put("codeContainer", tmpCodeContainer);
@@ -85,9 +86,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 		contextParameters.put("title", parameters.get(TITLE));
 
 		//TODO		
-//		getFirstLine(parameters) + 
 //		getHighlight(parameters) + 
-//		getHideLineNum(parameters) + 
 		
 		return codeBody.toString();
 		
@@ -112,22 +111,28 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	}	
 
 	@SuppressWarnings("rawtypes")
-	public String getFirstLine(Map parameters) {
-		if ( parameters.containsKey(FIRST_LINE)){
-			return FIRST_LINE + " : " + parameters.get(FIRST_LINE) + "; ";
-		} else {
-			return "";
+	public int getFirstLine(Map parameters) {
+		try{
+			if ( parameters.containsKey(FIRST_LINE)){
+				int firstLine = Integer.parseInt(parameters.get(FIRST_LINE).toString());
+				return firstLine;
+			}
 		}
+		catch(NumberFormatException e){
+			//TODO log.debug
+		}
+		
+		return 1;
 	}	
 
 	@SuppressWarnings("rawtypes")
-	public String getHideLineNum(Map parameters) {
+	public boolean getHideLineNum(Map parameters) {
 		if ( parameters.containsValue(HIDE_LINENUM) || 
 				( parameters.containsKey(HIDE_LINENUM) && parameters.get(HIDE_LINENUM).equals("true") ) ||
 				( parameters.containsKey(HIDE_LINENUM) && parameters.get(HIDE_LINENUM).equals("yes") ) ){
-			return "gutter : false; ";
+			return true;
 		} else {
-			return "";
+			return false;
 		}
 	}	
 	
