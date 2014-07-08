@@ -27,8 +27,6 @@ import syntaxhighlighter.brush.BrushVb;
 import syntaxhighlighter.brush.BrushXml;
 
 import com.atlassian.jira.ComponentManager;
-import com.atlassian.plugin.webresource.UrlMode;
-import com.atlassian.plugin.webresource.WebResourceManager;
 import com.atlassian.renderer.RenderContext;
 import com.atlassian.renderer.v2.RenderMode;
 import com.atlassian.renderer.v2.macro.BaseMacro;
@@ -92,13 +90,6 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 		
 	}
 	
-	public String getBlankImageUrl(){
-		WebResourceManager tmpWebResourceManager = ComponentManager.getInstance().getWebResourceManager();
-		String url = tmpWebResourceManager.getStaticPluginResource("jira.plugin.syntaxhighlighter.macro.syntaxplugin:images", "blank.png", UrlMode.AUTO);
-		
-		return url;
-	}
-
 	@SuppressWarnings("rawtypes")
 	public String getHighlight(Map parameters) {
 		if ( parameters.containsKey(HIGHLIGHT)){
