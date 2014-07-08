@@ -1,14 +1,40 @@
 package jira.plugin.syntaxhighlighter.macro;
 
+import java.util.HashMap;
 import java.util.Map;
 
+import syntaxhighlighter.SyntaxHighlighterParserUtil;
+import syntaxhighlighter.beans.CodeContainer;
+import syntaxhighlighter.brush.Brush;
+import syntaxhighlighter.brush.BrushBash;
+import syntaxhighlighter.brush.BrushCSharp;
+import syntaxhighlighter.brush.BrushCpp;
+import syntaxhighlighter.brush.BrushCss;
+import syntaxhighlighter.brush.BrushDelphi;
+import syntaxhighlighter.brush.BrushDiff;
+import syntaxhighlighter.brush.BrushErlang;
+import syntaxhighlighter.brush.BrushJScript;
+import syntaxhighlighter.brush.BrushJava;
+import syntaxhighlighter.brush.BrushJavaFX;
+import syntaxhighlighter.brush.BrushPerl;
+import syntaxhighlighter.brush.BrushPhp;
+import syntaxhighlighter.brush.BrushPlain;
+import syntaxhighlighter.brush.BrushPython;
+import syntaxhighlighter.brush.BrushRuby;
+import syntaxhighlighter.brush.BrushScala;
+import syntaxhighlighter.brush.BrushSql;
+import syntaxhighlighter.brush.BrushVb;
+import syntaxhighlighter.brush.BrushXml;
+
 import com.atlassian.jira.ComponentManager;
+import com.atlassian.jira.template.TemplateManager;
 import com.atlassian.plugin.webresource.UrlMode;
 import com.atlassian.plugin.webresource.WebResourceManager;
 import com.atlassian.renderer.RenderContext;
 import com.atlassian.renderer.v2.RenderMode;
 import com.atlassian.renderer.v2.macro.BaseMacro;
 import com.atlassian.renderer.v2.macro.MacroException;
+import com.atlassian.velocity.VelocityManager;
 
 /**
  * Copyright (c) 2012, 2013, 2014 by Holger Schimanski
@@ -44,30 +70,24 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	public String execute(Map parameters, String body,
 			RenderContext renderContext) throws MacroException {
 
-		StringBuffer tmpBuffer = new StringBuffer();
+		Brush tmpBrush = getBrush(parameters);
+	    CodeContainer tmpCodeContainer = SyntaxHighlighterParserUtil.brush(body, tmpBrush);
+
+	    Map<String,Object> contextParameters = new HashMap<String,Object>();
+	    contextParameters.put("codeContainer", tmpCodeContainer);
+	    
+		VelocityManager tmplManager = ComponentManager.getInstance().getVelocityManager();
+		String codeBody = tmplManager.getBody("templates/", "code.vm", contextParameters);
+
+		//TODO Title
+		contextParameters.put("title", parameters.get(TITLE));
+
+		//TODO		
+//		getFirstLine(parameters) + 
+//		getHighlight(parameters) + 
+//		getHideLineNum(parameters) + 
 		
-		//Title
-		if (parameters.containsKey(TITLE)){
-			tmpBuffer.append("<div style='margin-left: 1em; margin-top:1em;'><div class='syntaxhighlighter'><code>");
-			tmpBuffer.append(parameters.get(TITLE).toString());
-			tmpBuffer.append("</code></div></div>");
-		}
-		
-		//Code		
-		tmpBuffer.append("<div style='margin-left: 1em;'>");
-		tmpBuffer.append("<pre class='" + 
-				getBrush(parameters) + 
-				getFirstLine(parameters) + 
-				getHighlight(parameters) + 
-				getHideLineNum(parameters) + 
-				"toolbar: false; auto-links: false;'>");
-		tmpBuffer.append(body);
-		tmpBuffer.append("</pre>");
-		tmpBuffer.append("<img onload='SyntaxHighlighter.highlight();' style='display:none;' " +
-				"src='" + getBlankImageUrl() + "'/>");
-		tmpBuffer.append("</div>");
-		
-		return tmpBuffer.toString();
+		return codeBody;
 		
 	}
 	
@@ -190,80 +210,104 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	 * @return brush name
 	 */
 	@SuppressWarnings("rawtypes")
-	public String getBrush(Map parameters) {
-		
-		String tmpMode = "plain";
+	public Brush getBrush(Map parameters) {
 		
 		if (parameters.containsKey("0")) {
 			String tmpParam = (String) parameters.get("0");
-			if ( 
-					"gherkin".equals(tmpParam) || 
-					"erlang".equals(tmpParam) || 
-					"diff".equals(tmpParam) || 					
-					"sql".equals(tmpParam) || 
-					"css".equals(tmpParam) || 
-					"php".equals(tmpParam) || 
-					"ruby".equals(tmpParam) || 
-					"perl".equals(tmpParam) || 
-					"javafx".equals(tmpParam) || 
-					"java".equals(tmpParam) ||
-					"tcl".equals(tmpParam) ||
-					"scala".equals(tmpParam) ||
-					"bash".equals(tmpParam) 
-					) {
-				tmpMode = (String) parameters.get("0");
+			if ( "erlang".equals(tmpParam) ) {
+				return new BrushErlang();
 			}
+			else if ( "diff".equals(tmpParam) ) {
+				return new BrushDiff();
+			}
+			else if ( "sql".equals(tmpParam) ) {
+				return new BrushSql();
+			}
+			else if ( "css".equals(tmpParam) ) {
+				return new BrushCss();
+			}
+			else if ( "php".equals(tmpParam) ) {
+				return new BrushPhp();
+			}
+			else if ( "ruby".equals(tmpParam) ) {
+				return new BrushRuby();
+			}
+			else if ( "perl".equals(tmpParam) ) {
+				return new BrushPerl();
+			}
+			else if ( "javafx".equals(tmpParam) ) {
+				return new BrushJavaFX();
+			}
+			else if ( "java".equals(tmpParam) ) {
+				return new BrushJava();
+			}
+			else if ( "scala".equals(tmpParam) ) {
+				return new BrushScala();
+			}
+			else if ( "bash".equals(tmpParam) ) {
+				return new BrushBash();
+			}
+			//TODO Gherkin
+//			else if ( "gherkin".equals(tmpParam) ) {
+//				return new BrushGherkin();
+//			}
+			//TODO TCL
+//			else if ( "tcl".equals(tmpParam) ) {
+//				return new BrushTcl();
+//			}
 			else if (
 					"csharp".equals(tmpParam) || 
 					"cs".equals(tmpParam) || 
 					"c#".equals(tmpParam)  
 					) {
-				tmpMode = "csharp";
+				return new BrushCSharp();
 			}
 			else if (
 					"c".equals(tmpParam) || 
 					"c++".equals(tmpParam) || 
 					"cpp".equals(tmpParam)  
 					) {
-				tmpMode = "cpp";
+				return new BrushCpp();
 			}
 			else if (
 					"delphi".equals(tmpParam) || 
 					"pas".equals(tmpParam) || 
 					"pascal".equals(tmpParam)  
 					) {
-				tmpMode = "pascal";
+				return new BrushDelphi();
 			}
-			else if (
-					"d".equals(tmpParam) || 
-					"di".equals(tmpParam)
-					) {
-				tmpMode = "d";
-			}
-			else if (
-					"objc".equals(tmpParam) || 
-					"obj-c".equals(tmpParam)  
-					) {
-				tmpMode = "objc";
-			}
+			//TODO DI
+//			else if (
+//					"d".equals(tmpParam) || 
+//					"di".equals(tmpParam)
+//					) {
+//				tmpMode = "d";
+//			}
+			//TODO Objective-C
+//			else if (
+//					"objc".equals(tmpParam) || 
+//					"obj-c".equals(tmpParam)  
+//					) {
+//				tmpMode = "objc";
+//			}
 			else if (
 					"js".equals(tmpParam) || 
 					"javascript".equals(tmpParam) || 
 					"jscript".equals(tmpParam)  
 					) {
-				tmpMode = "js";
+				return new BrushJScript();
 			}
 			else if (
 					"py".equals(tmpParam) || 
 					"python".equals(tmpParam) 
 					) {
-				tmpMode = "python";
+				return new BrushPython();
 			}
 			else if (
 					"vb".equals(tmpParam) || 
 					"vbnet".equals(tmpParam) 
 					) {
-				tmpMode = "vb";
+				return new BrushVb();
 			}
 			else if (
 					"xml".equals(tmpParam) || 
@@ -271,11 +315,11 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 					"xslt".equals(tmpParam) || 
 					"html".equals(tmpParam)  
 					) {
-				tmpMode = "xml";
+				return new BrushXml();
 			}
 		}
 		
-		return "brush: " + tmpMode + "; ";
+		return new BrushPlain();
 	}
 
 

@@ -39,6 +39,8 @@ public class SyntaxHighlighterParserUtil {
 		String plainTextRemaining = aText.substring(currentIndex);
 		addCodeAndRowElements(container, plainTextRemaining, "plain");
 
+		//TODO Entfernen einer leeren ersten Zeile
+		
 		return container;
 
 	}
