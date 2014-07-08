@@ -77,7 +77,9 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	    contextParameters.put("codeContainer", tmpCodeContainer);
 	    
 		VelocityManager tmplManager = ComponentManager.getInstance().getVelocityManager();
-		String codeBody = tmplManager.getBody("templates/", "code.vm", contextParameters);
+		StringBuffer codeBody = new StringBuffer();
+		codeBody.append(tmplManager.getBody("templates/", "style.vm", contextParameters));
+		codeBody.append(tmplManager.getBody("templates/", "code.vm", contextParameters));
 
 		//TODO Title
 		contextParameters.put("title", parameters.get(TITLE));
@@ -87,7 +89,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 //		getHighlight(parameters) + 
 //		getHideLineNum(parameters) + 
 		
-		return codeBody;
+		return codeBody.toString();
 		
 	}
 	
