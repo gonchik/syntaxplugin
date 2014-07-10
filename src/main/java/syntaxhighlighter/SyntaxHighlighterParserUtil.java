@@ -17,6 +17,11 @@ public class SyntaxHighlighterParserUtil {
 
 	public static CodeContainer brush(String aText, Brush aBrush) {
 
+		//TODO Entfernen von führenden Leerzeilen verbessern
+		while ( aText.startsWith("/n") || aText.startsWith("/r") ) {
+			aText = aText.substring(1);
+		}
+		
 		SyntaxHighlighterParser aParser = new SyntaxHighlighterParser(aBrush);
 		List<ParseResult> aResultList = aParser.parse(null, aText);
 
