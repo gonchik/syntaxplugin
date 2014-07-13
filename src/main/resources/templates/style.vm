@@ -1,31 +1,40 @@
 <style>
 <!--
-div.syntaxhighlighter_jira {
+div.syntaxhighlighter {
 	margin: 1em;
-	line-height: 1.1em;
 	font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
 	font-size: 1em;
 	font-weight: normal;
 	font-style: normal;
 	color: black;
 }
-code.syntaxhighlighter_jira {
+div.syntaxhighlighter td.gutter {
+	color: #afafaf;
+}
+div.syntaxhighlighter td.gutter div.line {
+	padding: 0 0.5em 0 1em !important;
+	border-right: 3px solid #6ce26c !important;
+}
+div.syntaxhighlighter td.code div.line {
+	padding: 0 1em !important;
+}
+div.syntaxhighlighter code {
 	display: inline !important;
 	white-space: pre !important;
 	padding: 0px !important;
 }
-code.plain {color: black;}
-code.comments {color: #008200;}
-code.string {color: blue;}
-code.keyword {color: #006699; font-weight: bold;}
-code.preprocessor {color: gray;}
-code.variable {color: #aa7700;}
-code.value {color: #009900;}
-code.functions {color: #ff1493;}
-code.constants {color: #0066cc;}
-code.script {font-weight:bold;}
-code.color1 {color: gray;}
-code.color2 {color: #ff1493;}
-code.color3 {color: red;}
+div.syntaxhighlighter code.plain {color: black;}
+div.syntaxhighlighter code.comments {color: #008200;}
+div.syntaxhighlighter code.string {color: blue;}
+div.syntaxhighlighter code.keyword {color: #006699; font-weight: bold;}
+div.syntaxhighlighter code.preprocessor {color: gray;}
+div.syntaxhighlighter code.variable {color: #aa7700;}
+div.syntaxhighlighter code.value {color: #009900;}
+div.syntaxhighlighter code.functions {color: #ff1493;}
+div.syntaxhighlighter code.constants {color: #0066cc;}
+div.syntaxhighlighter code.script {font-weight:bold;}
+div.syntaxhighlighter code.color1 {color: gray;}
+div.syntaxhighlighter code.color2 {color: #ff1493;}
+div.syntaxhighlighter code.color3 {color: red;}
 -->
 </style>

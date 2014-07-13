@@ -1,20 +1,20 @@
-<div class="syntaxhighlighter_jira">
+<div class="syntaxhighlighter">
 	<table cellspacing="0" cellpadding="0" border="0">
 		<tbody>
 			<tr>
 			#if( !$codeContainer.hideLineNum )
-			<td>
+			<td class="gutter">
 			#foreach( $codeRow in $codeContainer.codeRows )
-				<div>$velocityCount</div>
+				<div class="line">$velocityCount</div>
 			#end
 			</td>
 			#end
-			<td>
-			#foreach( $codeRow in $codeContainer.codeRows )
-				<div>
-					#foreach( $code in $codeRow.code )<code class="syntaxhighlighter_jira $code.style">$code.text</code>#end
+			<td class="code">
+				<div class="container">
+				#foreach( $codeRow in $codeContainer.codeRows )
+					<div class="line">#if($codeRow.code.size() == 0)&nbsp;#end#foreach( $code in $codeRow.code )<code class="$code.style">$code.text</code>#end</div>
+				#end
 				</div>
-			#end
 			</td>
 			</tr>
 		</tbody>
