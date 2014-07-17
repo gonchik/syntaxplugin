@@ -4,8 +4,8 @@
 			<tr>
 			#if( !$codeContainer.hideLineNum )
 			<td class="gutter">
-			#foreach( $codeRow in $codeContainer.codeRows )
-				<div class="line">$velocityCount</div>
+			#foreach( $codeRow in $codeContainer.codeRows ) #set ( $lineNum = $velocityCount + $codeContainer.getFirstLine() - 1 )
+				<div class="line">$lineNum</div>
 			#end
 			</td>
 			#end
