@@ -15,9 +15,25 @@ public class SyntaxHighlighterParserUtil {
 
 	public static CodeContainer brush(String aText, Brush aBrush) {
 
+		//Remove leading line feed
+		if ( aText.startsWith("\n")) {
+			aText = aText.substring(1);
+		} else if ( aText.startsWith("\r\n")) {
+			aText = aText.substring(2);
+		}
+		
+		//Remove trailing line feed
+		if ( aText.endsWith("\n")) {
+			aText = aText.substring(0, aText.length()-1);
+		} else if ( aText.endsWith("\r\n")) {
+			aText = aText.substring(0, aText.length()-2);
+		}
+		
+		//Parse text
 		SyntaxHighlighterParser aParser = new SyntaxHighlighterParser(aBrush);
 		List<ParseResult> aResultList = aParser.parse(null, aText);
 
+		//Create code container based on parse results
 		CodeContainer container = new CodeContainer();
 
 		int currentIndex = 0;
@@ -37,11 +53,6 @@ public class SyntaxHighlighterParserUtil {
 		String plainTextRemaining = aText.substring(currentIndex);
 		addCodeAndRowElements(container, plainTextRemaining, "plain");
 
-		//Removing leading empty lines 
-		while ( container.getCodeRows().get(0).getCode().isEmpty() ){
-			container.getCodeRows().remove(0);
-		}
-		
 		return container;
 
 	}
