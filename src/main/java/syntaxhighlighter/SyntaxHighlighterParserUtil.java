@@ -13,15 +13,8 @@ import syntaxhighlighter.brush.Brush;
  */
 public class SyntaxHighlighterParserUtil {
 
-
-
 	public static CodeContainer brush(String aText, Brush aBrush) {
 
-		//TODO Entfernen von führenden Leerzeilen verbessern
-		while ( aText.startsWith("/n") || aText.startsWith("/r") ) {
-			aText = aText.substring(1);
-		}
-		
 		SyntaxHighlighterParser aParser = new SyntaxHighlighterParser(aBrush);
 		List<ParseResult> aResultList = aParser.parse(null, aText);
 
@@ -44,7 +37,10 @@ public class SyntaxHighlighterParserUtil {
 		String plainTextRemaining = aText.substring(currentIndex);
 		addCodeAndRowElements(container, plainTextRemaining, "plain");
 
-		//TODO Entfernen einer leeren ersten Zeile
+		//Removing leading empty lines 
+		while ( container.getCodeRows().get(0).getCode().isEmpty() ){
+			container.getCodeRows().remove(0);
+		}
 		
 		return container;
 
@@ -52,6 +48,8 @@ public class SyntaxHighlighterParserUtil {
 
 	private static void addCodeAndRowElements(CodeContainer container, String plainText, String style) {
 
+		plainText = plainText.replaceAll("\r\n", "\n");
+		
 		while (!plainText.equals("")) {
 
 			if (!plainText.contains("\n")) {
