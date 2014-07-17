@@ -17,7 +17,7 @@ import syntaxhighlighter.beans.CodeRow;
 import syntaxhighlighter.brush.BrushJava;
 
 /**
- * @author Chan Wai Shing <cws1989@gmail.com>
+ * @author Holger Schimanski <holger@schimanski-web.de>
  */
 public class SyntaxHighlighterParserUtilTest {
 
