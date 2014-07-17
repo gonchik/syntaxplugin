@@ -17,6 +17,8 @@ public class CodeContainer {
 	
 	public CodeContainer() {
 		codeRows = new Vector<CodeRow>();
+		firstLine = 1;
+		hideLineNum = true;
 		newCodeRow();
 	}
 
