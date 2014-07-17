@@ -10,6 +10,7 @@ div.syntaxhighlighter {
 }
 div.syntaxhighlighter td.gutter {
 	color: #afafaf;
+	text-align: right;
 }
 div.syntaxhighlighter td.gutter div.line {
 	padding: 0 0.5em 0 1em !important;
