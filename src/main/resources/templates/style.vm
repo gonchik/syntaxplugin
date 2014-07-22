@@ -16,6 +16,13 @@ div.syntaxhighlighter td.gutter div.line {
 	padding: 0 0.5em 0 1em !important;
 	border-right: 3px solid #6ce26c !important;
 }
+div.syntaxhighlighter td.gutter div.highlighted {
+    background-color: #6ce26c !important;
+    color: white !important;
+}
+div.syntaxhighlighter td.code div.highlighted {
+	background-color: #e0e0e0 !important;
+}
 div.syntaxhighlighter td.code div.line {
 	padding: 0 1em !important;
 }

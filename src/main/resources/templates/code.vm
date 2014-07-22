@@ -5,14 +5,14 @@
 			#if( !$codeContainer.hideLineNum )
 			<td class="gutter">
 			#foreach( $codeRow in $codeContainer.codeRows ) #set ( $lineNum = $velocityCount + $codeContainer.getFirstLine() - 1 )
-				<div class="line">$lineNum</div>
+				<div class="line#if( $codeRow.highlighted ) highlighted#end">$lineNum</div>
 			#end
 			</td>
 			#end
 			<td class="code">
 				<div class="container">
 				#foreach( $codeRow in $codeContainer.codeRows )
-					<div class="line">#if($codeRow.code.size() == 0)&nbsp;#end#foreach( $code in $codeRow.code )<code class="$code.style">$code.text</code>#end</div>
+					<div class="line#if( $codeRow.highlighted ) highlighted#end">#if($codeRow.code.size() == 0)&nbsp;#end#foreach( $code in $codeRow.code )<code class="$code.style">$code.text</code>#end</div>
 				#end
 				</div>
 			</td>

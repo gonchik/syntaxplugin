@@ -11,8 +11,10 @@ import java.util.Vector;
 public class CodeRow {
 
 	private List<Code> codeParts;
+	private boolean highlighted;
 
 	public CodeRow(){
+		highlighted = false;
 		codeParts = new Vector<Code>();
 	}
 	
@@ -22,5 +24,13 @@ public class CodeRow {
 	
 	public List<Code> getCode(){
 		return codeParts;
+	}
+
+	public boolean isHighlighted() {
+		return highlighted;
+	}
+
+	public void setHighlighted(boolean highlighted) {
+		this.highlighted = highlighted;
 	}
 }

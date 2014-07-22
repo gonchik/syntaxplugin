@@ -1,6 +1,8 @@
 package jira.plugin.syntaxhighlighter.macro;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import syntaxhighlighter.SyntaxHighlighterParserUtil;
@@ -49,7 +51,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	/**
 	 * Character ({@value}) used to separate ranges of line numbers.
 	 */
-	private static final char RANGE_SEPARATOR = '-';
+	private static final String RANGE_SEPARATOR = "-";
 
 	public boolean hasBody() {
 		return true;
@@ -64,41 +66,49 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public String execute(Map parameters, String body,
-			RenderContext renderContext) throws MacroException {
+	public String execute(Map parameters, String body, RenderContext renderContext) throws MacroException {
 
+		//Syntax highlighting with brush
 		Brush tmpBrush = getBrush(parameters);
 	    CodeContainer tmpCodeContainer = SyntaxHighlighterParserUtil.brush(body, tmpBrush);
+	    
+	    //First line and hide line num parameter
 	    tmpCodeContainer.setHideLineNum(getHideLineNum(parameters));
 	    tmpCodeContainer.setFirstLine(getFirstLine(parameters));
 
+	    //Highlighting of code rows
+	    List<Integer> highlighted = getHighlight(parameters);
+	    for (Integer tmpCodeRowHighlighted : highlighted) {
+	    	tmpCodeContainer.getCodeRows().get(tmpCodeRowHighlighted.intValue() - tmpCodeContainer.getFirstLine()).setHighlighted(true);
+	    }
+	    
+	    //Put code container as param for velocity
 	    Map<String,Object> contextParameters = new HashMap<String,Object>();
 	    contextParameters.put("codeContainer", tmpCodeContainer);
-	    
-		VelocityManager tmplManager = ComponentManager.getInstance().getVelocityManager();
+
+	    //Get HTML rendering using velocity templates
+	    VelocityManager tmplManager = ComponentManager.getInstance().getVelocityManager();
 		StringBuffer codeBody = new StringBuffer();
 		codeBody.append(tmplManager.getBody("templates/", "style.vm", contextParameters));
 		codeBody.append(tmplManager.getBody("templates/", "code.vm", contextParameters));
 
+
 		//TODO Title
 		contextParameters.put("title", parameters.get(TITLE));
 
-		//TODO		
-//		getHighlight(parameters) + 
 		
 		return codeBody.toString();
 		
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public String getHighlight(Map parameters) {
+	public List<Integer> getHighlight(Map parameters) {
+		List<Integer> ret = new ArrayList<Integer>();
 		if ( parameters.containsKey(HIGHLIGHT)){
 			String paramValue = parameters.get(HIGHLIGHT).toString();
-			paramValue = expandRanges(paramValue);
-			return HIGHLIGHT + " : " + paramValue + "; ";
-		} else {
-			return "";
+			ret.addAll(expandRanges(paramValue));
 		}
+		return ret;
 	}	
 
 	@SuppressWarnings("rawtypes")
@@ -110,7 +120,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 			}
 		}
 		catch(NumberFormatException e){
-			//TODO log.debug
+			//TODO Log debug
 		}
 		
 		return 1;
@@ -137,66 +147,59 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	 * @return ranges with all ranges expanded to sequences. Any other token
 	 *         will remain unchanged.
 	 */
-	public String expandRanges(String ranges) {
+	public List<Integer> expandRanges(String ranges) {
 		String[] parts;
-		String ret = "";
+		List<Integer> ret = new ArrayList<Integer>();
+		
+		if (ranges.isEmpty()) return ret;
 		
 		if (ranges.startsWith("[") && ranges.endsWith("]")) {
-			parts = ranges.substring(1, ranges.length()-1).split(",");
-			for (String part : parts) {
-				if (part.indexOf(RANGE_SEPARATOR) > -1) {
-					if (ret.length() > 0) {ret += ",";};
-					ret += rangeToSequence(part);
-				} else {
-					if (ret.length() > 0) {ret += ",";};
-					ret += part;
-				}
+			ranges = ranges.substring(1, ranges.length()-1);
+		} 
+		parts = ranges.split(",");
+		for (String part : parts) {
+			if (part.contains(RANGE_SEPARATOR)) {
+				ret.addAll(rangeToSequence(part));
+			} else {
+				ret.add(new Integer(part));
 			}
-			return "[" + ret + "]";
-		} else {
-			return ranges;
 		}
+		return ret;
+		
+		//TODO Log.debug Number format exception
 	}
 	
 	/**
 	 * Makes a sequence of numbers out of a given range. For Example, "1-3" will
 	 * produce "1,2,3". A valid range consists of two numbers separated by the
-	 * {@link #RANGE_SEPARATOR}. The second number has to greater than the first.
+	 * {@link #RANGE_SEPARATOR}. The second number has to be greater than the first.
 	 * 
-	 * @param range
-	 *            The range the sequence should be made of.
-	 * @return A comma-separated list of numbers or the value of range if any
-	 *         error occurs.
+	 * @param range String representation of the range to expand to sequence
+	 * @return A list of Integers or an empty list if any error occurs.
 	 */
-	public String rangeToSequence(String range) {
+	public List<Integer> rangeToSequence(String range) {
 		String[] parts;
-		String ret = "";
+		List<Integer> ret = new ArrayList<Integer>();
 		int sequenceStart, sequenceEnd;
 		
 		parts = range.split(String.valueOf(RANGE_SEPARATOR));
 		
-		if (parts.length == 2) {
-			try {  
+		try {
+			if (parts.length == 2) {
 				sequenceStart = Integer.parseInt(parts[0]);
 				sequenceEnd = Integer.parseInt(parts[1]);
-			}  
-			catch(NumberFormatException nfe) {  
-				return range;
-			}
-			
-			if (sequenceStart < sequenceEnd) {
-				for (int i = sequenceStart; i < sequenceEnd; i++) {
-					ret += String.valueOf(i) + ",";
+
+				for (int i = sequenceStart; i <= sequenceEnd; i++) {
+					ret.add(new Integer(i));
 				}
-				ret += String.valueOf(sequenceEnd);
-				
-				return ret;
 			} else {
-				return range;
+				//TODO log.debug wrong string
 			}
-		} else {
-			return range;
+		} catch (NumberFormatException nfe) {
+			// TODO Log debug numberformat exception
 		}
+
+		return ret;
 	}
 	
 	
