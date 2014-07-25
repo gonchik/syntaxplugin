@@ -1,48 +1,51 @@
 <style>
 <!--
-div.syntaxhighlighter {
-	margin: 1em;
+div.syntaxplugin {
+	margin: 1em 0em;
+	padding: 1em 0em;
 	font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
 	font-size: 1em;
 	font-weight: normal;
 	font-style: normal;
 	color: black;
+	border-radius: 5px;
+	border: 1px dashed #bbb;
 }
-div.syntaxhighlighter td.gutter {
+div.syntaxplugin td.syntaxplugin_gutter {
 	color: #afafaf;
 	text-align: right;
 }
-div.syntaxhighlighter td.gutter div.line {
+div.syntaxplugin td.syntaxplugin_gutter div.line {
 	padding: 0 0.5em 0 1em !important;
 	border-right: 3px solid #6ce26c !important;
 }
-div.syntaxhighlighter td.gutter div.highlighted {
+div.syntaxplugin td.syntaxplugin_gutter div.highlighted {
     background-color: #6ce26c !important;
     color: white !important;
 }
-div.syntaxhighlighter td.code div.highlighted {
+div.syntaxplugin td.syntaxplugin_code div.highlighted {
 	background-color: #e0e0e0 !important;
 }
-div.syntaxhighlighter td.code div.line {
+div.syntaxplugin td.syntaxplugin_code div.line {
 	padding: 0 1em !important;
 }
-div.syntaxhighlighter code {
+div.syntaxplugin code {
 	display: inline !important;
 	white-space: pre !important;
 	padding: 0px !important;
 }
-div.syntaxhighlighter code.plain {color: black;}
-div.syntaxhighlighter code.comments {color: #008200;}
-div.syntaxhighlighter code.string {color: blue;}
-div.syntaxhighlighter code.keyword {color: #006699; font-weight: bold;}
-div.syntaxhighlighter code.preprocessor {color: gray;}
-div.syntaxhighlighter code.variable {color: #aa7700;}
-div.syntaxhighlighter code.value {color: #009900;}
-div.syntaxhighlighter code.functions {color: #ff1493;}
-div.syntaxhighlighter code.constants {color: #0066cc;}
-div.syntaxhighlighter code.script {font-weight:bold;}
-div.syntaxhighlighter code.color1 {color: gray;}
-div.syntaxhighlighter code.color2 {color: #ff1493;}
-div.syntaxhighlighter code.color3 {color: red;}
+div.syntaxplugin code.plain {color: black;}
+div.syntaxplugin code.comments {color: #008200;}
+div.syntaxplugin code.string {color: blue;}
+div.syntaxplugin code.keyword {color: #006699; font-weight: bold;}
+div.syntaxplugin code.preprocessor {color: gray;}
+div.syntaxplugin code.variable {color: #aa7700;}
+div.syntaxplugin code.value {color: #009900;}
+div.syntaxplugin code.functions {color: #ff1493;}
+div.syntaxplugin code.constants {color: #0066cc;}
+div.syntaxplugin code.script {font-weight:bold;}
+div.syntaxplugin code.color1 {color: gray;}
+div.syntaxplugin code.color2 {color: #ff1493;}
+div.syntaxplugin code.color3 {color: red;}
 -->
 </style>

@@ -1,15 +1,15 @@
-<div class="syntaxhighlighter">
+<div class="syntaxplugin">
 	<table cellspacing="0" cellpadding="0" border="0">
 		<tbody>
 			<tr>
 			#if( !$codeContainer.hideLineNum )
-			<td class="gutter">
+			<td class="syntaxplugin_gutter">
 			#foreach( $codeRow in $codeContainer.codeRows ) #set ( $lineNum = $velocityCount + $codeContainer.getFirstLine() - 1 )
 				<div class="line#if( $codeRow.highlighted ) highlighted#end">$lineNum</div>
 			#end
 			</td>
 			#end
-			<td class="code">
+			<td class="syntaxplugin_code">
 				<div class="container">
 				#foreach( $codeRow in $codeContainer.codeRows )
 					<div class="line#if( $codeRow.highlighted ) highlighted#end">#if($codeRow.code.size() == 0)&nbsp;#end#foreach( $code in $codeRow.code )<code class="$code.style">$code.text</code>#end</div>
