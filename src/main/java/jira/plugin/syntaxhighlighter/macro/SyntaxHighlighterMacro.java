@@ -88,17 +88,13 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	    //Put code container as param for velocity
 	    Map<String,Object> contextParameters = new HashMap<String,Object>();
 	    contextParameters.put("codeContainer", tmpCodeContainer);
+	    contextParameters.put("codeTitle", parameters.get(TITLE));
 
 	    //Get HTML rendering using velocity templates
 	    VelocityManager tmplManager = ComponentManager.getInstance().getVelocityManager();
 		StringBuffer codeBody = new StringBuffer();
 		codeBody.append(tmplManager.getBody("templates/", "style.vm", contextParameters));
 		codeBody.append(tmplManager.getBody("templates/", "code.vm", contextParameters));
-
-
-		//TODO Title
-		contextParameters.put("title", parameters.get(TITLE));
-
 		
 		return codeBody.toString();
 		
