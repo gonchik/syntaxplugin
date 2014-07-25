@@ -1,9 +1,7 @@
 <div class="syntaxplugin">
+	<div class="syntaxplugin_title">My Title</div>
 	<table cellspacing="0" cellpadding="0" border="0">
 		<tbody>
-			<tr>
-				<td colspan="2" class="syntaxplugin_title">My Title</td>
-			</tr>
 			<tr>
 			#if( !$codeContainer.hideLineNum )
 			<td class="syntaxplugin_gutter">
