@@ -78,8 +78,11 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 
 	    //Highlighting of code rows
 	    List<Integer> highlighted = getHighlight(parameters);
-	    for (Integer tmpCodeRowHighlighted : highlighted) {
-	    	tmpCodeContainer.getCodeRows().get(tmpCodeRowHighlighted.intValue() - tmpCodeContainer.getFirstLine()).setHighlighted(true);
+	    for (Integer tmpLineNumHighlighted : highlighted) {
+	    	int tmpCodeRowNumHighlighted = tmpLineNumHighlighted.intValue() - tmpCodeContainer.getFirstLine();
+	    	if ( tmpCodeRowNumHighlighted < tmpCodeContainer.getCodeRows().size() ){
+	    		tmpCodeContainer.getCodeRows().get(tmpCodeRowNumHighlighted).setHighlighted(true);
+	    	}
 	    }
 	    
 	    //Put code container as param for velocity
