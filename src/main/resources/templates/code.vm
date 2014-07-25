@@ -2,6 +2,9 @@
 	<table cellspacing="0" cellpadding="0" border="0">
 		<tbody>
 			<tr>
+				<td colspan="2" class="syntaxplugin_title">My Title</td>
+			</tr>
+			<tr>
 			#if( !$codeContainer.hideLineNum )
 			<td class="syntaxplugin_gutter">
 			#foreach( $codeRow in $codeContainer.codeRows ) #set ( $lineNum = $velocityCount + $codeContainer.getFirstLine() - 1 )
@@ -10,7 +13,7 @@
 			</td>
 			#end
 			<td class="syntaxplugin_code">
-				<div class="container">
+				<div class="syntaxplugin_container">
 				#foreach( $codeRow in $codeContainer.codeRows )
 					<div class="line#if( $codeRow.highlighted ) highlighted#end">#if($codeRow.code.size() == 0)&nbsp;#end#foreach( $code in $codeRow.code )<code class="$code.style">$code.text</code>#end</div>
 				#end
