@@ -2,7 +2,7 @@
 <!--
 div.syntaxplugin {
 	margin: 1em 0em;
-	font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+	font-family: "Courier New", Courier, monospace;
 	font-size: 1em;
     line-height: 1.4em !important;
 	font-weight: normal;
@@ -25,6 +25,8 @@ div.syntaxplugin td.syntaxplugin_gutter {
     color: #707070;
 	text-align: right;
 	width: 2.6em;
+	padding: 1em 0em;
+	vertical-align: top;
 }
 div.syntaxplugin td.syntaxplugin_gutter div.line {
 	padding: 0 0.5em 0 1em !important;
@@ -34,10 +36,8 @@ div.syntaxplugin td.syntaxplugin_gutter div.highlighted {
     color: white !important;
 }
 div.syntaxplugin td.syntaxplugin_code {
-}
-div.syntaxplugin td.syntaxplugin_code div.syntaxplugin_container {
-	margin-top: 1em !important;
-    padding-bottom: 1em !important;
+	padding: 1em 0em;
+	vertical-align: top;
 }
 div.syntaxplugin td.syntaxplugin_code div.highlighted {
 	background-color: #e0e0e0 !important;
