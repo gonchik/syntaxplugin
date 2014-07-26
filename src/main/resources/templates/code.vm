@@ -3,7 +3,7 @@
 		<tbody>
 			#if ( $codeTitle )
 			<tr>
-				<td colspan="2" class="syntaxplugin_title">$codeTitle</td>
+				<td #if( !$codeContainer.hideLineNum ) colspan="2"#end class="syntaxplugin_title">$codeTitle</td>
 			</tr>
 			#end
 			<tr>
