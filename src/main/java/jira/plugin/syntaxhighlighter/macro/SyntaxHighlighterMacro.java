@@ -46,8 +46,11 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 
 	private static final String HIGHLIGHT = "highlight";
 	private static final String TITLE = "title";
-	private static final String FIRST_LINE = "first-line";
-	private static final String HIDE_LINENUM = "hide-linenum";
+	private static final String FIRST_LINE = "first-line"; //Deprecated
+	private static final String FIRSTLINE = "firstline"; //TODO use instead of first-line, default is 1
+	private static final String HIDE_LINENUM = "hide-linenum"; //TODO no longer used
+	private static final String SHOW_LINENUMS = "linenumbers"; //default is false
+	private static final String COLLAPSE = "collapse"; //default is false
 	/**
 	 * Character ({@value}) used to separate ranges of line numbers.
 	 */
@@ -73,7 +76,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	    CodeContainer tmpCodeContainer = SyntaxHighlighterParserUtil.brush(body, tmpBrush);
 	    
 	    //First line and hide line num parameter
-	    tmpCodeContainer.setHideLineNum(getHideLineNum(parameters));
+	    tmpCodeContainer.setShowLineNums(getShowLineNums(parameters));
 	    tmpCodeContainer.setFirstLine(getFirstLine(parameters));
 
 	    //Highlighting of code rows
@@ -93,7 +96,6 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	    //Get HTML rendering using velocity templates
 	    VelocityManager tmplManager = ComponentManager.getInstance().getVelocityManager();
 		StringBuffer codeBody = new StringBuffer();
-		codeBody.append(tmplManager.getBody("templates/", "style.vm", contextParameters));
 		codeBody.append(tmplManager.getBody("templates/", "code.vm", contextParameters));
 		
 		return codeBody.toString();
@@ -125,11 +127,24 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 		return 1;
 	}	
 
+	
 	@SuppressWarnings("rawtypes")
-	public boolean getHideLineNum(Map parameters) {
-		if ( parameters.containsValue(HIDE_LINENUM) || 
-				( parameters.containsKey(HIDE_LINENUM) && parameters.get(HIDE_LINENUM).equals("true") ) ||
-				( parameters.containsKey(HIDE_LINENUM) && parameters.get(HIDE_LINENUM).equals("yes") ) ){
+	public boolean getCollapse(Map parameters) {
+		if ( parameters.containsValue(COLLAPSE) || 
+				( parameters.containsKey(COLLAPSE) && parameters.get(COLLAPSE).equals("true") ) ||
+				( parameters.containsKey(COLLAPSE) && parameters.get(COLLAPSE).equals("yes") ) ){
+			return true;
+		} else {
+			return false;
+		}
+	}	
+	
+	
+	@SuppressWarnings("rawtypes")
+	public boolean getShowLineNums(Map parameters) {
+		if ( parameters.containsValue(SHOW_LINENUMS) || 
+				( parameters.containsKey(SHOW_LINENUMS) && parameters.get(SHOW_LINENUMS).equals("true") ) ||
+				( parameters.containsKey(SHOW_LINENUMS) && parameters.get(SHOW_LINENUMS).equals("yes") ) ){
 			return true;
 		} else {
 			return false;

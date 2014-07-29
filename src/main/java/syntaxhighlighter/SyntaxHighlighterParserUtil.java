@@ -57,8 +57,37 @@ public class SyntaxHighlighterParserUtil {
 
 	}
 
-	private static void addCodeAndRowElements(CodeContainer container, String plainText, String style) {
+	private static void addCodeAndRowElements(CodeContainer container, String plainText, String styleKey) {
 
+		String style = "";
+		if ( styleKey.equals("plain")){
+			style = "color: black;";
+		} else if ( styleKey.equals("comments")){
+			style = "color: #008200;";
+		} else if ( styleKey.equals("string")){
+			style = "color: blue;";
+		} else if ( styleKey.equals("keyword")){
+			style = "color: #006699; font-weight: bold;";
+		} else if ( styleKey.equals("preprocessor")){
+			style = "color: gray;";
+		} else if ( styleKey.equals("variable")){
+			style = "color: #aa7700;";
+		} else if ( styleKey.equals("value")){
+			style = "color: #009900;";
+		} else if ( styleKey.equals("functions")){
+			style = "color: #ff1493;";
+		} else if ( styleKey.equals("constants")){
+			style = "color: #0066cc;";
+		} else if ( styleKey.equals("script")){
+			style = "font-weight: bold;";
+		} else if ( styleKey.equals("color1")){
+			style = "color: gray;";
+		} else if ( styleKey.equals("color2")){
+			style = "color: #ff1493;";
+		} else if ( styleKey.equals("color3")){
+			style = "color: red;";
+		}
+		
 		plainText = plainText.replaceAll("\r\n", "\n");
 		
 		while (!plainText.equals("")) {

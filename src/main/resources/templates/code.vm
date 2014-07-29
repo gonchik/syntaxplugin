@@ -1,23 +1,23 @@
-<div class="syntaxplugin">
+<div style="margin: 1em 0em; font-size: 1em; line-height: 1.4em !important; font-weight: normal; font-style: normal; color: black; border-radius: 5px; border: 1px dashed #bbb; overflow: scroll;">
 	<table cellspacing="0" cellpadding="0" border="0" width="100%">
 		<tbody>
 			#if ( $codeTitle )
 			<tr>
-				<td #if( !$codeContainer.hideLineNum ) colspan="2"#end class="syntaxplugin_title">$codeTitle</td>
+				<td style="color: #333; border-bottom: 1px solid #bbb; padding: 5px 15px; background-color: #f5f5f5 !important; font-weight: bold; line-height: 1em;" #if( !$codeContainer.hideLineNum ) colspan="2"#end>$codeTitle</td>
 			</tr>
 			#end
 			<tr>
 			#if( !$codeContainer.hideLineNum )
-			<td class="syntaxplugin_gutter">
+			<td style="background-color: #f5f5f5 !important; border-right: 1px solid #ccc !important; color: #707070; text-align: right; width: 2.6em; padding: 1em 0em; vertical-align: top;">
 			#foreach( $codeRow in $codeContainer.codeRows ) #set ( $lineNum = $velocityCount + $codeContainer.getFirstLine() - 1 )
-				<div class="line#if( $codeRow.highlighted ) highlighted#end">$lineNum</div>
+				<div style="font-family: monospace; padding: 0 0.5em 0 1em !important;#if( $codeRow.highlighted ) background-color: #6ce26c !important; color: white !important;#end">$lineNum</div>
 			#end
 			</td>
 			#end
-			<td class="syntaxplugin_code">
+			<td style="	padding: 1em 0em; vertical-align: top;">
 				<div class="syntaxplugin_container">
 				#foreach( $codeRow in $codeContainer.codeRows )
-					<div class="line#if( $codeRow.highlighted ) highlighted#end">#if($codeRow.code.size() == 0)&nbsp;#end#foreach( $code in $codeRow.code )<code class="$code.style">$code.text</code>#end</div>
+					<div style="font-family: monospace; padding: 0 1em !important;#if( $codeRow.highlighted ) background-color: #e0e0e0 !important;#end">#if($codeRow.code.size() == 0)&nbsp;#end#foreach( $code in $codeRow.code )<code style="$code.style font-family: monospace; display: inline !important; white-space: pre !important; padding: 0px !important;">$code.text</code>#end</div>
 				#end
 				</div>
 			</td>
