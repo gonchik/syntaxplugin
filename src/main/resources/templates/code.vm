@@ -1,12 +1,15 @@
-<div style="margin: 1em 0em; overflow: scroll; border: 1px dashed #bbb; border-radius: 5px !important;">
-	<table cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 1em; line-height: 1.4em !important; font-weight: normal; font-style: normal; color: black;">
-		<tbody>
-			#if ( $codeTitle )
-			<tr>
-				<td style="color: #333; border-bottom: 1px solid #bbb; padding: 5px 15px; background-color: #f5f5f5 !important; font-weight: bold; line-height: 1em;" #if( $codeContainer.showLineNums ) colspan="2"#end>$codeTitle</td>
-			</tr>
-			#end
-			<tr>
+<div id="syntaxplugin" style="margin: 1em 0em; overflow: scroll; border: 1px dashed #bbb; border-radius: 5px !important;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 1em; line-height: 1.4em !important; font-weight: normal; font-style: normal; color: black;">
+	<tbody>
+		#if ( $codeTitle )
+		<tr id="syntaxplugin_title">
+			<td style="color: #333; border-bottom: 1px solid #bbb; padding: 5px 15px; background-color: #f5f5f5 !important; font-weight: bold; line-height: 1em;" #if( $codeContainer.showLineNums ) colspan="2"#end>$codeTitle</td>
+		</tr>
+		#end
+		#if ( $codeCollapsed )
+		<tr id="syntaxplugin_show"><td #if( $codeContainer.showLineNums ) colspan="2"#end><a onclick="AJS.$(this).hide().closest('table').find('#syntaxplugin_code_and_gutter').show(); return false;" href="#">$codeCollapsed</a></td></tr>
+		#end
+		<tr id="syntaxplugin_code_and_gutter" #if ( $codeCollapsed ) style="display: none;"#end>
 			#if( $codeContainer.showLineNums )
 			<td style="line-height: 1.4em !important; background-color: #f5f5f5 !important; border-right: 1px solid #ccc !important; color: #707070; text-align: right; width: 2.7em; padding: 1em 0em; vertical-align: top;">
 			#foreach( $codeRow in $codeContainer.codeRows ) #set ( $lineNum = $velocityCount + $codeContainer.getFirstLine() - 1 )
@@ -21,7 +24,7 @@
 				#end
 				</div>
 			</td>
-			</tr>
-		</tbody>
-	</table>
+		</tr>
+	</tbody>
+</table>
 </div>

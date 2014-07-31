@@ -56,6 +56,8 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	 */
 	private static final String RANGE_SEPARATOR = "-";
 
+	//I18nResolver i18nResolver common.concepts.show
+	
 	public boolean hasBody() {
 		return true;
 	}
@@ -92,6 +94,9 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	    Map<String,Object> contextParameters = new HashMap<String,Object>();
 	    contextParameters.put("codeContainer", tmpCodeContainer);
 	    contextParameters.put("codeTitle", parameters.get(TITLE));
+	    if (getCollapse(parameters)){
+		    contextParameters.put("codeCollapsed", "Show");
+	    }
 
 	    //Get HTML rendering using velocity templates
 	    VelocityManager tmplManager = ComponentManager.getInstance().getVelocityManager();
