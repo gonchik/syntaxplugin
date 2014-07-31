@@ -12,13 +12,13 @@ public class CodeContainer {
 
 	private List<CodeRow> codeRows;
 	private CodeRow lastCodeRow;
-	private boolean hideLineNum;
+	private boolean showLineNums;
 	private int firstLine;
 	
 	public CodeContainer() {
 		codeRows = new Vector<CodeRow>();
 		firstLine = 1;
-		hideLineNum = true;
+		showLineNums = false;
 		newCodeRow();
 	}
 
@@ -36,12 +36,12 @@ public class CodeContainer {
 		return codeRows;
 	}
 
-	public boolean isHideLineNum() {
-		return hideLineNum;
+	public boolean isShowLineNums() {
+		return showLineNums;
 	}
 
-	public void setHideLineNum(boolean hideLineNum) {
-		this.hideLineNum = hideLineNum;
+	public void setShowLineNums(boolean showLineNums) {
+		this.showLineNums = showLineNums;
 	}
 
 	public int getFirstLine() {
