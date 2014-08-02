@@ -209,7 +209,8 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 					"java".equals(tmpParam) ||
 					"tcl".equals(tmpParam) ||
 					"scala".equals(tmpParam) ||
-					"bash".equals(tmpParam) 
+					"bash".equals(tmpParam) ||
+					"puppet".equals(tmpParam)
 					) {
 				tmpMode = (String) parameters.get("0");
 			}
