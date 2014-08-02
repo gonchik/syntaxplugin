@@ -58,6 +58,7 @@ public class BrushSql extends Brush {
 
     List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
     _regExpRuleList.add(new RegExpRule("--(.*)$", Pattern.MULTILINE, "comments")); // one line and multiline comments
+    _regExpRuleList.add(new RegExpRule("\\/\\*([^\\*][\\s\\S]*?)?\\*\\/", Pattern.MULTILINE, "comments")); // multiline comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineDoubleQuotedString, "string")); // double quoted strings
     _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineSingleQuotedString, "string")); // single quoted strings
     _regExpRuleList.add(new RegExpRule(getKeywords(funcs), Pattern.MULTILINE | Pattern.CASE_INSENSITIVE, "color2")); // functions
