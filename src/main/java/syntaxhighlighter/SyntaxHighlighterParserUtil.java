@@ -13,6 +13,21 @@ import syntaxhighlighter.brush.Brush;
  */
 public class SyntaxHighlighterParserUtil {
 
+	public static final String STYLE_SCRIPT = "font-weight: bold;";
+	public static final String STYLE_CONSTANTS = "color: #0066cc;";
+	public static final String STYLE_FUNCTIONS = "color: #ff1493;";
+	public static final String STYLE_VALUE = "color: #009900;";
+	public static final String STYLE_VARIABLE = "color: #aa7700;";
+	public static final String STYLE_PREPROCESSOR = "color: gray;";
+	public static final String STYLE_KEYWORD = "color: #006699; font-weight: bold;";
+	public static final String STYLE_STRING = "color: blue;";
+	public static final String STYLE_COMMENTS = "color: #008200;";
+	public static final String STYLE_PLAIN = "color: black;";
+	public static final String STYLE_COLOR1 = STYLE_PREPROCESSOR;
+	public static final String STYLE_COLOR2 = STYLE_FUNCTIONS;
+	public static final String STYLE_COLOR3 = "color: red;";
+	
+
 	public static CodeContainer brush(String aText, Brush aBrush) {
 
 		//Remove leading line feed
@@ -61,31 +76,31 @@ public class SyntaxHighlighterParserUtil {
 
 		String style = "";
 		if ( styleKey.equals("plain")){
-			style = "color: black;";
+			style = STYLE_PLAIN;
 		} else if ( styleKey.equals("comments")){
-			style = "color: #008200;";
+			style = STYLE_COMMENTS;
 		} else if ( styleKey.equals("string")){
-			style = "color: blue;";
+			style = STYLE_STRING;
 		} else if ( styleKey.equals("keyword")){
-			style = "color: #006699; font-weight: bold;";
+			style = STYLE_KEYWORD;
 		} else if ( styleKey.equals("preprocessor")){
-			style = "color: gray;";
+			style = STYLE_PREPROCESSOR;
 		} else if ( styleKey.equals("variable")){
-			style = "color: #aa7700;";
+			style = STYLE_VARIABLE;
 		} else if ( styleKey.equals("value")){
-			style = "color: #009900;";
+			style = STYLE_VALUE;
 		} else if ( styleKey.equals("functions")){
-			style = "color: #ff1493;";
+			style = STYLE_FUNCTIONS;
 		} else if ( styleKey.equals("constants")){
-			style = "color: #0066cc;";
+			style = STYLE_CONSTANTS;
 		} else if ( styleKey.equals("script")){
-			style = "font-weight: bold;";
+			style = STYLE_SCRIPT;
 		} else if ( styleKey.equals("color1")){
-			style = "color: gray;";
+			style = STYLE_COLOR1;
 		} else if ( styleKey.equals("color2")){
-			style = "color: #ff1493;";
+			style = STYLE_COLOR2;
 		} else if ( styleKey.equals("color3")){
-			style = "color: red;";
+			style = STYLE_COLOR3;
 		}
 		
 		plainText = plainText.replaceAll("\r\n", "\n");

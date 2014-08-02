@@ -66,21 +66,21 @@ public class SyntaxHighlighterParserUtilTest {
     
     codeRow = codeRows.get(0);
     assertEquals(1, codeRow.getCode().size());
-    assertEquals("comments", codeRow.getCode().get(0).getStyle());
+    assertEquals(SyntaxHighlighterParserUtil.STYLE_COMMENTS, codeRow.getCode().get(0).getStyle());
     
     codeRow = codeRows.get(5);
     assertEquals(3, codeRow.getCode().size());
-    assertEquals("plain", codeRow.getCode().get(0).getStyle());
-    assertEquals("string", codeRow.getCode().get(1).getStyle());
-    assertEquals("plain", codeRow.getCode().get(2).getStyle());
+    assertEquals(SyntaxHighlighterParserUtil.STYLE_PLAIN, codeRow.getCode().get(0).getStyle());
+    assertEquals(SyntaxHighlighterParserUtil.STYLE_STRING, codeRow.getCode().get(1).getStyle());
+    assertEquals(SyntaxHighlighterParserUtil.STYLE_PLAIN, codeRow.getCode().get(2).getStyle());
 
     codeRow = codeRows.get(8);
     assertEquals(5, codeRow.getCode().size());
-    assertEquals("plain", codeRow.getCode().get(0).getStyle());
-    assertEquals("string", codeRow.getCode().get(1).getStyle());
-    assertEquals("plain", codeRow.getCode().get(2).getStyle());
-    assertEquals("keyword", codeRow.getCode().get(3).getStyle());
-    assertEquals("plain", codeRow.getCode().get(4).getStyle());
+    assertEquals(SyntaxHighlighterParserUtil.STYLE_PLAIN, codeRow.getCode().get(0).getStyle());
+    assertEquals(SyntaxHighlighterParserUtil.STYLE_STRING, codeRow.getCode().get(1).getStyle());
+    assertEquals(SyntaxHighlighterParserUtil.STYLE_PLAIN, codeRow.getCode().get(2).getStyle());
+    assertEquals(SyntaxHighlighterParserUtil.STYLE_KEYWORD, codeRow.getCode().get(3).getStyle());
+    assertEquals(SyntaxHighlighterParserUtil.STYLE_PLAIN, codeRow.getCode().get(4).getStyle());
 
     codeRow = codeRows.get(9);
     assertEquals(1, codeRow.getCode().size());
