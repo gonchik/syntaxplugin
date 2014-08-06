@@ -15,7 +15,7 @@ public class SyntaxHighlighterMacroUnitTest
     @Test
     public void testExpandRangesWithOnlyRange()
     {
-    	SyntaxHighlighterMacro macro = new SyntaxHighlighterMacro();
+    	SyntaxHighlighterMacro macro = new SyntaxHighlighterMacro(null, null);
     	List<Integer> ret = macro.expandRanges("[1-3]");
     	
 		assertEquals(3, ret.size());
@@ -27,7 +27,7 @@ public class SyntaxHighlighterMacroUnitTest
     @Test
     public void testExpandRangesWithoutRange()
     {
-    	SyntaxHighlighterMacro macro = new SyntaxHighlighterMacro();
+    	SyntaxHighlighterMacro macro = new SyntaxHighlighterMacro(null, null);
     	List<Integer> ret = macro.expandRanges("[1,2]");
     	
         assertEquals(2, ret.size());
@@ -38,7 +38,7 @@ public class SyntaxHighlighterMacroUnitTest
     @Test
     public void testExpandRangesWithMultipleRanges()
     {
-    	SyntaxHighlighterMacro macro = new SyntaxHighlighterMacro();
+    	SyntaxHighlighterMacro macro = new SyntaxHighlighterMacro(null, null);
     	List<Integer> ret = macro.expandRanges("[1-3,5-7]");
     	
         assertEquals(6, ret.size());
@@ -53,7 +53,7 @@ public class SyntaxHighlighterMacroUnitTest
     @Test
     public void testExpandRangesWithSequencesAndRanges()
     {
-    	SyntaxHighlighterMacro macro = new SyntaxHighlighterMacro();
+    	SyntaxHighlighterMacro macro = new SyntaxHighlighterMacro(null, null);
     	List<Integer> ret = macro.expandRanges("[1,2-3,4,5-7]");
     	
         assertEquals(7, ret.size());
@@ -69,7 +69,7 @@ public class SyntaxHighlighterMacroUnitTest
     @Test
     public void testRangeToSequenceWithCorrectRange()
     {
-    	SyntaxHighlighterMacro macro = new SyntaxHighlighterMacro();
+    	SyntaxHighlighterMacro macro = new SyntaxHighlighterMacro(null, null);
     	List<Integer> ret;
     	
     	ret = macro.rangeToSequence("1-2");
@@ -94,7 +94,7 @@ public class SyntaxHighlighterMacroUnitTest
     @Test
     public void testRangeToSequenceWithEmptyRange()
     {
-    	SyntaxHighlighterMacro macro = new SyntaxHighlighterMacro();
+    	SyntaxHighlighterMacro macro = new SyntaxHighlighterMacro(null, null);
     	List<Integer> ret = macro.expandRanges("");
     	
         assertTrue(ret.isEmpty());
@@ -103,7 +103,7 @@ public class SyntaxHighlighterMacroUnitTest
     @Test
     public void testRangeToSequenceWithIllegalRange()
     {
-    	SyntaxHighlighterMacro macro = new SyntaxHighlighterMacro();
+    	SyntaxHighlighterMacro macro = new SyntaxHighlighterMacro(null, null);
     	List<Integer> ret;
     	
     	//start==end
