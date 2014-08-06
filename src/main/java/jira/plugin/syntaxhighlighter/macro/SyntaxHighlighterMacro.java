@@ -28,11 +28,11 @@ import syntaxhighlighter.brush.BrushSql;
 import syntaxhighlighter.brush.BrushVb;
 import syntaxhighlighter.brush.BrushXml;
 
-import com.atlassian.jira.ComponentManager;
 import com.atlassian.renderer.RenderContext;
 import com.atlassian.renderer.v2.RenderMode;
 import com.atlassian.renderer.v2.macro.BaseMacro;
 import com.atlassian.renderer.v2.macro.MacroException;
+import com.atlassian.sal.api.message.I18nResolver;
 import com.atlassian.velocity.VelocityManager;
 
 /**
@@ -48,15 +48,20 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	private static final String TITLE = "title";
 	private static final String FIRST_LINE = "first-line"; //Deprecated
 	private static final String FIRSTLINE = "firstline"; //TODO use instead of first-line, default is 1
-	private static final String HIDE_LINENUM = "hide-linenum"; //TODO no longer used
 	private static final String SHOW_LINENUMS = "linenumbers"; //default is false
 	private static final String COLLAPSE = "collapse"; //default is false
 	/**
 	 * Character ({@value}) used to separate ranges of line numbers.
 	 */
 	private static final String RANGE_SEPARATOR = "-";
+	
+	private final I18nResolver i18nResolver;
+	private final VelocityManager velocityManager;
 
-	//I18nResolver i18nResolver common.concepts.show
+	public SyntaxHighlighterMacro(I18nResolver i18nResolver, VelocityManager velocityManager){
+		this.i18nResolver = i18nResolver;
+		this.velocityManager = velocityManager;
+	}
 	
 	public boolean hasBody() {
 		return true;
@@ -95,13 +100,12 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	    contextParameters.put("codeContainer", tmpCodeContainer);
 	    contextParameters.put("codeTitle", parameters.get(TITLE));
 	    if (getCollapse(parameters)){
-		    contextParameters.put("codeCollapsed", "Show");
+		    contextParameters.put("codeCollapsed", i18nResolver.getText("common.concepts.showall"));
 	    }
 
 	    //Get HTML rendering using velocity templates
-	    VelocityManager tmplManager = ComponentManager.getInstance().getVelocityManager();
 		StringBuffer codeBody = new StringBuffer();
-		codeBody.append(tmplManager.getBody("templates/", "code.vm", contextParameters));
+		codeBody.append(velocityManager.getBody("templates/", "code.vm", contextParameters));
 		
 		return codeBody.toString();
 		
@@ -120,10 +124,14 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	@SuppressWarnings("rawtypes")
 	public int getFirstLine(Map parameters) {
 		try{
-			if ( parameters.containsKey(FIRST_LINE)){
+			if ( parameters.containsKey(FIRSTLINE)){
+				int firstLine = Integer.parseInt(parameters.get(FIRSTLINE).toString());
+				return firstLine;
+			} else if ( parameters.containsKey(FIRST_LINE)){
 				int firstLine = Integer.parseInt(parameters.get(FIRST_LINE).toString());
 				return firstLine;
 			}
+
 		}
 		catch(NumberFormatException e){
 			//TODO Log debug
