@@ -3,26 +3,30 @@
 	<tbody>
 		#if ( $codeTitle )
 		<tr id="syntaxplugin_title">
-			<td style="color: #333; border-bottom: 1px solid #bbb; padding: 5px 15px; background-color: #f5f5f5 !important; font-weight: bold; line-height: 1em;" #if( $codeContainer.showLineNums ) colspan="2"#end>$codeTitle</td>
+			<td bgcolor="#f5f5f5" style="font-family: Arial,sans-serif; color: #333; border-bottom: 1px solid #bbb; padding: 5px 15px; background-color: #f5f5f5 !important; font-weight: bold; line-height: 1em;" #if( $codeContainer.showLineNums ) colspan="2"#end>
+				$codeTitle
+			</td>
 		</tr>
 		#end
 		#if ( $codeCollapsed )
-		<tr id="syntaxplugin_show"><td #if( $codeContainer.showLineNums ) colspan="2"#end style="padding: 5px 15px; background-color: #f5f5f5 !important; line-height: 1em;"><span style="color: #3b73af; cursor: pointer;" onclick="var trs = this.parentNode.parentNode.parentNode.getElementsByTagName('tr'); trs[trs.length -1 ].style.display = 'inline'; this.parentNode.style.display = 'none'; return false;">$codeCollapsed</span></td></tr>
+		<tr id="syntaxplugin_show">
+			<td #if( $codeContainer.showLineNums ) colspan="2"#end bgcolor="#f5f5f5" style="padding: 5px 15px; background-color: #f5f5f5 !important; line-height: 1em;">
+				<span style="color: #3b73af; cursor: pointer;" onclick="var trs = this.parentNode.parentNode.parentNode.getElementsByTagName('tr'); trs[trs.length -1 ].style.display = 'inline'; this.parentNode.style.display = 'none'; return false;">$codeCollapsed</span>
+			</td>
+		</tr>
 		#end
 		<tr id="syntaxplugin_code_and_gutter" #if ( $codeCollapsed ) style="display: none;"#end>
 			#if( $codeContainer.showLineNums )
-			<td style="line-height: 1.4em !important; background-color: #f5f5f5 !important; border-right: 1px solid #ccc !important; color: #707070; text-align: right; width: 2.7em; padding: 1em 0em; vertical-align: top;">
+			<td bgcolor="#f5f5f5" style="line-height: 1.4em !important; background-color: #f5f5f5 !important; border-right: 1px solid #ccc !important; color: #707070; text-align: right; width: 2.7em; padding: 1em 0em; vertical-align: top;">
 			#foreach( $codeRow in $codeContainer.codeRows ) #set ( $lineNum = $velocityCount + $codeContainer.getFirstLine() - 1 )
-				<div style="font-family: monospace; padding: 0 0.5em 0 1em !important;#if( $codeRow.highlighted ) background-color: #6ce26c !important; color: white !important;#end">$lineNum</div>
+				<pre style="margin: 0; font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important; padding: 0 0.5em 0 1em !important;#if( $codeRow.highlighted ) background-color: #6ce26c !important; color: white !important;#end">$lineNum</pre>
 			#end
 			</td>
 			#end
 			<td style="line-height: 1.4em !important; padding: 1em 0em; vertical-align: top;">
-				<div class="syntaxplugin_container">
 				#foreach( $codeRow in $codeContainer.codeRows )
-					<div style="font-family: monospace; padding: 0 1em !important;#if( $codeRow.highlighted ) background-color: #e0e0e0 !important;#end">#if($codeRow.code.size() == 0)&nbsp;#end#foreach( $code in $codeRow.code )<code style="$code.style font-family: monospace; display: inline !important; white-space: pre !important; padding: 0px !important;">$code.text</code>#end</div>
+					<pre style="margin: 0; font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important; padding: 0 1em !important;#if( $codeRow.highlighted ) background-color: #e0e0e0 !important;#end">#if($codeRow.code.size() == 0)&nbsp;#else#foreach( $code in $codeRow.code )<span style="$code.style">$code.text</span>#end#end</pre>
 				#end
-				</div>
 			</td>
 		</tr>
 	</tbody>
