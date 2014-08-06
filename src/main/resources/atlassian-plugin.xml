@@ -6,6 +6,7 @@
 		<vendor name="${project.organization.name}" url="${project.organization.url}" />
 	    <param name="plugin-icon">images/icon_16x16.jpg</param>
 	    <param name="plugin-logo">images/logo_72x72.jpg</param>
+    	<param name="atlassian-data-center-compatible">true</param>
 	</plugin-info>
 
 	<macro key='code' name='Syntax Highlighter {code} formatting macro'
@@ -16,7 +17,8 @@
 		class='jira.plugin.syntaxhighlighter.macro.SyntaxHighlighterNoformatMacro'>
 		<description>Advanced layout for plain text blocks in your descriptions, comments etc.</description>
 	</macro>
-
+	<component-import key="i18nResolver" interface="com.atlassian.sal.api.message.I18nResolver"/>
+	
 	<component-import key="eventPublisher" interface="com.atlassian.event.api.EventPublisher" name="Event Publisher component"/>
 	<component key="init" class="jira.plugin.syntaxhighlighter.macro.SyntaxHighlighterInstallationSupport"
 		name="Syntax Highlighter installation support module">
