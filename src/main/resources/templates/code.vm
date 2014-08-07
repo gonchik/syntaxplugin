@@ -1,24 +1,26 @@
 <div id="syntaxplugin" class="syntaxplugin" style="margin: 1em 0em; overflow: scroll; border: 1px dashed #bbb; border-radius: 5px !important;">
 <table cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 1em; line-height: 1.4em !important; font-weight: normal; font-style: normal; color: black;">
-	#if ( $codeTitle )
+	#if ( $codeTitle || $codeCollapsed )
 	<thead>
+	#if ( $codeTitle )
 		<tr id="syntaxplugin_title">
 			<td bgcolor="#f5f5f5" style="font-family: Arial,sans-serif; color: #333; border-bottom: 1px solid #bbb; background-color: #f5f5f5 !important; font-weight: bold; line-height: 1em;" #if( $codeContainer.showLineNums ) colspan="2"#end>
 				<p style="margin: 5px 15px; ">$codeTitle</p>
 			</td>
 		</tr>
+	#end
+	#if ( $codeCollapsed )
+	<tr id="syntaxplugin_show">
+		<td #if( $codeContainer.showLineNums ) colspan="2"#end bgcolor="#f5f5f5" style="background-color: #f5f5f5 !important; line-height: 1em;">
+			<p style="margin: 5px 15px; color: #3b73af; cursor: pointer;" onclick="var tbody = this.parentNode.parentNode.parentNode.parentNode.getElementsByTagName('tbody'); tbody[tbody.length -1].style.display = 'inline'; this.parentNode.parentNode.style.display = 'none'; return false;">$codeCollapsed</p>
+		</td>
+	</tr>
+	#end
 	</thead>
 	#end
-	<tbody>
-		#if ( $codeCollapsed )
-		<tr id="syntaxplugin_show">
-			<td #if( $codeContainer.showLineNums ) colspan="2"#end bgcolor="#f5f5f5" style="background-color: #f5f5f5 !important; line-height: 1em;">
-				<p style="margin: 5px 15px; color: #3b73af; cursor: pointer;" onclick="var trs = this.parentNode.parentNode.parentNode.getElementsByTagName('tr'); trs[trs.length -1 ].style.display = 'inline'; this.parentNode.style.display = 'none'; return false;">$codeCollapsed</p>
-			</td>
-		</tr>
-		#end
+	<tbody  #if ( $codeCollapsed ) style="display: none;"#end>
 		#foreach( $codeRow in $codeContainer.codeRows ) 
-		<tr id="syntaxplugin_code_and_gutter" #if ( $codeCollapsed ) style="display: none;"#end>
+		<tr id="syntaxplugin_code_and_gutter">
 			#if( $codeContainer.showLineNums )
 			<td bgcolor="#f5f5f5" style="#if( $codeRow.highlighted ) background-color: #6ce26c !important; #else background-color: #f5f5f5 !important; #end line-height: 1.4em !important; border-right: 1px solid #ccc !important; text-align: right; width: 2.7em; padding: 0em; vertical-align: top;">
 			#set ( $lineNum = $velocityCount + $codeContainer.getFirstLine() - 1 )
