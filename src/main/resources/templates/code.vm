@@ -22,13 +22,13 @@
 		#foreach( $codeRow in $codeContainer.codeRows ) 
 		<tr id="syntaxplugin_code_and_gutter">
 			#if( $codeContainer.showLineNums )
-			<td bgcolor="#f5f5f5" style="#if( $codeRow.highlighted ) background-color: #6ce26c !important; #else background-color: #f5f5f5 !important; #end line-height: 1.4em !important; border-right: 1px solid #ccc !important; text-align: right; width: 2.7em; padding: 0em; vertical-align: top;">
+			<td #if( $codeRow.highlighted ) bgcolor="#6ce26c" #else bgcolor="#f5f5f5" #end style="#if( $codeRow.highlighted ) background-color: #6ce26c !important; #else background-color: #f5f5f5 !important; #end line-height: 1.4em !important; border-right: 1px solid #ccc !important; text-align: right; width: 2.7em; padding: 0em; vertical-align: top;">
 			#set ( $lineNum = $velocityCount + $codeContainer.getFirstLine() - 1 )
-				<pre style="#if( $codeRow.highlighted ) color: white !important; #else color: #707070; #end font-size: 1em; font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important; margin: 0 0.5em 0 1em !important;">$lineNum</pre>
+				<pre style="#if( $codeRow.highlighted ) color: white !important; #else color: #707070; #end font-size: 1em; width: auto; font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important; margin: 0 0.5em 0 1em !important;">$lineNum</pre>
 			</td>
 			#end
-			<td style="#if( $codeRow.highlighted ) background-color: #e0e0e0 !important;#end line-height: 1.4em !important; padding: 0em; vertical-align: top;">
-					<pre style="font-size: 1em; margin: 0 1em !important;">#if($codeRow.code.size() == 0)&nbsp;#else#foreach( $code in $codeRow.code )<span style="$code.style font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important;">$code.text</span>#end#end</pre>
+			<td #if( $codeRow.highlighted ) bgcolor="#e0e0e0" #end style="#if( $codeRow.highlighted ) background-color: #e0e0e0 !important;#end line-height: 1.4em !important; padding: 0em; vertical-align: top;">
+					<pre style="font-size: 1em; margin: 0 1em !important;">#if($codeRow.code.size() == 0)&nbsp;#else#foreach( $code in $codeRow.code )<span style="$code.style width:auto; font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important;">$code.text</span>#end#end</pre>
 			</td>
 		</tr>
 		#end
