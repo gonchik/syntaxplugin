@@ -22,7 +22,7 @@
 			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,		css: 'string' },		// single quoted strings
 			{ regex: new RegExp(this.getKeywords(keywords), 'gm'),		css: 'keyword' },		// keywords
 			{ regex: new RegExp(this.getKeywords(builtins), 'gm'),		css: 'color1' },		// builtins
-			{ regex: /$[\{\}\w:]+/g,									css: 'variable bold'}   // variables, also with ${var} interpolation
+			{ regex: /\$[\{\}\w_:]+/g,									css: 'variable bold'}   // variables, also with ${var} interpolation
 			];
 
 		this.forHtmlScript(SyntaxHighlighter.regexLib.aspScriptTags);
