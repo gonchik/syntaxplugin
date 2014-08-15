@@ -43,6 +43,7 @@ The following languages are supported.
 *    Bash {code:bash} resp. Shell {code:sh}
 *    Diff {code:diff}
 *    Gherkin syntax {code:gherkin}
+*    Puppet code {code:puppet} or {code:pp}
 
 Also highlighting of single or multiple lines is supported by using e.g.
 

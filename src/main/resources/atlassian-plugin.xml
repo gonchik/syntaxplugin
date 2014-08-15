@@ -57,6 +57,7 @@
         <resource type="download" name="shBrushScala.js" location="scripts/shBrushScala.js" />
         <resource type="download" name="shBrushBash.js" location="scripts/shBrushBash.js" />
         <resource type="download" name="shBrushDelphi.js" location="scripts/shBrushDelphi.js" />
+        <resource type="download" name="shBrushPuppet.js" location="scripts/shBrushPuppet.js" />
         <context>atl.general</context>
     </web-resource>
 </atlassian-plugin>
