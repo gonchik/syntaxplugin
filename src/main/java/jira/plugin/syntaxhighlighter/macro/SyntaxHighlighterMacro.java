@@ -27,6 +27,8 @@ import syntaxhighlighter.brush.BrushScala;
 import syntaxhighlighter.brush.BrushSql;
 import syntaxhighlighter.brush.BrushVb;
 import syntaxhighlighter.brush.BrushXml;
+import syntaxhighlighter.brush.custom.BrushD;
+import syntaxhighlighter.brush.custom.BrushObjC;
 
 import com.atlassian.renderer.RenderContext;
 import com.atlassian.renderer.v2.RenderMode;
@@ -304,20 +306,18 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 					) {
 				return new BrushDelphi();
 			}
-			//TODO DI
-//			else if (
-//					"d".equals(tmpParam) || 
-//					"di".equals(tmpParam)
-//					) {
-//				tmpMode = "d";
-//			}
-			//TODO Objective-C
-//			else if (
-//					"objc".equals(tmpParam) || 
-//					"obj-c".equals(tmpParam)  
-//					) {
-//				tmpMode = "objc";
-//			}
+			else if (
+					"d".equals(tmpParam) || 
+					"di".equals(tmpParam)
+					) {
+				return new BrushD();
+			}
+			else if (
+					"objc".equals(tmpParam) || 
+					"obj-c".equals(tmpParam)  
+					) {
+				return new BrushObjC();
+			}
 			else if (
 					"js".equals(tmpParam) || 
 					"javascript".equals(tmpParam) || 
