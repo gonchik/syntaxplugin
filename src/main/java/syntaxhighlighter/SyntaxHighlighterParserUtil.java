@@ -17,14 +17,14 @@ public class SyntaxHighlighterParserUtil {
 	public static final String STYLE_CONSTANTS = "color: #0066cc;";
 	public static final String STYLE_FUNCTIONS = "color: #ff1493;";
 	public static final String STYLE_VALUE = "color: #009900;";
-	public static final String STYLE_VARIABLE = "color: #aa7700;";
+	public static final String STYLE_VARIABLE = "color: #c11b17;";
 	public static final String STYLE_PREPROCESSOR = "color: gray;";
 	public static final String STYLE_KEYWORD = "color: #006699; font-weight: bold;";
 	public static final String STYLE_STRING = "color: blue;";
 	public static final String STYLE_COMMENTS = "color: #008200;";
 	public static final String STYLE_PLAIN = "color: black;";
 	public static final String STYLE_COLOR1 = STYLE_PREPROCESSOR;
-	public static final String STYLE_COLOR2 = STYLE_FUNCTIONS;
+	public static final String STYLE_COLOR2 = "color: #2B91AF;";
 	public static final String STYLE_COLOR3 = "color: red;";
 	
 
