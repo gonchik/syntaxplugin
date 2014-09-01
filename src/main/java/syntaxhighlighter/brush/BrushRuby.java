@@ -49,9 +49,7 @@ public class BrushRuby extends Brush {
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleQuotedString, "string")); // single quoted strings
     _regExpRuleList.add(new RegExpRule("\\b[A-Z0-9_]+\\b", "constants")); // constants
     _regExpRuleList.add(new RegExpRule(":[a-z][A-Za-z0-9_]*", "color2")); // symbols
-    RegExpRule _regExpRule = new RegExpRule("(\\$|@@|@)\\w+", "variable");
-    _regExpRule.setBold(true);
-    _regExpRuleList.add(_regExpRule); // $global, @instance, and @@class variables
+    _regExpRuleList.add(new RegExpRule("(\\$|@@|@)\\w+", "variable"));
     _regExpRuleList.add(new RegExpRule(getKeywords(keywords), Pattern.MULTILINE, "keyword")); // keywords
     _regExpRuleList.add(new RegExpRule(getKeywords(builtins), Pattern.MULTILINE, "color1")); // builtins
     setRegExpRuleList(_regExpRuleList);

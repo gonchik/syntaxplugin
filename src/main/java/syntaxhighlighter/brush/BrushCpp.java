@@ -92,15 +92,10 @@ public class BrushCpp extends Brush {
     _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string")); // strings
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleQuotedString, "string")); // strings
     _regExpRuleList.add(new RegExpRule("^ *#.*", Pattern.MULTILINE, "preprocessor"));
-    RegExpRule _regExpRule = new RegExpRule(getKeywords(datatypes), Pattern.MULTILINE, "color1");
-    _regExpRule.setBold(true);
-    _regExpRuleList.add(_regExpRule);
-    _regExpRule = new RegExpRule(getKeywords(functions), Pattern.MULTILINE, "functions");
-    _regExpRule.setBold(true);
-    _regExpRuleList.add(_regExpRule);
-    _regExpRule = new RegExpRule(getKeywords(keywords), Pattern.MULTILINE, "keyword");
-    _regExpRule.setBold(true);
-    _regExpRuleList.add(_regExpRule);
+    _regExpRuleList.add(new RegExpRule(getKeywords(datatypes), Pattern.MULTILINE, "keyword"));
+    _regExpRuleList.add(new RegExpRule(getKeywords(functions), Pattern.MULTILINE, "functions"));
+    _regExpRuleList.add(new RegExpRule(getKeywords(keywords), Pattern.MULTILINE, "keyword"));
+    
     setRegExpRuleList(_regExpRuleList);
 
     setCommonFileExtensionList(Arrays.asList("c", "cpp"));

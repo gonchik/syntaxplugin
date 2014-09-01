@@ -144,13 +144,7 @@ public class SyntaxHighlighterParser {
     for (List<MatchResult> resultList : parsedResult.values()) {
       for (MatchResult result : resultList) {
         List<String> styleKeyList = null;
-        if (result.isBold() == Boolean.TRUE) {
-          styleKeyList = new ArrayList<String>(2);
-          styleKeyList.add(result.getStyleKey());
-          styleKeyList.add("bold");
-        } else {
-          styleKeyList = Arrays.asList(new String[]{result.getStyleKey()});
-        }
+        styleKeyList = Arrays.asList(new String[]{result.getStyleKey()});
         returnList.add(new ParseResult(result.getOffset(), result.getLength(), styleKeyList));
       }
     }

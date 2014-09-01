@@ -94,11 +94,11 @@ public class SyntaxHighlighter {
         } else if (_end <= end) {
           // overlap with the start
           // remove the style within the range and remain those without the range
-          iterator.set(new MatchResult(_start, start - _start, match.getStyleKey(), match.isBold()));
+          iterator.set(new MatchResult(_start, start - _start, match.getStyleKey()));
         } else if (_start >= start) {
           // overlap with the end
           // remove the style within the range and remain those without the range
-          iterator.set(new MatchResult(end, _end - end, match.getStyleKey(), match.isBold()));
+          iterator.set(new MatchResult(end, _end - end, match.getStyleKey()));
         }
       }
     }
@@ -161,7 +161,7 @@ public class SyntaxHighlighter {
 
             // the left tag of HTML-Script
             int start = matcher.start(1) + offset, end = matcher.end(1) + offset;
-            addMatch(matches, new MatchResult(start, end - start, "script", false));
+            addMatch(matches, new MatchResult(start, end - start, "script"));
 
             // the content of HTML-Script, parse it using the HTML-Script brush
             start = matcher.start(2) + offset;
@@ -171,7 +171,7 @@ public class SyntaxHighlighter {
             // the right tag of HTML-Script
             start = matcher.start(3) + offset;
             end = matcher.end(3) + offset;
-            addMatch(matches, new MatchResult(start, end - start, "script", false));
+            addMatch(matches, new MatchResult(start, end - start, "script"));
           }
         }
       }
@@ -213,7 +213,7 @@ public class SyntaxHighlighter {
 
         if (operation instanceof String) {
           // add the style to the match
-          addMatch(matches, new MatchResult(start, end - start, (String) operation, regExpRule.getBold()));
+          addMatch(matches, new MatchResult(start, end - start, (String) operation));
         } else {
           // parse the result using the <code>operation</code> RegExpRule
           parse(matches, (RegExpRule) operation, content, start, end - start);

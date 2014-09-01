@@ -39,12 +39,6 @@ public class MatchResult {
    * The style key for this matched result, see {@link syntaxhighlighter.theme}.
    */
   private String styleKey;
-  /**
-   * Indicate whether this match should be bolded or not.
-   * This will override the 'bold' setting of the style (by styleKey).
-   * If it is null, there will be nothing done on the 'bold' of the style.
-   */
-  private Boolean bold;
 
   /**
    * Constructor.
@@ -53,17 +47,14 @@ public class MatchResult {
    * @param length the length of the matched result.
    * @param styleKey the style key for this matched result, cannot be null, see 
    * {@link syntaxhighlighter.theme}
-   * @param bold indicate whether this match should be bolded or not, for 
-   * details see {@link #bold}
    */
-  protected MatchResult(int offset, int length, String styleKey, Boolean bold) {
+  protected MatchResult(int offset, int length, String styleKey) {
     if (styleKey == null) {
       throw new NullPointerException("argument 'styleKey' cannot be null");
     }
     this.offset = offset;
     this.length = length;
     this.styleKey = styleKey;
-    this.bold = bold;
   }
 
   /**
@@ -106,17 +97,6 @@ public class MatchResult {
     return styleKey;
   }
 
-  /**
-   * Indicate whether this match should be bolded or not.
-   * This will override the 'bold' setting of the style (by styleKey).
-   * If it is null, there will be nothing done on the 'bold' of the style.
-   * @return true to bold, false not bold, null means not set (no action to 
-   * take)
-   */
-  public Boolean isBold() {
-    return bold;
-  }
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -127,8 +107,6 @@ public class MatchResult {
     sb.append(length);
     sb.append(", ");
     sb.append(styleKey);
-    sb.append(", ");
-    sb.append(bold);
     sb.append("]");
 
     return sb.toString();

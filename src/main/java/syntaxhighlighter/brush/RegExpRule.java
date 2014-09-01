@@ -83,11 +83,6 @@ public class RegExpRule {
    * </p>
    */
   protected Map<Integer, Object> groupOperations;
-  /**
-   * Set 'bold the matched results' or not. Null means don't set this, remain 
-   * default.
-   */
-  protected Boolean bold;
 
   /**
    * Constructor.
@@ -203,24 +198,6 @@ public class RegExpRule {
   }
 
   /**
-   * Get whether bold the matched result or not.
-   * @return true means bold it, false means dun bold, null mean neither bold 
-   * nor not bold (remain default)
-   */
-  public Boolean getBold() {
-    return bold;
-  }
-
-  /**
-   * Set bold the matched results or not. Null means remain default.
-   * @param bold true means bold it, false means dun bold, null mean neither 
-   * bold nor not bold (remain default)
-   */
-  public void setBold(Boolean bold) {
-    this.bold = bold;
-  }
-
-  /**
    * {@inheritDoc}
    */
   @Override
@@ -237,9 +214,6 @@ public class RegExpRule {
     sb.append(", ");
     sb.append("getGroupOperations: ");
     sb.append(getGroupOperations());
-    sb.append(", ");
-    sb.append("bold: ");
-    sb.append(getBold());
 
     return sb.toString();
   }
