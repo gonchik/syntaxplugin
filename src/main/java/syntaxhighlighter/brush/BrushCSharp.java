@@ -34,7 +34,7 @@ public class BrushCSharp extends Brush {
   public BrushCSharp() {
     super();
 
-    String keywords = "abstract as base bool break byte case catch char checked class const "
+    String keywords = "abstract as async await base bool break byte case catch char checked class const "
             + "continue decimal default delegate do double else enum event explicit "
             + "extern false finally fixed float for foreach get goto if implicit in int "
             + "interface internal is lock long namespace new null object operator out "
