@@ -69,10 +69,10 @@ public class BrushPhp extends Brush {
             + "strpos strptime strrchr strrev strripos strrpos strspn strstr strtok strtolower strtotime "
             + "strtoupper strtr strval substr substr_compare";
     String keywords = "abstract and array as break case catch cfunction class clone const continue declare default die do "
-            + "else elseif enddeclare endfor endforeach endif endswitch endwhile extends final for foreach "
+            + "else elseif enddeclare endfor endforeach endif endswitch endwhile extends final finally for foreach "
             + "function include include_once global goto if implements interface instanceof namespace new "
             + "old_function or private protected public return require require_once static switch "
-            + "throw try use var while xor";
+            + "throw try use var while xor yield";
     String constants = "__FILE__ __LINE__ __METHOD__ __FUNCTION__ __CLASS__";
 
     List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
