@@ -1,4 +1,4 @@
-<div id="syntaxplugin" class="syntaxplugin" style="margin: 1em 0em; overflow: scroll; border: 1px dashed #bbb; border-radius: 5px !important;">
+<div id="syntaxplugin" class="syntaxplugin" style="width: 98%; margin: 1em 0em; overflow: scroll; border: 1px dashed #bbb; border-radius: 5px !important;">
 <table cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 1em; line-height: 1.4em !important; font-weight: normal; font-style: normal; color: black;">
 	#if ( $codeTitle || $codeCollapsed )
 	<thead>
@@ -24,11 +24,11 @@
 			#if( $codeContainer.showLineNums )
 			<td #if( $codeRow.highlighted ) bgcolor="#6ce26c" #else bgcolor="#f5f5f5" #end style="#if( $codeRow.highlighted ) background-color: #6ce26c !important; #else background-color: #f5f5f5 !important; #end line-height: 1.4em !important; border-right: 1px solid #bbb; text-align: right; width: 2.7em; padding: 0em; vertical-align: top;">
 			#set ( $lineNum = $velocityCount + $codeContainer.getFirstLine() - 1 )
-				<pre style="font-size: 1em; margin: 0 0.5em 0 1em !important; width: auto;"><span style="#if( $codeRow.highlighted ) color: white; #else color: #707070; #end font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important; margin: 0 0.5em 0 1em !important;">$lineNum</span></pre>
+				<pre style="font-size: 1em; padding: 0 1em !important; width: auto;"><span style="#if( $codeRow.highlighted ) color: white; #else color: #707070; #end font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important;">$lineNum</span></pre>
 			</td>
 			#end
 			<td #if( $codeRow.highlighted ) bgcolor="#e0e0e0" #end style="#if( $codeRow.highlighted ) background-color: #e0e0e0 !important;#end line-height: 1.4em !important; padding: 0em; vertical-align: top;">
-					<pre style="font-size: 1em; margin: 0 1em !important; width: auto;">#if($codeRow.code.size() == 0)&nbsp;#else#foreach( $code in $codeRow.code )<span style="$code.style font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important;">$code.text</span>#end#end</pre>
+					<pre style="font-size: 1em; padding: 0 1em !important; width: auto;">#if($codeRow.code.size() == 0)&nbsp;#else#foreach( $code in $codeRow.code )<span style="$code.style font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important;">$code.text</span>#end#end</pre>
 			</td>
 		</tr>
 		#end
