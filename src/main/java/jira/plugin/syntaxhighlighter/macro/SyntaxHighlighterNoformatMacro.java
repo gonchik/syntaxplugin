@@ -2,6 +2,12 @@ package jira.plugin.syntaxhighlighter.macro;
 
 import java.util.Map;
 
+import com.atlassian.sal.api.message.I18nResolver;
+import com.atlassian.velocity.VelocityManager;
+
+import syntaxhighlighter.brush.Brush;
+import syntaxhighlighter.brush.BrushPlain;
+
 /**
  * Copyright (c) 2012, 2013, 2014 by Holger Schimanski
  * 
@@ -11,6 +17,9 @@ import java.util.Map;
 **/
 public class SyntaxHighlighterNoformatMacro extends SyntaxHighlighterMacro {
 
+	public SyntaxHighlighterNoformatMacro(I18nResolver i18nResolver, VelocityManager velocityManager){
+		super(i18nResolver, velocityManager);
+	}
 	/**
 	 * Returns plain as brush to use for {noformat} macro. 
 	 * 
@@ -19,8 +28,8 @@ public class SyntaxHighlighterNoformatMacro extends SyntaxHighlighterMacro {
 	 */
 	@SuppressWarnings("rawtypes")
 	@Override
-	public String getBrush(Map parameters) {
-		return "brush: plain; ";
+	public Brush getBrush(Map parameters) {
+		return new BrushPlain();
 	}
 
 	

@@ -1,14 +1,41 @@
 package jira.plugin.syntaxhighlighter.macro;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import com.atlassian.jira.ComponentManager;
-import com.atlassian.plugin.webresource.UrlMode;
-import com.atlassian.plugin.webresource.WebResourceManager;
+import syntaxhighlighter.SyntaxHighlighterParserUtil;
+import syntaxhighlighter.beans.CodeContainer;
+import syntaxhighlighter.brush.Brush;
+import syntaxhighlighter.brush.BrushBash;
+import syntaxhighlighter.brush.BrushCSharp;
+import syntaxhighlighter.brush.BrushCpp;
+import syntaxhighlighter.brush.BrushCss;
+import syntaxhighlighter.brush.BrushDelphi;
+import syntaxhighlighter.brush.BrushDiff;
+import syntaxhighlighter.brush.BrushErlang;
+import syntaxhighlighter.brush.BrushJScript;
+import syntaxhighlighter.brush.BrushJava;
+import syntaxhighlighter.brush.BrushJavaFX;
+import syntaxhighlighter.brush.BrushPerl;
+import syntaxhighlighter.brush.BrushPhp;
+import syntaxhighlighter.brush.BrushPlain;
+import syntaxhighlighter.brush.BrushPython;
+import syntaxhighlighter.brush.BrushRuby;
+import syntaxhighlighter.brush.BrushScala;
+import syntaxhighlighter.brush.BrushSql;
+import syntaxhighlighter.brush.BrushVb;
+import syntaxhighlighter.brush.BrushXml;
+import syntaxhighlighter.brush.custom.BrushD;
+import syntaxhighlighter.brush.custom.BrushObjC;
+
 import com.atlassian.renderer.RenderContext;
 import com.atlassian.renderer.v2.RenderMode;
 import com.atlassian.renderer.v2.macro.BaseMacro;
 import com.atlassian.renderer.v2.macro.MacroException;
+import com.atlassian.sal.api.message.I18nResolver;
+import com.atlassian.velocity.VelocityManager;
 
 /**
  * Copyright (c) 2012, 2013, 2014 by Holger Schimanski
@@ -21,13 +48,23 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 
 	private static final String HIGHLIGHT = "highlight";
 	private static final String TITLE = "title";
-	private static final String FIRST_LINE = "first-line";
-	private static final String HIDE_LINENUM = "hide-linenum";
+	private static final String FIRST_LINE = "first-line"; //Deprecated
+	private static final String FIRSTLINE = "firstline"; //TODO use instead of first-line, default is 1
+	private static final String SHOW_LINENUMS = "linenumbers"; //default is false
+	private static final String COLLAPSE = "collapse"; //default is false
 	/**
 	 * Character ({@value}) used to separate ranges of line numbers.
 	 */
-	private static final char RANGE_SEPARATOR = '-';
+	private static final String RANGE_SEPARATOR = "-";
+	
+	private final I18nResolver i18nResolver;
+	private final VelocityManager velocityManager;
 
+	public SyntaxHighlighterMacro(I18nResolver i18nResolver, VelocityManager velocityManager){
+		this.i18nResolver = i18nResolver;
+		this.velocityManager = velocityManager;
+	}
+	
 	public boolean hasBody() {
 		return true;
 	}
@@ -41,71 +78,91 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public String execute(Map parameters, String body,
-			RenderContext renderContext) throws MacroException {
+	public String execute(Map parameters, String body, RenderContext renderContext) throws MacroException {
 
-		StringBuffer tmpBuffer = new StringBuffer();
+		//Syntax highlighting with brush
+		Brush tmpBrush = getBrush(parameters);
+	    CodeContainer tmpCodeContainer = SyntaxHighlighterParserUtil.brush(body, tmpBrush);
+	    
+	    //First line and hide line num parameter
+	    tmpCodeContainer.setShowLineNums(getShowLineNums(parameters));
+	    tmpCodeContainer.setFirstLine(getFirstLine(parameters));
+
+	    //Highlighting of code rows
+	    List<Integer> highlighted = getHighlight(parameters);
+	    for (Integer tmpLineNumHighlighted : highlighted) {
+	    	int tmpCodeRowNumHighlighted = tmpLineNumHighlighted.intValue() - tmpCodeContainer.getFirstLine();
+	    	if ( tmpCodeRowNumHighlighted < tmpCodeContainer.getCodeRows().size() ){
+	    		tmpCodeContainer.getCodeRows().get(tmpCodeRowNumHighlighted).setHighlighted(true);
+	    	}
+	    }
+	    
+	    //Put code container as param for velocity
+	    Map<String,Object> contextParameters = new HashMap<String,Object>();
+	    contextParameters.put("codeContainer", tmpCodeContainer);
+	    contextParameters.put("codeTitle", parameters.get(TITLE));
+	    if (getCollapse(parameters)){
+		    contextParameters.put("codeCollapsed", i18nResolver.getText("common.concepts.showall"));
+	    }
+
+	    //Get HTML rendering using velocity templates
+		StringBuffer codeBody = new StringBuffer();
+		codeBody.append(velocityManager.getBody("templates/", "code.vm", contextParameters));
 		
-		//Title
-		if (parameters.containsKey(TITLE)){
-			tmpBuffer.append("<div style='margin-left: 1em; margin-top:1em;'><div class='syntaxhighlighter'><code>");
-			tmpBuffer.append(parameters.get(TITLE).toString());
-			tmpBuffer.append("</code></div></div>");
-		}
-		
-		//Code		
-		tmpBuffer.append("<div style='margin-left: 1em;'>");
-		tmpBuffer.append("<pre class='" + 
-				getBrush(parameters) + 
-				getFirstLine(parameters) + 
-				getHighlight(parameters) + 
-				getHideLineNum(parameters) + 
-				"toolbar: false; auto-links: false;'>");
-		tmpBuffer.append(body);
-		tmpBuffer.append("</pre>");
-		tmpBuffer.append("<img onload='SyntaxHighlighter.highlight();' style='display:none;' " +
-				"src='" + getBlankImageUrl() + "'/>");
-		tmpBuffer.append("</div>");
-		
-		return tmpBuffer.toString();
+		return codeBody.toString();
 		
 	}
 	
-	public String getBlankImageUrl(){
-		WebResourceManager tmpWebResourceManager = ComponentManager.getInstance().getWebResourceManager();
-		String url = tmpWebResourceManager.getStaticPluginResource("jira.plugin.syntaxhighlighter.macro.syntaxplugin:images", "blank.png", UrlMode.AUTO);
-		
-		return url;
-	}
-
 	@SuppressWarnings("rawtypes")
-	public String getHighlight(Map parameters) {
+	public List<Integer> getHighlight(Map parameters) {
+		List<Integer> ret = new ArrayList<Integer>();
 		if ( parameters.containsKey(HIGHLIGHT)){
 			String paramValue = parameters.get(HIGHLIGHT).toString();
-			paramValue = expandRanges(paramValue);
-			return HIGHLIGHT + " : " + paramValue + "; ";
-		} else {
-			return "";
+			ret.addAll(expandRanges(paramValue));
 		}
+		return ret;
 	}	
 
 	@SuppressWarnings("rawtypes")
-	public String getFirstLine(Map parameters) {
-		if ( parameters.containsKey(FIRST_LINE)){
-			return FIRST_LINE + " : " + parameters.get(FIRST_LINE) + "; ";
-		} else {
-			return "";
+	public int getFirstLine(Map parameters) {
+		try{
+			if ( parameters.containsKey(FIRSTLINE)){
+				int firstLine = Integer.parseInt(parameters.get(FIRSTLINE).toString());
+				return firstLine;
+			} else if ( parameters.containsKey(FIRST_LINE)){
+				int firstLine = Integer.parseInt(parameters.get(FIRST_LINE).toString());
+				return firstLine;
+			}
+
 		}
+		catch(NumberFormatException e){
+			//TODO Log debug
+		}
+		
+		return 1;
 	}	
 
+	
 	@SuppressWarnings("rawtypes")
-	public String getHideLineNum(Map parameters) {
-		if ( parameters.containsValue(HIDE_LINENUM) || 
-				( parameters.containsKey(HIDE_LINENUM) && parameters.get(HIDE_LINENUM).equals("true") ) ||
-				( parameters.containsKey(HIDE_LINENUM) && parameters.get(HIDE_LINENUM).equals("yes") ) ){
-			return "gutter : false; ";
+	public boolean getCollapse(Map parameters) {
+		if ( parameters.containsValue(COLLAPSE) || 
+				( parameters.containsKey(COLLAPSE) && parameters.get(COLLAPSE).equals("true") ) ||
+				( parameters.containsKey(COLLAPSE) && parameters.get(COLLAPSE).equals("yes") ) ){
+			return true;
 		} else {
-			return "";
+			return false;
+		}
+	}	
+	
+	
+	@SuppressWarnings("rawtypes")
+	public boolean getShowLineNums(Map parameters) {
+		if ( parameters.containsValue(SHOW_LINENUMS) || 
+				( parameters.containsKey(SHOW_LINENUMS) && parameters.get(SHOW_LINENUMS).equals("true") ) ||
+				( parameters.containsKey(SHOW_LINENUMS) && parameters.get(SHOW_LINENUMS).equals("yes") ) ){
+			return true;
+		} else {
+			return false;
 		}
 	}	
 	
@@ -119,66 +176,59 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	 * @return ranges with all ranges expanded to sequences. Any other token
 	 *         will remain unchanged.
 	 */
-	public String expandRanges(String ranges) {
+	public List<Integer> expandRanges(String ranges) {
 		String[] parts;
-		String ret = "";
+		List<Integer> ret = new ArrayList<Integer>();
+		
+		if (ranges.isEmpty()) return ret;
 		
 		if (ranges.startsWith("[") && ranges.endsWith("]")) {
-			parts = ranges.substring(1, ranges.length()-1).split(",");
-			for (String part : parts) {
-				if (part.indexOf(RANGE_SEPARATOR) > -1) {
-					if (ret.length() > 0) {ret += ",";};
-					ret += rangeToSequence(part);
-				} else {
-					if (ret.length() > 0) {ret += ",";};
-					ret += part;
-				}
+			ranges = ranges.substring(1, ranges.length()-1);
+		} 
+		parts = ranges.split(",");
+		for (String part : parts) {
+			if (part.contains(RANGE_SEPARATOR)) {
+				ret.addAll(rangeToSequence(part));
+			} else {
+				ret.add(new Integer(part));
 			}
-			return "[" + ret + "]";
-		} else {
-			return ranges;
 		}
+		return ret;
+		
+		//TODO Log.debug Number format exception
 	}
 	
 	/**
 	 * Makes a sequence of numbers out of a given range. For Example, "1-3" will
 	 * produce "1,2,3". A valid range consists of two numbers separated by the
-	 * {@link #RANGE_SEPARATOR}. The second number has to greater than the first.
+	 * {@link #RANGE_SEPARATOR}. The second number has to be greater than the first.
 	 * 
-	 * @param range
-	 *            The range the sequence should be made of.
-	 * @return A comma-separated list of numbers or the value of range if any
-	 *         error occurs.
+	 * @param range String representation of the range to expand to sequence
+	 * @return A list of Integers or an empty list if any error occurs.
 	 */
-	public String rangeToSequence(String range) {
+	public List<Integer> rangeToSequence(String range) {
 		String[] parts;
-		String ret = "";
+		List<Integer> ret = new ArrayList<Integer>();
 		int sequenceStart, sequenceEnd;
 		
 		parts = range.split(String.valueOf(RANGE_SEPARATOR));
 		
-		if (parts.length == 2) {
-			try {  
+		try {
+			if (parts.length == 2) {
 				sequenceStart = Integer.parseInt(parts[0]);
 				sequenceEnd = Integer.parseInt(parts[1]);
-			}  
-			catch(NumberFormatException nfe) {  
-				return range;
-			}
-			
-			if (sequenceStart < sequenceEnd) {
-				for (int i = sequenceStart; i < sequenceEnd; i++) {
-					ret += String.valueOf(i) + ",";
+
+				for (int i = sequenceStart; i <= sequenceEnd; i++) {
+					ret.add(new Integer(i));
 				}
-				ret += String.valueOf(sequenceEnd);
-				
-				return ret;
 			} else {
-				return range;
+				//TODO log.debug wrong string
 			}
-		} else {
-			return range;
+		} catch (NumberFormatException nfe) {
+			// TODO Log debug numberformat exception
 		}
+
+		return ret;
 	}
 	
 	
@@ -190,81 +240,102 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	 * @return brush name
 	 */
 	@SuppressWarnings("rawtypes")
-	public String getBrush(Map parameters) {
-		
-		String tmpMode = "plain";
+	public Brush getBrush(Map parameters) {
 		
 		if (parameters.containsKey("0")) {
 			String tmpParam = (String) parameters.get("0");
-			if ( 
-					"gherkin".equals(tmpParam) || 
-					"erlang".equals(tmpParam) || 
-					"diff".equals(tmpParam) || 					
-					"sql".equals(tmpParam) || 
-					"css".equals(tmpParam) || 
-					"php".equals(tmpParam) || 
-					"ruby".equals(tmpParam) || 
-					"perl".equals(tmpParam) || 
-					"javafx".equals(tmpParam) || 
-					"java".equals(tmpParam) ||
-					"tcl".equals(tmpParam) ||
-					"scala".equals(tmpParam) ||
-					"bash".equals(tmpParam) ||
-					"puppet".equals(tmpParam)
-					) {
-				tmpMode = (String) parameters.get("0");
+			if ( "erlang".equals(tmpParam) ) {
+				return new BrushErlang();
 			}
+			else if ( "diff".equals(tmpParam) ) {
+				return new BrushDiff();
+			}
+			else if ( "sql".equals(tmpParam) ) {
+				return new BrushSql();
+			}
+			else if ( "css".equals(tmpParam) ) {
+				return new BrushCss();
+			}
+			else if ( "php".equals(tmpParam) ) {
+				return new BrushPhp();
+			}
+			else if ( "ruby".equals(tmpParam) ) {
+				return new BrushRuby();
+			}
+			else if ( "perl".equals(tmpParam) ) {
+				return new BrushPerl();
+			}
+			else if ( "javafx".equals(tmpParam) ) {
+				return new BrushJavaFX();
+			}
+			else if ( "java".equals(tmpParam) ) {
+				return new BrushJava();
+			}
+			else if ( "scala".equals(tmpParam) ) {
+				return new BrushScala();
+			}
+			else if ( "bash".equals(tmpParam) ) {
+				return new BrushBash();
+			}
+			//TODO Gherkin
+//			else if ( "gherkin".equals(tmpParam) ) {
+//				return new BrushGherkin();
+//			}
+			//TODO TCL
+//			else if ( "tcl".equals(tmpParam) ) {
+//				return new BrushTcl();
+//			}
 			else if (
 					"csharp".equals(tmpParam) || 
 					"cs".equals(tmpParam) || 
 					"c#".equals(tmpParam)  
 					) {
-				tmpMode = "csharp";
+				return new BrushCSharp();
 			}
 			else if (
 					"c".equals(tmpParam) || 
 					"c++".equals(tmpParam) || 
 					"cpp".equals(tmpParam)  
 					) {
-				tmpMode = "cpp";
+				return new BrushCpp();
 			}
 			else if (
 					"delphi".equals(tmpParam) || 
 					"pas".equals(tmpParam) || 
 					"pascal".equals(tmpParam)  
 					) {
-				tmpMode = "pascal";
+				return new BrushDelphi();
 			}
 			else if (
 					"d".equals(tmpParam) || 
 					"di".equals(tmpParam)
 					) {
-				tmpMode = "d";
+				return new BrushD();
 			}
 			else if (
 					"objc".equals(tmpParam) || 
 					"obj-c".equals(tmpParam)  
 					) {
-				tmpMode = "objc";
+				return new BrushObjC();
 			}
 			else if (
 					"js".equals(tmpParam) || 
 					"javascript".equals(tmpParam) || 
 					"jscript".equals(tmpParam)  
 					) {
-				tmpMode = "js";
+				return new BrushJScript();
 			}
 			else if (
 					"py".equals(tmpParam) || 
 					"python".equals(tmpParam) 
 					) {
-				tmpMode = "python";
+				return new BrushPython();
 			}
 			else if (
 					"vb".equals(tmpParam) || 
 					"vbnet".equals(tmpParam) 
 					) {
-				tmpMode = "vb";
+				return new BrushVb();
 			}
 			else if (
 					"xml".equals(tmpParam) || 
@@ -272,11 +343,11 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 					"xslt".equals(tmpParam) || 
 					"html".equals(tmpParam)  
 					) {
-				tmpMode = "xml";
+				return new BrushXml();
 			}
 		}
 		
-		return "brush: " + tmpMode + "; ";
+		return new BrushPlain();
 	}
 
 

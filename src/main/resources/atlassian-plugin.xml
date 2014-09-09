@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
 	<plugin-info>
 		<description>${project.description}</description>
@@ -18,46 +17,11 @@
 		class='jira.plugin.syntaxhighlighter.macro.SyntaxHighlighterNoformatMacro'>
 		<description>Advanced layout for plain text blocks in your descriptions, comments etc.</description>
 	</macro>
-
+	<component-import key="i18nResolver" interface="com.atlassian.sal.api.message.I18nResolver"/>
 	<component-import key="eventPublisher" interface="com.atlassian.event.api.EventPublisher" name="Event Publisher component"/>
 	<component key="init" class="jira.plugin.syntaxhighlighter.macro.SyntaxHighlighterInstallationSupport"
 		name="Syntax Highlighter installation support module">
         <description>Helper module to automatic disabling / enabling of JIRA standard code and noformat macros on 
         installation or enabling / deinstallation or disabling of JIRA Syntax Highlighter plugin</description>
-	</component>	
-
-    <web-resource key="images" name="Syntax Highlighter images" >
-		<resource type="download" name="blank.png" location="images/blank.png"/>
-	</web-resource>
-	
-    <web-resource key="core" name="Syntax Highlighter core JavaScript and CSS files" >
-        <resource type="download" name="shCore.js" location="scripts/shCore.js" />
-        <resource type="download" name="shCore.css" location="styles/shCore.css" />
-        <resource type="download" name="shThemeDefault.css" location="styles/shThemeDefault.css" />
-        <resource type="download" name="shBrushPlain.js" location="scripts/shBrushPlain.js" />
-        <resource type="download" name="shBrushJava.js" location="scripts/shBrushJava.js" />
-        <resource type="download" name="shBrushSql.js" location="scripts/shBrushSql.js" />
-        <resource type="download" name="shBrushCss.js" location="scripts/shBrushCss.js" />
-        <resource type="download" name="shBrushD.js" location="scripts/shBrushD.js" />
-        <resource type="download" name="shBrushErlang.js" location="scripts/shBrushErlang.js" />
-        <resource type="download" name="shBrushDiff.js" location="scripts/shBrushDiff.js" />
-        <resource type="download" name="shBrushXml.js" location="scripts/shBrushXml.js" />
-        <resource type="download" name="shBrushPerl.js" location="scripts/shBrushPerl.js" />
-        <resource type="download" name="shBrushPhp.js" location="scripts/shBrushPhp.js" />
-        <resource type="download" name="shBrushJavaFX.js" location="scripts/shBrushJavaFX.js" />
-        <resource type="download" name="shBrushJScript.js" location="scripts/shBrushJScript.js" />
-        <resource type="download" name="shBrushVb.js" location="scripts/shBrushVb.js" />
-        <resource type="download" name="shBrushCpp.js" location="scripts/shBrushCpp.js" />
-        <resource type="download" name="shBrushCSharp.js" location="scripts/shBrushCSharp.js" />
-        <resource type="download" name="shBrushRuby.js" location="scripts/shBrushRuby.js" />
-        <resource type="download" name="shBrushPython.js" location="scripts/shBrushPython.js" />
-        <resource type="download" name="shBrushTcl.js" location="scripts/custom/shBrushTcl.js" />
-        <resource type="download" name="shBrushObjC.js" location="scripts/custom/shBrushObjC.js" />
-        <resource type="download" name="shBrushGherkin.js" location="scripts/custom/shBrushGherkin.js" />
-        <resource type="download" name="shBrushScala.js" location="scripts/shBrushScala.js" />
-        <resource type="download" name="shBrushBash.js" location="scripts/shBrushBash.js" />
-        <resource type="download" name="shBrushDelphi.js" location="scripts/shBrushDelphi.js" />
-        <resource type="download" name="shBrushPuppet.js" location="scripts/shBrushPuppet.js" />
-        <context>atl.general</context>
-    </web-resource>
+	</component>
 </atlassian-plugin>
