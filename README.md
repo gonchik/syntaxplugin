@@ -14,10 +14,10 @@ Syntax highlighting is available in standard view issue screen and in preview mo
 [![Edit issue with macro syntax](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Edit_issue_with_macro_syntax_thumb.png)](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Edit_issue_with_macro_syntax.png)
 [![Edit issue with preview](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Edit_issue_with_preview_thumb.png)](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Edit_issue_with_preview.png)
 
-It is also available in Greenhopper Rapidboard planning and work mode.
+It is also available in emails, activity streams and JIRA Agile planning and work mode.
 
-[![Greenhopper planning mode](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Syntax_highlighting_in_Greenhopper_Rapidboard_planning_mode_thumb.png)](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Syntax_highlighting_in_Greenhopper_Rapidboard_planning_mode.png)
-[![Greenhopper Rapidboard](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Syntax_highlighting_in_Greenhopper_Rapidboard_Work_mode_thumb.png)](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Syntax_highlighting_in_Greenhopper_Rapidboard_Work_mode.png)
+[![JIRA Agile planning mode](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Syntax_highlighting_in_Greenhopper_Rapidboard_planning_mode_thumb.png)](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Syntax_highlighting_in_Greenhopper_Rapidboard_planning_mode.png)
+[![JIRA Agile Rapidboard](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Syntax_highlighting_in_Greenhopper_Rapidboard_Work_mode_thumb.png)](https://bitbucket.org/hski/syntaxplugin-public/raw/master/images/docs/Syntax_highlighting_in_Greenhopper_Rapidboard_Work_mode.png)
 
 The following languages are supported.
 
