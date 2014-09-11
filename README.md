@@ -53,9 +53,9 @@ Also highlighting of single or multiple lines is supported by using e.g.
 *    {code:java|highlight=11}
 *    {noformat:highlight=4,8-10} 
 
-Line numbers can be switched on, starting line number or title can be set e.g.
+Line numbers can be switched on, collapse, starting line number or title can be set e.g.
 
-*    {code:css|linenumbers|title=general.css file from root folder}
+*    {code:css|linenumbers|title=general.css file from root folder|collapse}
 *    {code:sql|firstline=10}
 
 The JIRA Syntax Highlighter PlugIn is based on [SyntaxHighligher by Alex Gorbatchev](http://alexgorbatchev.com/SyntaxHighlighter) and [Chan Wai Shing](https://code.google.com/p/java-syntax-highlighter/). JIRA macro plugin classes have been added and also Java classes and templates for HTML output.
