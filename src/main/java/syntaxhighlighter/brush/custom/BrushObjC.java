@@ -55,7 +55,7 @@ public class BrushObjC extends Brush {
 			"thread throw true false try typedef typeid typename union " +
 			"using uuid virtual void volatile whcar_t while YES";
     
-    String functions = "assert isalnum isalpha iscntrl isdigit isgraph islower isprint" +
+    String functions = "assert isalnum isalpha iscntrl isdigit isgraph islower isprint " +
 			"ispunct isspace isupper isxdigit tolower toupper errno localeconv " +
 			"setlocale acos asin atan atan2 ceil cos cosh exp fabs floor fmod " +
 			"frexp ldexp log log10 modf pow sin sinh sqrt tan tanh jmp_buf " +
