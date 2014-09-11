@@ -29,6 +29,7 @@ import syntaxhighlighter.brush.BrushVb;
 import syntaxhighlighter.brush.BrushXml;
 import syntaxhighlighter.brush.custom.BrushD;
 import syntaxhighlighter.brush.custom.BrushObjC;
+import syntaxhighlighter.brush.custom.BrushPuppet;
 
 import com.atlassian.renderer.RenderContext;
 import com.atlassian.renderer.v2.RenderMode;
@@ -49,7 +50,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	private static final String HIGHLIGHT = "highlight";
 	private static final String TITLE = "title";
 	private static final String FIRST_LINE = "first-line"; //Deprecated
-	private static final String FIRSTLINE = "firstline"; //TODO use instead of first-line, default is 1
+	private static final String FIRSTLINE = "firstline"; //Use instead of first-line, default is 1
 	private static final String SHOW_LINENUMS = "linenumbers"; //default is false
 	private static final String COLLAPSE = "collapse"; //default is false
 	/**
@@ -285,6 +286,12 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 //			else if ( "tcl".equals(tmpParam) ) {
 //				return new BrushTcl();
 //			}
+			else if ( 
+					"puppet".equals(tmpParam) ||
+					"pp".equals(tmpParam)
+					) {
+				return new BrushPuppet();
+			}
 			else if (
 					"csharp".equals(tmpParam) || 
 					"cs".equals(tmpParam) || 
