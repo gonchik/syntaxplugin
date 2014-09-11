@@ -36,33 +36,36 @@ The following languages are supported.
 *    VB {code:vb}, VB.NET {code:vbnet}
 *    Python {code:py} or {code:python}
 *    Pascal {code:pas} or {code:pascal}, Delphi {code:delphi}
-*    Tcl {code:tcl} 
 *    Objective-C {code:objc} or {code:obj-c} 
 *    Scala {code:scala}
 *    D {code:d} 
 *    Bash {code:bash} resp. Shell {code:sh}
 *    Diff {code:diff}
-*    Gherkin syntax {code:gherkin}
-*    Puppet code {code:puppet} or {code:pp}
+
+Planned for next release
+
+*    Tcl {code:tcl} 
+*    Gherkin {code:gherkin}
+*    Puppet {code:puppet} or {code:pp}
 
 Also highlighting of single or multiple lines is supported by using e.g.
 
 *    {code:java|highlight=11}
-*    {noformat:highlight=[4,8-10]} 
+*    {noformat:highlight=4,8-10} 
 
-Line numbers can be switched off, starting line number or title can be set e.g.
+Line numbers can be switched on, starting line number or title can be set e.g.
 
-*    {code:css|hide-linenum|title=general.css file from root folder}
-*    {code:sql|first-line=10}
+*    {code:css|linenumbers|title=general.css file from root folder}
+*    {code:sql|firstline=10}
 
-The JIRA Syntax Highlighter PlugIn is based on [SyntaxHighligher by Alex Gorbatchev](http://alexgorbatchev.com/SyntaxHighlighter). The plugin contains this JavaScript and CSS code plus some java classes for the integration into JIRA as a JIRA formatting macro plugin.
+The JIRA Syntax Highlighter PlugIn is based on [SyntaxHighligher by Alex Gorbatchev](http://alexgorbatchev.com/SyntaxHighlighter) and [Chan Wai Shing](https://code.google.com/p/java-syntax-highlighter/). JIRA macro plugin classes have been added and also Java classes and templates for HTML output.
 
 JIRA Syntax Highlighter PlugIns is released under both MIT license and GNU General Public License (GPL) Version 3.
 
 Known Issues
 ------------
 
-Syntax highlighting is not shown in activity streams on the JIRA Dashboard.
+Some minor layout issues in Outlook 2003 and Outlook 2010.
 
 
 Installation
