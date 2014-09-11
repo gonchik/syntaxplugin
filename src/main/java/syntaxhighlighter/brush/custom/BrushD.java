@@ -9,7 +9,7 @@ import syntaxhighlighter.brush.Brush;
 import syntaxhighlighter.brush.RegExpRule;
 
 /**
- * Objective-C brush.
+ * D brush.
  * @author Holger Schimanski <holger@schimanski-web.de>
  */
 public class BrushD extends Brush {
@@ -17,7 +17,7 @@ public class BrushD extends Brush {
   public BrushD() {
     super();
 
-    // Contributed by https://github.com/alexgorbatchev/SyntaxHighlighter/pull/180
+    // Contributed by lindt https://github.com/alexgorbatchev/SyntaxHighlighter/pull/180
 	// This is just for the very basic grammar
 
     String datatypes = "bool byte char creal dchar double float idouble ifloat int ireal " +
