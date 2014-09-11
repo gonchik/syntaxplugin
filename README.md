@@ -44,8 +44,8 @@ The following languages are supported.
 
 Planned for next release
 
-*    Tcl {code:tcl} 
-*    Gherkin {code:gherkin}
+*    Tcl {code:tcl} (has been part of version 1.9.x)
+*    Gherkin {code:gherkin} (has been part of version 1.9.x)
 *    Puppet {code:puppet} or {code:pp}
 
 Also highlighting of single or multiple lines is supported by using e.g.
