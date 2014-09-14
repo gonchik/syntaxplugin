@@ -28,6 +28,7 @@ import syntaxhighlighter.brush.BrushSql;
 import syntaxhighlighter.brush.BrushVb;
 import syntaxhighlighter.brush.BrushXml;
 import syntaxhighlighter.brush.custom.BrushD;
+import syntaxhighlighter.brush.custom.BrushGherkin;
 import syntaxhighlighter.brush.custom.BrushObjC;
 import syntaxhighlighter.brush.custom.BrushPuppet;
 
@@ -278,10 +279,9 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 			else if ( "bash".equals(tmpParam) ) {
 				return new BrushBash();
 			}
-			//TODO Gherkin
-//			else if ( "gherkin".equals(tmpParam) ) {
-//				return new BrushGherkin();
-//			}
+			else if ( "gherkin".equals(tmpParam) ) {
+				return new BrushGherkin();
+			}
 			//TODO TCL
 //			else if ( "tcl".equals(tmpParam) ) {
 //				return new BrushTcl();
