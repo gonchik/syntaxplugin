@@ -31,6 +31,7 @@ import syntaxhighlighter.brush.custom.BrushD;
 import syntaxhighlighter.brush.custom.BrushGherkin;
 import syntaxhighlighter.brush.custom.BrushObjC;
 import syntaxhighlighter.brush.custom.BrushPuppet;
+import syntaxhighlighter.brush.custom.BrushTcl;
 
 import com.atlassian.renderer.RenderContext;
 import com.atlassian.renderer.v2.RenderMode;
@@ -282,10 +283,9 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 			else if ( "gherkin".equals(tmpParam) ) {
 				return new BrushGherkin();
 			}
-			//TODO TCL
-//			else if ( "tcl".equals(tmpParam) ) {
-//				return new BrushTcl();
-//			}
+			else if ( "tcl".equals(tmpParam) ) {
+				return new BrushTcl();
+			}
 			else if ( 
 					"puppet".equals(tmpParam) ||
 					"pp".equals(tmpParam)
