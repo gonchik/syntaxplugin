@@ -55,6 +55,8 @@ Line numbers can be switched on, collapse, starting line number or title can be 
 *    {code:css|linenumbers|title=general.css file from root folder|collapse}
 *    {code:sql|firstline=10}
 
+In earlier versions (v1.x) linenumbers where shown by default. To hide linenumbers then you have to use e.g. {code:java|hide-linenums}
+
 The JIRA Syntax Highlighter PlugIn is based on [SyntaxHighligher by Alex Gorbatchev](http://alexgorbatchev.com/SyntaxHighlighter) and [Chan Wai Shing](https://code.google.com/p/java-syntax-highlighter/). JIRA macro plugin classes have been added and also Java classes and templates for HTML output.
 
 JIRA Syntax Highlighter PlugIns is released under both MIT license and GNU General Public License (GPL) Version 3.
