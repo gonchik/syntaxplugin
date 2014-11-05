@@ -26,7 +26,7 @@ public class BrushGherkin extends Brush {
     _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string")); // strings
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleQuotedString, "string")); // strings
     _regExpRuleList.add(new RegExpRule("@.*$", Pattern.MULTILINE, "color1")); // @tags
-    _regExpRuleList.add(new RegExpRule("^\\s*(But |And |Then |When |Given |Scenarios|Examples|Scenario Template|Scenario Outline|Scenario|Background|Feature)", Pattern.MULTILINE, "keyword")); // english
+    _regExpRuleList.add(new RegExpRule("^\\s*(But |And |Then |When |Given |Scenarios|Examples|Scenario Template|Scenario Outline|Scenario|Background|Feature)", Pattern.MULTILINE | Pattern.CASE_INSENSITIVE, "keyword")); // english
 
     setRegExpRuleList(_regExpRuleList);
 
