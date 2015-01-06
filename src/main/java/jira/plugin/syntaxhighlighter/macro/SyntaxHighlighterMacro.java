@@ -104,8 +104,8 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	    //Put code container as param for velocity
 	    Map<String,Object> contextParameters = new HashMap<String,Object>();
 	    contextParameters.put("codeContainer", tmpCodeContainer);
-	    contextParameters.put("codeTitle", parameters.get(TITLE));
-	    contextParameters.put("codeTitleBackgroundColor", parameters.get(TITLE_BACKGROUND_COLOR));
+	    contextParameters.put("codeTitle", getTitle(parameters));
+	    contextParameters.put("codeTitleBackgroundColor", getTitleBackgroundColor(parameters));
 	    if (getCollapse(parameters)){
 		    contextParameters.put("codeCollapsed", i18nResolver.getText("common.concepts.showall"));
 	    }
@@ -119,6 +119,26 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	}
 	
 	@SuppressWarnings("rawtypes")
+	public String getTitle(Map parameters) {
+		if ( parameters.containsKey(TITLE)){
+			String tmpTitle = parameters.get(TITLE).toString();
+			return tmpTitle;
+		} 
+		return null;
+	}	
+
+	
+	@SuppressWarnings("rawtypes")
+	public String getTitleBackgroundColor(Map parameters) {
+		if ( parameters.containsKey(TITLE_BACKGROUND_COLOR)){
+			String tmpTitleBGColor = parameters.get(TITLE_BACKGROUND_COLOR).toString();
+			return tmpTitleBGColor;
+		} 
+		return null;
+	}	
+	
+	
+	@SuppressWarnings("rawtypes")
 	public List<Integer> getHighlight(Map parameters) {
 		List<Integer> ret = new ArrayList<Integer>();
 		if ( parameters.containsKey(HIGHLIGHT)){
@@ -128,6 +148,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 		return ret;
 	}	
 
+	
 	@SuppressWarnings("rawtypes")
 	public int getFirstLine(Map parameters) {
 		try{
