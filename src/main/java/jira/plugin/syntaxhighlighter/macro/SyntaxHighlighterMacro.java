@@ -55,6 +55,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	private static final String FIRSTLINE = "firstline"; //Use instead of first-line, default is 1
 	private static final String SHOW_LINENUMS = "linenumbers"; //default is false
 	private static final String COLLAPSE = "collapse"; //default is false
+	private static final String TITLE_BACKGROUND_COLOR = "titleBGColor"; 
 	/**
 	 * Character ({@value}) used to separate ranges of line numbers.
 	 */
@@ -104,6 +105,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	    Map<String,Object> contextParameters = new HashMap<String,Object>();
 	    contextParameters.put("codeContainer", tmpCodeContainer);
 	    contextParameters.put("codeTitle", parameters.get(TITLE));
+	    contextParameters.put("codeTitleBackgroundColor", parameters.get(TITLE_BACKGROUND_COLOR));
 	    if (getCollapse(parameters)){
 		    contextParameters.put("codeCollapsed", i18nResolver.getText("common.concepts.showall"));
 	    }
