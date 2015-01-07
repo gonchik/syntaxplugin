@@ -140,7 +140,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 				return tmpTitleBGColor;
 			}
 		} 
-		return null;
+		return "#f5f5f5";
 	}	
 	
 	
