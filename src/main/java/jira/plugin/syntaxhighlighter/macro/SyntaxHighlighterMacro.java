@@ -132,7 +132,13 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	public String getTitleBackgroundColor(Map parameters) {
 		if ( parameters.containsKey(TITLE_BACKGROUND_COLOR)){
 			String tmpTitleBGColor = parameters.get(TITLE_BACKGROUND_COLOR).toString();
-			return tmpTitleBGColor;
+			
+			if ( tmpTitleBGColor.matches("[a-zA-Z]*")){
+				return tmpTitleBGColor;
+			}
+			if ( tmpTitleBGColor.matches("#[a-fA-F0-9]{3}") || tmpTitleBGColor.matches("#[a-fA-F0-9]{6}") ){
+				return tmpTitleBGColor;
+			}
 		} 
 		return null;
 	}	
