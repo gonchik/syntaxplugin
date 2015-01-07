@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 import syntaxhighlighter.SyntaxHighlighterParserUtil;
 import syntaxhighlighter.beans.CodeContainer;
 import syntaxhighlighter.brush.Brush;
@@ -118,11 +120,12 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 		
 	}
 	
+	
 	@SuppressWarnings("rawtypes")
 	public String getTitle(Map parameters) {
 		if ( parameters.containsKey(TITLE)){
 			String tmpTitle = parameters.get(TITLE).toString();
-			return tmpTitle;
+			return StringEscapeUtils.escapeHtml4(tmpTitle);
 		} 
 		return null;
 	}	
