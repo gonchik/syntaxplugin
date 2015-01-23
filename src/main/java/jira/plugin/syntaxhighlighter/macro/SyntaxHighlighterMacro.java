@@ -57,7 +57,9 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	private static final String FIRSTLINE = "firstline"; //Use instead of first-line, default is 1
 	private static final String SHOW_LINENUMS = "linenumbers"; //default is false
 	private static final String COLLAPSE = "collapse"; //default is false
-	private static final String TITLE_BACKGROUND_COLOR = "titleBGColor"; 
+	private static final String TITLE_BACKGROUND_COLOR = "titleBGColor";
+	private static final String TITLE_COLOR = "titleColor";
+	
 	/**
 	 * Character ({@value}) used to separate ranges of line numbers.
 	 */
@@ -107,6 +109,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	    Map<String,Object> contextParameters = new HashMap<String,Object>();
 	    contextParameters.put("codeContainer", tmpCodeContainer);
 	    contextParameters.put("codeTitle", getTitle(parameters));
+	    contextParameters.put("codeTitleColor", getTitleColor(parameters));
 	    contextParameters.put("codeTitleBackgroundColor", getTitleBackgroundColor(parameters));
 	    if (getCollapse(parameters)){
 		    contextParameters.put("codeCollapsed", i18nResolver.getText("common.concepts.showall"));
@@ -132,19 +135,37 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 
 	
 	@SuppressWarnings("rawtypes")
+	public String getTitleColor(Map parameters) {
+		if ( parameters.containsKey(TITLE_COLOR)){
+			String tmpTitleColor = parameters.get(TITLE_COLOR).toString();
+			
+			if ( isValidColor(tmpTitleColor)){
+				return tmpTitleColor;
+			}
+		} 
+		return "#333";
+	}	
+	
+	
+	@SuppressWarnings("rawtypes")
 	public String getTitleBackgroundColor(Map parameters) {
 		if ( parameters.containsKey(TITLE_BACKGROUND_COLOR)){
 			String tmpTitleBGColor = parameters.get(TITLE_BACKGROUND_COLOR).toString();
 			
-			if ( tmpTitleBGColor.matches("[a-zA-Z]*")){
-				return tmpTitleBGColor;
-			}
-			if ( tmpTitleBGColor.matches("#[a-fA-F0-9]{3}") || tmpTitleBGColor.matches("#[a-fA-F0-9]{6}") ){
+			if ( isValidColor(tmpTitleBGColor)){
 				return tmpTitleBGColor;
 			}
 		} 
 		return "#f5f5f5";
 	}	
+	
+	
+	private boolean isValidColor(String aColorString) {
+		if (aColorString.matches("[a-zA-Z]*") || aColorString.matches("#[a-fA-F0-9]{3}") || aColorString.matches("#[a-fA-F0-9]{6}")) {
+			return true;
+		}
+		return false;
+	}
 	
 	
 	@SuppressWarnings("rawtypes")

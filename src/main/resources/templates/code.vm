@@ -5,7 +5,7 @@
 	<thead>
 	#if ( $codeTitle )
 		<tr id="syntaxplugin_title">
-			<td bgcolor="$codeTitleBackgroundColor" style="font-family: Arial,sans-serif; color: #333; border-bottom: 1px solid #bbb; background-color: $codeTitleBackgroundColor !important; font-weight: bold; line-height: 1em;" #if( $codeContainer.showLineNums ) colspan="2"#end>
+			<td bgcolor="$codeTitleBackgroundColor" style="font-family: Arial,sans-serif; color: $codeTitleColor; border-bottom: 1px solid #bbb; background-color: $codeTitleBackgroundColor !important; font-weight: bold; line-height: 1em;" #if( $codeContainer.showLineNums ) colspan="2"#end>
 				<p style="margin: 5px 10px; padding: 0;">$codeTitle</p>
 			</td>
 		</tr>
