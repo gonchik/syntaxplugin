@@ -62,7 +62,7 @@ public class RegExpRule {
   /**
    * Common regular expression rule.
    */
-  public static final Pattern xmlComments = Pattern.compile("\\w+:\\/\\/[\\w-.\\/?%&=:@;]*");
+  public static final Pattern xmlComments = Pattern.compile("(&lt;|<)!--[\\s\\S]*?--(&gt;|>)", Pattern.MULTILINE);
   /**
    * The compiled pattern.
    */
