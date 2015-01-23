@@ -236,7 +236,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 		String[] parts;
 		List<Integer> ret = new ArrayList<Integer>();
 		
-		if (ranges.isEmpty()) return ret;
+		if (ranges.isEmpty() || ranges.equals("[]")) return ret;
 		
 		if (ranges.startsWith("[") && ranges.endsWith("]")) {
 			ranges = ranges.substring(1, ranges.length()-1);
@@ -246,12 +246,17 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 			if (part.contains(RANGE_SEPARATOR)) {
 				ret.addAll(rangeToSequence(part));
 			} else {
-				ret.add(new Integer(part));
+				try{
+					ret.add(new Integer(part));
+				}
+				catch(NumberFormatException e){
+					//Nothing to do...
+					//TODO log debug number format exception
+				}
 			}
 		}
 		return ret;
 		
-		//TODO Log.debug Number format exception
 	}
 	
 	/**
@@ -281,7 +286,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 				//TODO log.debug wrong string
 			}
 		} catch (NumberFormatException nfe) {
-			// TODO Log debug numberformat exception
+			//TODO Log debug numberformat exception
 		}
 
 		return ret;
