@@ -50,9 +50,10 @@ Also highlighting of single or multiple lines is supported by using e.g.
 *    {code:java|highlight=11}
 *    {noformat:highlight=4,8-10} 
 
-Line numbers can be switched on, collapse, starting line number or title can be set e.g.
+Line numbers can be switched on, collapse, starting line number, title, 
+title color and title background color (HTML color names or hex values) can be set e.g.
 
-*    {code:css|linenumbers|title=general.css file from root folder|collapse}
+*    {code:css|linenumbers|title=general.css file from root folder|titleColor=white|titleBGColor=#FFA500|collapse}
 *    {code:sql|firstline=10}
 
 In earlier versions (v1.x) linenumbers where shown by default. To hide linenumbers then you have to use e.g. {code:java|hide-linenums}
