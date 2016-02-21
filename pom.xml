@@ -71,8 +71,8 @@
         </plugins>
     </build>
     <properties>
-        <jira.version>5.2</jira.version>
+        <jira.version>7.0.0</jira.version>
         <jira.data.version>5.2</jira.data.version>
-        <amps.version>5.0.3</amps.version>
+        <amps.version>6.2.1</amps.version>
     </properties>
 </project>
