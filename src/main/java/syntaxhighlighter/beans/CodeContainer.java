@@ -14,6 +14,7 @@ public class CodeContainer {
 	private CodeRow lastCodeRow;
 	private boolean showLineNums;
 	private int firstLine;
+	private boolean wrapLines;
 	
 	public CodeContainer() {
 		codeRows = new Vector<CodeRow>();
@@ -54,6 +55,10 @@ public class CodeContainer {
 
 	public void setWrapLines(boolean wrapLines) {
 		this.wrapLines = wrapLines;
+	}
+
+	public boolean isWrapLines() {
+		return wrapLines;
 	}
 
 
