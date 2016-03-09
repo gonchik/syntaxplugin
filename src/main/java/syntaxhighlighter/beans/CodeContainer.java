@@ -52,4 +52,9 @@ public class CodeContainer {
 		this.firstLine = firstLine;
 	}
 
+	public void setWrapLines(boolean wrapLines) {
+		this.wrapLines = wrapLines;
+	}
+
+
 }
