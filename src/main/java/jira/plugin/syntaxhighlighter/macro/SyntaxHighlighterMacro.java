@@ -59,6 +59,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	private static final String COLLAPSE = "collapse"; //default is false
 	private static final String TITLE_BACKGROUND_COLOR = "titleBGColor";
 	private static final String TITLE_COLOR = "titleColor";
+	private static final String WRAP_LINES = "wrap";
 	
 	/**
 	 * Character ({@value}) used to separate ranges of line numbers.
@@ -95,6 +96,8 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	    //First line and hide line num parameter
 	    tmpCodeContainer.setShowLineNums(getShowLineNums(parameters));
 	    tmpCodeContainer.setFirstLine(getFirstLine(parameters));
+
+	    tmpCodeContainer.setWrapLines(getWrapLines(parameters));
 
 	    //Highlighting of code rows
 	    List<Integer> highlighted = getHighlight(parameters);
@@ -222,6 +225,17 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 		}
 	}	
 	
+	@SuppressWarnings("rawtypes")
+	public boolean getWrapLines(Map parameters) {
+		if ( parameters.containsValue(WRAP_LINES) ||
+				( parameters.containsKey(WRAP_LINES) && parameters.get(WRAP_LINES).equals("true") ) ||
+				( parameters.containsKey(WRAP_LINES) && parameters.get(WRAP_LINES).equals("yes") ) ){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	/**
 	 * Scans a given string of line numbers for occurrences of a range (eg- 1-3).
 	 * Any ranges found will be expanded to sequences.
