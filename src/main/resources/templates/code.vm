@@ -1,5 +1,5 @@
 <p/>
-<div id="syntaxplugin" class="syntaxplugin" style="border: 1px dashed #bbb; border-radius: 5px !important; overflow: auto; max-height: 30em;">
+<div id="syntaxplugin" class="syntaxplugin" style="border: 1px solid #bbb; border-radius: 5px !important; overflow: auto; max-height: 30em;">
 <table cellspacing="0" cellpadding="0" border="0" width="100%" style="font-size: 1em; line-height: 1.4em !important; font-weight: normal; font-style: normal; color: black;">
 	#if ( $codeTitle || $codeCollapsed )
 	<thead>
@@ -23,12 +23,10 @@
 		#foreach( $codeRow in $codeContainer.codeRows ) 
 		<tr id="syntaxplugin_code_and_gutter">
 			#if( $codeContainer.showLineNums )
-			<td #if( $codeRow.highlighted ) bgcolor="#6ce26c" #else bgcolor="#f5f5f5" #end style="#if( $codeRow.highlighted ) background-color: #6ce26c !important; #else background-color: #f5f5f5 !important; #end line-height: 1.4em !important; border-right: 1px solid #bbb; text-align: right; width: 2em; margin: 0em; vertical-align: top;">
 			#set ( $lineNum = $velocityCount + $codeContainer.getFirstLine() - 1 )
-				<pre style="font-size: 1em; margin: 0 10px; #if( $velocityCount == 1 ) margin-top: 10px; #end #if ( $velocityCount == $codeContainer.codeRows.size() ) margin-bottom: 10px; #end width: auto; padding: 0;"><span style="#if( $codeRow.highlighted ) color: white; #else color: #707070; #end font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important;">$lineNum</span></pre>
-			</td>
+			<td #if( $codeRow.highlighted ) bgcolor="#6ce26c" #else bgcolor="#f5f5f5" #end style="#if( $codeRow.highlighted ) background-color: #6ce26c !important; #else background-color: #f5f5f5 !important; #end line-height: 1.4em !important; border-right: 1px solid #bbb; text-align: right; width: 2em; margin: 0em; vertical-align: top; white-space: pre; font-size: 1em; margin: 0 10px; #if( $velocityCount == 1 ) padding-top: 10px; #else padding-top: 0px; #end #if ( $velocityCount == $codeContainer.codeRows.size() ) padding-bottom: 10px; #else padding-bottom: 0px; #end padding-left: 10px; padding-right: 10px;"><span style="#if( $codeRow.highlighted ) color: white; #else color: #707070; #end font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important;">$lineNum</span></td>
 			#end
-			<td #if( $codeRow.highlighted ) bgcolor="#e0e0e0" #end style="#if( $codeRow.highlighted ) background-color: #e0e0e0 !important;#end line-height: 1.4em !important; padding: 0em; vertical-align: top; #if( $codeContainer.wrapLines ) white-space: pre-wrap; #else white-space: pre; #end font-size: 1em; margin: 0 10px; #if( $velocityCount == 1 ) margin-top: 10px; #end #if ( $velocityCount == $codeContainer.codeRows.size() ) margin-bottom: 10px; #end width: auto; padding: 0;">#if($codeRow.code.size() == 0)&nbsp;#else#foreach( $code in $codeRow.code )<span style="$code.style font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important;">$code.text</span>#end#end</td>
+			<td #if( $codeRow.highlighted ) bgcolor="#e0e0e0" #end style="#if( $codeRow.highlighted ) background-color: #e0e0e0 !important;#end line-height: 1.4em !important; padding: 8px 0px; vertical-align: top; #if( $codeContainer.wrapLines ) white-space: pre-wrap; #else white-space: pre; #end font-size: 1em; margin: 0 10px; #if( $velocityCount == 1 ) padding-top: 10px; #else padding-top: 0px; #end #if ( $velocityCount == $codeContainer.codeRows.size() ) padding-bottom: 10px; #else padding-bottom: 0px; #end padding-left: 10px; padding-right: 10px;">#if($codeRow.code.size() == 0)&nbsp;#else#foreach( $code in $codeRow.code )<span style="$code.style font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace !important;">$code.text</span>#end#end</td>
 		</tr>
 		#end
 	</tbody>
