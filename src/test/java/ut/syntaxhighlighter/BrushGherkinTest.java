@@ -11,7 +11,6 @@ import syntaxhighlighter.SyntaxHighlighterParserUtil;
 import syntaxhighlighter.beans.CodeContainer;
 import syntaxhighlighter.beans.CodeRow;
 import syntaxhighlighter.brush.custom.BrushGherkin;
-import syntaxhighlighter.brush.custom.BrushPuppet;
 
 public class BrushGherkinTest {
 
