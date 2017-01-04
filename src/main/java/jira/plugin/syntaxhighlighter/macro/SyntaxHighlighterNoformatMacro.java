@@ -32,5 +32,13 @@ public class SyntaxHighlighterNoformatMacro extends SyntaxHighlighterMacro {
 		return new BrushPlain();
 	}
 
-	
+	@Override
+	protected String renderForWysiwyg(String body) {
+		// TODO add parameters
+		// TODO add <panel-title>
+		return "<pre class=\"noformat panel\">" + body + "</pre>";
+	}
+
+
+
 }

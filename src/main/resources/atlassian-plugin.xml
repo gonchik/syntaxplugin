@@ -12,10 +12,18 @@
 	<macro key='code' name='Syntax Highlighter {code} formatting macro'
 		class='jira.plugin.syntaxhighlighter.macro.SyntaxHighlighterMacro'>
 		<description>Advanced layout and syntax highlighting for code blocks in your descriptions, comments etc. with support for additional languages</description>
+
+		<!-- Syntax highlighter works fine with JIRA RTE, mark it as compatible -->
+		<param name="convert-selector">syntax-highlighter-code-compatibility-selector</param>
+		<param name="convert-function">_.identity</param>
 	</macro>
 	<macro key='noformat' name='Syntax Highlighter {noformat} formatting macro'
 		class='jira.plugin.syntaxhighlighter.macro.SyntaxHighlighterNoformatMacro'>
 		<description>Advanced layout for plain text blocks in your descriptions, comments etc.</description>
+
+		<!-- Syntax highlighter works fine with JIRA RTE, mark it as compatible -->
+		<param name="convert-selector">syntax-highlighter-noformat-compatibility-selector</param>
+		<param name="convert-function">_.identity</param>
 	</macro>
 	<component-import key="i18nResolver" interface="com.atlassian.sal.api.message.I18nResolver"/>
 	<component-import key="eventPublisher" interface="com.atlassian.event.api.EventPublisher" name="Event Publisher component"/>

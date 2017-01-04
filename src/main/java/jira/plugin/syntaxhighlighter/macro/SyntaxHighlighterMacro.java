@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.atlassian.jira.issue.fields.renderer.IssueRenderContext;
 import org.apache.commons.lang3.StringEscapeUtils;
 
 import syntaxhighlighter.SyntaxHighlighterParserUtil;
@@ -89,6 +90,10 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	@SuppressWarnings("rawtypes")
 	public String execute(Map parameters, String body, RenderContext renderContext) throws MacroException {
 
+		if (Boolean.TRUE.equals(renderContext.getParam(IssueRenderContext.WYSIWYG_PARAM))) {
+			return renderForWysiwyg(body);
+		}
+
 		//Syntax highlighting with brush
 		Brush tmpBrush = getBrush(parameters);
 	    CodeContainer tmpCodeContainer = SyntaxHighlighterParserUtil.brush(body, tmpBrush);
@@ -125,8 +130,14 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 		return codeBody.toString();
 		
 	}
-	
-	
+
+	protected String renderForWysiwyg(String body) {
+		// TODO add parameters
+		// TODO add <panel-title>
+		return "<pre class=\"code panel\">" + body + "</pre>";
+	}
+
+
 	@SuppressWarnings("rawtypes")
 	public String getTitle(Map parameters) {
 		if ( parameters.containsKey(TITLE)){
