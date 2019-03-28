@@ -175,10 +175,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	
 	
 	private boolean isValidColor(String aColorString) {
-		if (aColorString.matches("[a-zA-Z]*") || aColorString.matches("#[a-fA-F0-9]{3}") || aColorString.matches("#[a-fA-F0-9]{6}")) {
-			return true;
-		}
-		return false;
+		return aColorString.matches("[a-zA-Z]*") || aColorString.matches("#[a-fA-F0-9]{3}") || aColorString.matches("#[a-fA-F0-9]{6}");
 	}
 	
 	
@@ -215,36 +212,24 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	
 	@SuppressWarnings("rawtypes")
 	public boolean getCollapse(Map parameters) {
-		if ( parameters.containsValue(COLLAPSE) || 
-				( parameters.containsKey(COLLAPSE) && parameters.get(COLLAPSE).equals("true") ) ||
-				( parameters.containsKey(COLLAPSE) && parameters.get(COLLAPSE).equals("yes") ) ){
-			return true;
-		} else {
-			return false;
-		}
+		return parameters.containsValue(COLLAPSE) ||
+				(parameters.containsKey(COLLAPSE) && parameters.get(COLLAPSE).equals("true")) ||
+				(parameters.containsKey(COLLAPSE) && parameters.get(COLLAPSE).equals("yes"));
 	}	
 	
 	
 	@SuppressWarnings("rawtypes")
 	public boolean getShowLineNums(Map parameters) {
-		if ( parameters.containsValue(SHOW_LINENUMS) || 
-				( parameters.containsKey(SHOW_LINENUMS) && parameters.get(SHOW_LINENUMS).equals("true") ) ||
-				( parameters.containsKey(SHOW_LINENUMS) && parameters.get(SHOW_LINENUMS).equals("yes") ) ){
-			return true;
-		} else {
-			return false;
-		}
+		return parameters.containsValue(SHOW_LINENUMS) ||
+				(parameters.containsKey(SHOW_LINENUMS) && parameters.get(SHOW_LINENUMS).equals("true")) ||
+				(parameters.containsKey(SHOW_LINENUMS) && parameters.get(SHOW_LINENUMS).equals("yes"));
 	}	
 	
 	@SuppressWarnings("rawtypes")
 	public boolean getWrapLines(Map parameters) {
-		if ( parameters.containsValue(WRAP_LINES) ||
-				( parameters.containsKey(WRAP_LINES) && parameters.get(WRAP_LINES).equals("true") ) ||
-				( parameters.containsKey(WRAP_LINES) && parameters.get(WRAP_LINES).equals("yes") ) ){
-			return true;
-		} else {
-			return false;
-		}
+		return parameters.containsValue(WRAP_LINES) ||
+				(parameters.containsKey(WRAP_LINES) && parameters.get(WRAP_LINES).equals("true")) ||
+				(parameters.containsKey(WRAP_LINES) && parameters.get(WRAP_LINES).equals("yes"));
 	}
 
 	/**
