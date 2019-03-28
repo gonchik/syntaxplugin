@@ -202,19 +202,7 @@ public class RegExpRule {
    */
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
 
-    sb.append(getClass().getName());
-    sb.append(": ");
-    sb.append("regExp: ");
-    sb.append(getRegExp());
-    sb.append(", ");
-    sb.append("regFlags: ");
-    sb.append(getRegExpFlags());
-    sb.append(", ");
-    sb.append("getGroupOperations: ");
-    sb.append(getGroupOperations());
-
-    return sb.toString();
+    return String.format("%s: regExp: %s, regFlags: %d, getGroupOperations: %s", getClass().getName(), getRegExp(), getRegExpFlags(), getGroupOperations());
   }
 }

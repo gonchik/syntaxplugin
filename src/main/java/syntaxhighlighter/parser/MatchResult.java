@@ -99,16 +99,7 @@ public class MatchResult {
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
 
-    sb.append("[");
-    sb.append(offset);
-    sb.append(", ");
-    sb.append(length);
-    sb.append(", ");
-    sb.append(styleKey);
-    sb.append("]");
-
-    return sb.toString();
+    return String.format("[%d, %d, %s]", offset, length, styleKey);
   }
 }

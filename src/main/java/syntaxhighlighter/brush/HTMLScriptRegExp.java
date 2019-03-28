@@ -119,16 +119,7 @@ public class HTMLScriptRegExp {
    */
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
 
-    sb.append(getClass().getName());
-    sb.append(":[");
-    sb.append("left: ");
-    sb.append(left);
-    sb.append("right: ");
-    sb.append(right);
-    sb.append("]");
-
-    return sb.toString();
+    return String.format("%s:[left: %sright: %s]", getClass().getName(), left, right);
   }
 }
