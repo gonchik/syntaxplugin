@@ -41,7 +41,7 @@ public class BrushAppleScript extends Brush {
     String ordinals = "first second third fourth fifth sixth seventh eighth ninth tenth last front back middle";
     String specials = "activate add alias AppleScript ask attachment boolean class constant delete duplicate empty exists false id integer list make message modal modified new no paragraph pi properties quit real record remove rest result reveal reverse run running save string true word yes";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule("(--|#).*$", Pattern.MULTILINE, "comments"));
     _regExpRuleList.add(new RegExpRule("\\(\\*(?:[\\s\\S]*?\\(\\*[\\s\\S]*?\\*\\))*[\\s\\S]*?\\*\\)", Pattern.MULTILINE, "comments")); // support nested comments
     _regExpRuleList.add(new RegExpRule("\"[\\s\\S]*?\"", Pattern.MULTILINE, "string"));

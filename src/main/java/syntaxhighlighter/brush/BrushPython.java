@@ -49,7 +49,7 @@ public class BrushPython extends Brush {
             + "str sum super tuple type type unichr unicode vars xrange zip";
     String special = "None True False self cls class_";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleLinePerlComments, "comments"));
     _regExpRuleList.add(new RegExpRule("^\\s*@\\w+", Pattern.MULTILINE, "color2"));
     _regExpRuleList.add(new RegExpRule("(['\\\"]{3})([^(['\\\"]{3})])*?(['\\\"]{3})", Pattern.MULTILINE, "string"));

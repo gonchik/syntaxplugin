@@ -59,7 +59,7 @@ public class BrushPerl extends Brush {
             + "for foreach goto if import last local my next no our package redo ref "
             + "require return sub tie tied unless untie until use wantarray while";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule("#[^!].*$", Pattern.MULTILINE, "comments"));
     _regExpRuleList.add(new RegExpRule("^\\s*#!.*$", Pattern.MULTILINE, "preprocessor")); // shebang
     _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string"));

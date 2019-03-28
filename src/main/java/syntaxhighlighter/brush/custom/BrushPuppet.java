@@ -27,7 +27,7 @@ public class BrushPuppet extends Brush {
     String builtins = "false true undef present absent purged latest installed running stopped mounted unmounted " +
 			"role configured file directory link";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleLinePerlComments, "comments")); // one line comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineCComments, "comments")); // multiline comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string")); // strings

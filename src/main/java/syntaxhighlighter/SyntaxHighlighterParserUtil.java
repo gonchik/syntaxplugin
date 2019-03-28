@@ -75,32 +75,46 @@ public class SyntaxHighlighterParserUtil {
 	private static void addCodeAndRowElements(CodeContainer container, String plainText, String styleKey) {
 
 		String style = "";
-		if ( styleKey.equals("plain")){
-			style = STYLE_PLAIN;
-		} else if ( styleKey.equals("comments")){
-			style = STYLE_COMMENTS;
-		} else if ( styleKey.equals("string")){
-			style = STYLE_STRING;
-		} else if ( styleKey.equals("keyword")){
-			style = STYLE_KEYWORD;
-		} else if ( styleKey.equals("preprocessor")){
-			style = STYLE_PREPROCESSOR;
-		} else if ( styleKey.equals("variable")){
-			style = STYLE_VARIABLE;
-		} else if ( styleKey.equals("value")){
-			style = STYLE_VALUE;
-		} else if ( styleKey.equals("functions")){
-			style = STYLE_FUNCTIONS;
-		} else if ( styleKey.equals("constants")){
-			style = STYLE_CONSTANTS;
-		} else if ( styleKey.equals("script")){
-			style = STYLE_SCRIPT;
-		} else if ( styleKey.equals("color1")){
-			style = STYLE_COLOR1;
-		} else if ( styleKey.equals("color2")){
-			style = STYLE_COLOR2;
-		} else if ( styleKey.equals("color3")){
-			style = STYLE_COLOR3;
+		switch (styleKey) {
+			case "plain":
+				style = STYLE_PLAIN;
+				break;
+			case "comments":
+				style = STYLE_COMMENTS;
+				break;
+			case "string":
+				style = STYLE_STRING;
+				break;
+			case "keyword":
+				style = STYLE_KEYWORD;
+				break;
+			case "preprocessor":
+				style = STYLE_PREPROCESSOR;
+				break;
+			case "variable":
+				style = STYLE_VARIABLE;
+				break;
+			case "value":
+				style = STYLE_VALUE;
+				break;
+			case "functions":
+				style = STYLE_FUNCTIONS;
+				break;
+			case "constants":
+				style = STYLE_CONSTANTS;
+				break;
+			case "script":
+				style = STYLE_SCRIPT;
+				break;
+			case "color1":
+				style = STYLE_COLOR1;
+				break;
+			case "color2":
+				style = STYLE_COLOR2;
+				break;
+			case "color3":
+				style = STYLE_COLOR3;
+				break;
 		}
 		
 		plainText = plainText.replaceAll("\r\n", "\n");

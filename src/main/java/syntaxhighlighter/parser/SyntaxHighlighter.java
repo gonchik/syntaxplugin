@@ -44,7 +44,7 @@ public class SyntaxHighlighter {
    * Constructor.
    */
   public SyntaxHighlighter() {
-    htmlScriptBrushList = new ArrayList<Brush>();
+    htmlScriptBrushList = new ArrayList<>();
   }
 
   /**
@@ -56,11 +56,7 @@ public class SyntaxHighlighter {
     if (matches == null || match == null) {
       return;
     }
-    List<MatchResult> matchList = matches.get(match.getOffset());
-    if (matchList == null) {
-      matchList = new ArrayList<MatchResult>();
-      matches.put(match.getOffset(), matchList);
-    }
+    List<MatchResult> matchList = matches.computeIfAbsent(match.getOffset(), k -> new ArrayList<>());
     matchList.add(match);
   }
 
@@ -120,7 +116,7 @@ public class SyntaxHighlighter {
     if (brush == null || content == null) {
       return null;
     }
-    Map<Integer, List<MatchResult>> matches = new TreeMap<Integer, List<MatchResult>>();
+    Map<Integer, List<MatchResult>> matches = new TreeMap<>();
     return parse(matches, brush, htmlScript, content, offset, length);
   }
 
@@ -227,7 +223,7 @@ public class SyntaxHighlighter {
    * @return a copy of the list
    */
   public List<Brush> getHTMLScriptBrushList() {
-    return new ArrayList<Brush>(htmlScriptBrushList);
+    return new ArrayList<>(htmlScriptBrushList);
   }
 
   /**

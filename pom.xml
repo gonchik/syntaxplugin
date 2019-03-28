@@ -72,9 +72,9 @@
         </plugins>
     </build>
     <properties>
-        <jira.version>7.3.6</jira.version>
+        <jira.version>7.6.0</jira.version>
         <jira.data.version>7.0.0</jira.data.version>
-        <amps.version>6.2.11</amps.version>
+        <amps.version>6.2.21</amps.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 </project>

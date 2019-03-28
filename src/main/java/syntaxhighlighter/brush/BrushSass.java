@@ -66,7 +66,7 @@ public class BrushSass extends Brush {
     String statements = "!important !default";
     String preprocessors = "import extend debug warn if for while mixin include";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineCComments, "comments")); // multiline comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleLineCComments, "comments")); // singleline comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string")); // double quoted strings

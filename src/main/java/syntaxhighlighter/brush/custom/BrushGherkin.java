@@ -20,7 +20,7 @@ public class BrushGherkin extends Brush {
 	// Based on highlighting from https://github.com/cucumber/gherkin-syntax-highlighters/blob/gh-pages/highlight.js
 	// Syntax explained at http://docs.behat.org/guides/1.gherkin.html
     
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleLinePerlComments, "comments")); // single line comments with #
     _regExpRuleList.add(new RegExpRule("(['\\\"]{3})([^(['\\\"]{3})])*?(['\\\"]{3})", Pattern.MULTILINE, "string"));
     _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string")); // strings

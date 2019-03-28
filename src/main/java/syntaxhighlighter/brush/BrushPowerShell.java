@@ -66,7 +66,7 @@ public class BrushPowerShell extends Brush {
             + "mount mv popd ps pushd pwd r rm rmdir echo cls chdir del dir "
             + "erase rd ren type % \\?";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule("#.*$", Pattern.MULTILINE, "comments")); // one line comments
     _regExpRuleList.add(new RegExpRule("\\$[a-zA-Z0-9]+\\b", "value")); // variables $Computer1
     _regExpRuleList.add(new RegExpRule("\\-[a-zA-Z]+\\b", "keyword")); // Operators    -not  -and  -eq

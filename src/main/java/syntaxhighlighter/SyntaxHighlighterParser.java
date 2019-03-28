@@ -40,7 +40,7 @@ public class SyntaxHighlighterParser {
     syntaxHighlighter = new SyntaxHighlighter();
     this.brush = brush;
     htmlScript = false;
-    htmlScriptBrushesList = new ArrayList<Brush>();
+    htmlScriptBrushesList = new ArrayList<>();
   }
 
   /**
@@ -65,7 +65,7 @@ public class SyntaxHighlighterParser {
    * @return a copy of the list
    */
   public List<Brush> getHTMLScriptBrushesList() {
-    return new ArrayList<Brush>(htmlScriptBrushesList);
+    return new ArrayList<>(htmlScriptBrushesList);
   }
 
   /**
@@ -137,7 +137,7 @@ public class SyntaxHighlighterParser {
 
   
   public List<ParseResult> parse(String fileExtension, String content){
-    List<ParseResult> returnList = new ArrayList<ParseResult>();
+    List<ParseResult> returnList = new ArrayList<>();
 
     syntaxHighlighter.setHTMLScriptBrushList(htmlScriptBrushesList);
     Map<Integer, List<MatchResult>> parsedResult = syntaxHighlighter.parse(brush, htmlScript, content.toCharArray(), 0, content.length());

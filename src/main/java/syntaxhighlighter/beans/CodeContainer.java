@@ -17,7 +17,7 @@ public class CodeContainer {
 	private boolean wrapLines;
 	
 	public CodeContainer() {
-		codeRows = new Vector<CodeRow>();
+		codeRows = new Vector<>();
 		firstLine = 1;
 		showLineNums = false;
 		newCodeRow();

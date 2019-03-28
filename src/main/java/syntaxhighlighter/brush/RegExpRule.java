@@ -117,7 +117,7 @@ public class RegExpRule {
       throw new NullPointerException("argument 'styleKey' cannot be null");
     }
     setPattern(pattern);
-    this.groupOperations = new HashMap<Integer, Object>();
+    this.groupOperations = new HashMap<>();
     groupOperations.put(0, styleKey);
   }
 
@@ -181,7 +181,7 @@ public class RegExpRule {
    * @return a copy of the group operations map
    */
   public Map<Integer, Object> getGroupOperations() {
-    return new HashMap<Integer, Object>(groupOperations);
+    return new HashMap<>(groupOperations);
   }
 
   /**
@@ -191,10 +191,10 @@ public class RegExpRule {
    */
   public void setGroupOperations(Map<Integer, Object> GroupOperations) {
     if (GroupOperations == null) {
-      this.groupOperations = new HashMap<Integer, Object>();
+      this.groupOperations = new HashMap<>();
       return;
     }
-    this.groupOperations = new HashMap<Integer, Object>(GroupOperations);
+    this.groupOperations = new HashMap<>(GroupOperations);
   }
 
   /**

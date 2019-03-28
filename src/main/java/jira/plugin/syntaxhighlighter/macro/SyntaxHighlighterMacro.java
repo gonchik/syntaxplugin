@@ -107,14 +107,14 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	    //Highlighting of code rows
 	    List<Integer> highlighted = getHighlight(parameters);
 	    for (Integer tmpLineNumHighlighted : highlighted) {
-	    	int tmpCodeRowNumHighlighted = tmpLineNumHighlighted.intValue() - tmpCodeContainer.getFirstLine();
+	    	int tmpCodeRowNumHighlighted = tmpLineNumHighlighted - tmpCodeContainer.getFirstLine();
 	    	if ( tmpCodeRowNumHighlighted < tmpCodeContainer.getCodeRows().size() ){
 	    		tmpCodeContainer.getCodeRows().get(tmpCodeRowNumHighlighted).setHighlighted(true);
 	    	}
 	    }
 	    
 	    //Put code container as param for velocity
-	    Map<String,Object> contextParameters = new HashMap<String,Object>();
+	    Map<String,Object> contextParameters = new HashMap<>();
 	    contextParameters.put("codeContainer", tmpCodeContainer);
 	    contextParameters.put("codeTitle", getTitle(parameters));
 	    contextParameters.put("codeTitleColor", getTitleColor(parameters));
@@ -124,7 +124,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	    }
 
 	    //Get HTML rendering using velocity templates
-		StringBuffer codeBody = new StringBuffer();
+		StringBuilder codeBody = new StringBuilder();
 		codeBody.append(velocityManager.getBody("templates/", "code.vm", contextParameters));
 		
 		return codeBody.toString();
@@ -184,7 +184,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	
 	@SuppressWarnings("rawtypes")
 	public List<Integer> getHighlight(Map parameters) {
-		List<Integer> ret = new ArrayList<Integer>();
+		List<Integer> ret = new ArrayList<>();
 		if ( parameters.containsKey(HIGHLIGHT)){
 			String paramValue = parameters.get(HIGHLIGHT).toString();
 			ret.addAll(expandRanges(paramValue));
@@ -259,7 +259,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	 */
 	public List<Integer> expandRanges(String ranges) {
 		String[] parts;
-		List<Integer> ret = new ArrayList<Integer>();
+		List<Integer> ret = new ArrayList<>();
 		
 		if (ranges.isEmpty() || ranges.equals("[]")) return ret;
 		
@@ -294,7 +294,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 	 */
 	public List<Integer> rangeToSequence(String range) {
 		String[] parts;
-		List<Integer> ret = new ArrayList<Integer>();
+		List<Integer> ret = new ArrayList<>();
 		int sequenceStart, sequenceEnd;
 		
 		parts = range.split(String.valueOf(RANGE_SEPARATOR));
@@ -305,7 +305,7 @@ public class SyntaxHighlighterMacro extends BaseMacro {
 				sequenceEnd = Integer.parseInt(parts[1]);
 
 				for (int i = sequenceStart; i <= sequenceEnd; i++) {
-					ret.add(new Integer(i));
+					ret.add(i);
 				}
 			} else {
 				//TODO log.debug wrong string

@@ -54,7 +54,7 @@ public class Brush {
    * Constructor.
    */
   public Brush() {
-    regExpRuleList = new ArrayList<RegExpRule>();
+    regExpRuleList = new ArrayList<>();
     commonFileExtensionList = new ArrayList<String>();
     htmlScriptRegExp = null;
   }

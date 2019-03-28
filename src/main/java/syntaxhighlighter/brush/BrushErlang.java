@@ -43,7 +43,7 @@ public class BrushErlang extends Brush {
             + // additional
             " module export import define";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule("[A-Z][A-Za-z0-9_]+", "constants"));
     _regExpRuleList.add(new RegExpRule("\\%.+", Pattern.MULTILINE, "comments"));
     _regExpRuleList.add(new RegExpRule("\\?[A-Za-z0-9_]+", "preprocessor"));

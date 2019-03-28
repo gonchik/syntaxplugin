@@ -54,7 +54,7 @@ public class BrushGroovy extends Brush {
             + "dump inspect invokeMethod print println step times upto use waitForOrKill "
             + "getText";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleLineCComments, "comments")); // one line comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineCComments, "comments")); // multiline comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string")); // strings

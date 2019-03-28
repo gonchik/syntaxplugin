@@ -22,7 +22,7 @@
 	<tbody #if ( $codeCollapsed ) style="display: none;"#end>
 		#foreach( $codeRow in $codeContainer.codeRows ) 
 		<tr id="syntaxplugin_code_and_gutter">
-			#if( $codeContainer.showLineNums )
+			#if( ${codeContainer.showLineNums} )
 			#set ( $lineNum = $velocityCount + $codeContainer.getFirstLine() - 1 )
 				<td #if( $codeRow.highlighted ) bgcolor="#6ce26c" #else bgcolor="#f5f5f5" #end
 				style="#if( $codeRow.highlighted ) background-color: #6ce26c; #else background-color: #f5f5f5; #end

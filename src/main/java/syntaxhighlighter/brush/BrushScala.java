@@ -41,7 +41,7 @@ public class BrushScala extends Brush {
             + "else do if return protected private this package false";
     String keyops = "[_:=><%#@]+";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleLineCComments, "comments")); // one line comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineCComments, "comments")); // multiline comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineSingleQuotedString, "string")); // multi-line strings

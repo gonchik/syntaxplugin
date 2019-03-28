@@ -47,7 +47,7 @@ public class BrushJavaFX extends Brush {
             + "step super then this throw true try tween typeof var where while with "
             + "attribute let private readonly static trigger";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleLineCComments, "comments"));
     _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineCComments, "comments"));
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleQuotedString, "string"));

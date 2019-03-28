@@ -90,7 +90,7 @@ public class BrushColdFusion extends Brush {
             + "cfwindow cfxml cfzip cfzipparam";
     String operators = "all and any between cross in join like not null or outer some";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule("--(.*)$", Pattern.MULTILINE, "comments")); // one line and multiline comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.xmlComments, "comments")); // single quoted strings
     _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string")); // double quoted strings

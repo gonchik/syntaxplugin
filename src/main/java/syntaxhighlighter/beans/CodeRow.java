@@ -15,7 +15,7 @@ public class CodeRow {
 
 	public CodeRow(){
 		highlighted = false;
-		codeParts = new Vector<Code>();
+		codeParts = new Vector<>();
 	}
 	
 	public void addCode(Code code){

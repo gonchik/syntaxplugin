@@ -40,7 +40,7 @@ public class BrushJScript extends Brush {
             + "new null return super switch "
             + "this throw true try typeof var while with";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleLineCComments, "comments")); // one line comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineCComments, "comments")); // multiline comments
     // it's a standard not to use multi-line string

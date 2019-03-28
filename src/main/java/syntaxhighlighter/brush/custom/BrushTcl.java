@@ -36,7 +36,7 @@ public class BrushTcl extends Brush {
     		+ "tcl_findLibrary parray tcl_endOfWord tcl_startOfNextWord tcl_startOfPreviousWord "
     		+ "tcl_wordBreakAfter tcl_wordBreakBefore";
         
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule(";\\s*#.*$", Pattern.MULTILINE, "comments")); // inline comments with ; # 
     _regExpRuleList.add(new RegExpRule("^\\s*#.*$", Pattern.MULTILINE, "comments")); // single line comments with #
     _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string")); 

@@ -58,7 +58,7 @@ public class ParseResult {
   public ParseResult(int offset, int length, List<String> styleKeys) {
     this.offset = offset;
     this.length = length;
-    this.styleKeys = new ArrayList<String>(styleKeys);
+    this.styleKeys = new ArrayList<>(styleKeys);
   }
 
   /**
@@ -114,7 +114,7 @@ public class ParseResult {
    * @param styleKeys the style keys of the content
    */
   public void setStyleKeys(List<String> styleKeys) {
-    this.styleKeys = new ArrayList<String>(styleKeys);
+    this.styleKeys = new ArrayList<>(styleKeys);
   }
 
   /**
@@ -147,7 +147,7 @@ public class ParseResult {
    * @return the style keys
    */
   public List<String> getStyleKeys() {
-    return new ArrayList<String>(styleKeys);
+    return new ArrayList<>(styleKeys);
   }
 
   /**

@@ -72,7 +72,7 @@ public class BrushObjC extends Brush {
 			"strncpy strpbrk strrchr strspn strstr strtok strxfrm asctime " +
 			"clock ctime difftime gmtime localtime mktime strftime time";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleLineCComments, "comments")); // one line comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineCComments, "comments")); // multiline comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string")); // strings

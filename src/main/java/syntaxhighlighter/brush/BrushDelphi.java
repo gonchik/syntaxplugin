@@ -46,7 +46,7 @@ public class BrushDelphi extends Brush {
             + "threadvar to true try type unit until uses val var varirnt while widechar "
             + "widestring with word write writeln xor";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule("\\(\\*[\\s\\S]*?\\*\\)", Pattern.MULTILINE, "comments")); // multiline comments (* *)
     _regExpRuleList.add(new RegExpRule("\\{(?!\\$)[\\s\\S]*?\\}", Pattern.MULTILINE, "comments")); // multiline comments { }
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleLineCComments, "comments")); // one line

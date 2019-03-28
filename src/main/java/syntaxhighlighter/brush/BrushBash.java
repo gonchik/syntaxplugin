@@ -50,7 +50,7 @@ public class BrushBash extends Brush {
             + "uname unexpand uniq units unset unshar useradd usermod users uuencode uudecode v vdir "
             + "vi watch wc whereis which who whoami wget xargs yes chsh";
 
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+    List<RegExpRule> _regExpRuleList = new ArrayList<>();
     _regExpRuleList.add(new RegExpRule("^#!.*$", Pattern.MULTILINE, "preprocessor"));
     _regExpRuleList.add(new RegExpRule("\\/[\\w-\\/]+", Pattern.MULTILINE, "plain"));
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleLinePerlComments, "comments")); // one line comments
