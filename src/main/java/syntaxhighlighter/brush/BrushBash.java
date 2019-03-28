@@ -22,6 +22,7 @@ package syntaxhighlighter.brush;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -60,6 +61,6 @@ public class BrushBash extends Brush {
     _regExpRuleList.add(new RegExpRule(getKeywords(commands), Pattern.MULTILINE, "functions")); // commands
     setRegExpRuleList(_regExpRuleList);
 
-    setCommonFileExtensionList(Arrays.asList("sh"));
+    setCommonFileExtensionList(Collections.singletonList("sh"));
   }
 }

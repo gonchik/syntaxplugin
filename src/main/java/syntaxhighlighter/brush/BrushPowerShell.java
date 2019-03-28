@@ -22,6 +22,7 @@ package syntaxhighlighter.brush;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -76,6 +77,6 @@ public class BrushPowerShell extends Brush {
     _regExpRuleList.add(new RegExpRule(getKeywords(alias), Pattern.MULTILINE | Pattern.CASE_INSENSITIVE, "keyword"));
     setRegExpRuleList(_regExpRuleList);
 
-    setCommonFileExtensionList(Arrays.asList("ps1"));
+    setCommonFileExtensionList(Collections.singletonList("ps1"));
   }
 }

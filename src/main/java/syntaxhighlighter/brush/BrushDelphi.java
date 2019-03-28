@@ -22,6 +22,7 @@ package syntaxhighlighter.brush;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -57,6 +58,6 @@ public class BrushDelphi extends Brush {
     _regExpRuleList.add(new RegExpRule(getKeywords(keywords), Pattern.MULTILINE | Pattern.CASE_INSENSITIVE, "keyword")); // keyword
     setRegExpRuleList(_regExpRuleList);
 
-    setCommonFileExtensionList(Arrays.asList("pas"));
+    setCommonFileExtensionList(Collections.singletonList("pas"));
   }
 }

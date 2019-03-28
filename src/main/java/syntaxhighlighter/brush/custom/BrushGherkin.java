@@ -2,6 +2,7 @@ package syntaxhighlighter.brush.custom;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -30,6 +31,6 @@ public class BrushGherkin extends Brush {
 
     setRegExpRuleList(_regExpRuleList);
 
-    setCommonFileExtensionList(Arrays.asList("gherkin"));
+    setCommonFileExtensionList(Collections.singletonList("gherkin"));
   }
 }

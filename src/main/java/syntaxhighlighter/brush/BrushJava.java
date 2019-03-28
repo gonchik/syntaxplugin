@@ -22,6 +22,7 @@ package syntaxhighlighter.brush;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -56,6 +57,6 @@ public class BrushJava extends Brush {
 
     setHTMLScriptRegExp(new HTMLScriptRegExp("(?:&lt;|<)%[@!=]?", "%(?:&gt;|>)"));
 
-    setCommonFileExtensionList(Arrays.asList("java"));
+    setCommonFileExtensionList(Collections.singletonList("java"));
   }
 }

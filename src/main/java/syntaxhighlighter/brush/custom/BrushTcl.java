@@ -2,6 +2,7 @@ package syntaxhighlighter.brush.custom;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -56,7 +57,7 @@ public class BrushTcl extends Brush {
     _regExpRuleList.add(new RegExpRule(getKeywords(procedures), Pattern.MULTILINE, "functions"));
 
     setRegExpRuleList(_regExpRuleList);
-    setCommonFileExtensionList(Arrays.asList("tcl"));
+    setCommonFileExtensionList(Collections.singletonList("tcl"));
 
   }
 }

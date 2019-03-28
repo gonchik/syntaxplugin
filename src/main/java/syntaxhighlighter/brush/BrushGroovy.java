@@ -22,6 +22,7 @@ package syntaxhighlighter.brush;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -69,6 +70,6 @@ public class BrushGroovy extends Brush {
 
     setHTMLScriptRegExp(HTMLScriptRegExp.aspScriptTags);
 
-    setCommonFileExtensionList(Arrays.asList("groovy"));
+    setCommonFileExtensionList(Collections.singletonList("groovy"));
   }
 }

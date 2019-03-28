@@ -22,6 +22,7 @@ package syntaxhighlighter.brush;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -78,7 +79,7 @@ public class BrushCss extends Brush {
 
     setHTMLScriptRegExp(new HTMLScriptRegExp("(?:&lt;|<)\\s*style.*?(?:&gt;|>)", "(?:&lt;|<)\\/\\s*style\\s*(?:&gt;|>)"));
 
-    setCommonFileExtensionList(Arrays.asList("css"));
+    setCommonFileExtensionList(Collections.singletonList("css"));
   }
 
   protected static String getKeywordsCSS(String str) {

@@ -2,6 +2,7 @@ package syntaxhighlighter.brush.custom;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -38,6 +39,6 @@ public class BrushPuppet extends Brush {
 
     setRegExpRuleList(_regExpRuleList);
 
-    setCommonFileExtensionList(Arrays.asList("puppet"));
+    setCommonFileExtensionList(Collections.singletonList("puppet"));
   }
 }

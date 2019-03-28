@@ -22,6 +22,7 @@ package syntaxhighlighter.brush;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -59,6 +60,6 @@ public class BrushJavaFX extends Brush {
 
     setHTMLScriptRegExp(HTMLScriptRegExp.aspScriptTags);
 
-    setCommonFileExtensionList(Arrays.asList("fx"));
+    setCommonFileExtensionList(Collections.singletonList("fx"));
   }
 }
