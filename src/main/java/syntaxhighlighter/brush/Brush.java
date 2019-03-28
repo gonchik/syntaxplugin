@@ -55,7 +55,7 @@ public class Brush {
    */
   public Brush() {
     regExpRuleList = new ArrayList<>();
-    commonFileExtensionList = new ArrayList<String>();
+    commonFileExtensionList = new ArrayList<>();
     htmlScriptRegExp = null;
   }
 
@@ -64,7 +64,7 @@ public class Brush {
    * @return a copy of the list
    */
   public List<RegExpRule> getRegExpRuleList() {
-    return new ArrayList<RegExpRule>(regExpRuleList);
+    return new ArrayList<>(regExpRuleList);
   }
 
   /**
@@ -73,10 +73,10 @@ public class Brush {
    */
   public void setRegExpRuleList(List<RegExpRule> regExpRuleList) {
     if (regExpRuleList == null) {
-      this.regExpRuleList = new ArrayList<RegExpRule>();
+      this.regExpRuleList = new ArrayList<>();
       return;
     }
-    this.regExpRuleList = new ArrayList<RegExpRule>(regExpRuleList);
+    this.regExpRuleList = new ArrayList<>(regExpRuleList);
   }
 
   /**
@@ -101,7 +101,7 @@ public class Brush {
    * @return a copy of the list
    */
   public List<String> getCommonFileExtensionList() {
-    return new ArrayList<String>(commonFileExtensionList);
+    return new ArrayList<>(commonFileExtensionList);
   }
 
   /**
@@ -110,10 +110,10 @@ public class Brush {
    */
   public void setCommonFileExtensionList(List<String> commonFileExtensionList) {
     if (commonFileExtensionList == null) {
-      this.commonFileExtensionList = new ArrayList<String>();
+      this.commonFileExtensionList = new ArrayList<>();
       return;
     }
-    this.commonFileExtensionList = new ArrayList<String>(commonFileExtensionList);
+    this.commonFileExtensionList = new ArrayList<>(commonFileExtensionList);
   }
 
   /**
