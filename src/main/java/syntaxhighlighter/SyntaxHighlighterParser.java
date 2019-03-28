@@ -2,6 +2,7 @@ package syntaxhighlighter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -144,7 +145,7 @@ public class SyntaxHighlighterParser {
     for (List<MatchResult> resultList : parsedResult.values()) {
       for (MatchResult result : resultList) {
         List<String> styleKeyList = null;
-        styleKeyList = Arrays.asList(new String[]{result.getStyleKey()});
+        styleKeyList = Collections.singletonList(result.getStyleKey());
         returnList.add(new ParseResult(result.getOffset(), result.getLength(), styleKeyList));
       }
     }

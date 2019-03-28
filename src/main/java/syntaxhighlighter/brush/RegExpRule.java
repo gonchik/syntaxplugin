@@ -34,11 +34,11 @@ public class RegExpRule {
   /**
    * Common regular expression rule.
    */
-  public static final Pattern multiLineCComments = Pattern.compile("\\/\\*[\\s\\S]*?\\*\\/", Pattern.MULTILINE);
+  public static final Pattern multiLineCComments = Pattern.compile("/\\*[\\s\\S]*?\\*\\/", Pattern.MULTILINE);
   /**
    * Common regular expression rule.
    */
-  public static final Pattern singleLineCComments = Pattern.compile("\\/\\/.*$", Pattern.MULTILINE);
+  public static final Pattern singleLineCComments = Pattern.compile("/\\/.*$", Pattern.MULTILINE);
   /**
    * Common regular expression rule.
    */
